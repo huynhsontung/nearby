@@ -26,7 +26,7 @@
 #include "platform/base/nsd_service_info.h"
 #include "platform/base/types.h"
 #include "platform/public/crypto.h"
-#include "proto/connections_enums.pb.h"
+#include "proto/connections_enums.proto.h"
 #include "absl/functional/bind_front.h"
 #include "absl/strings/escaping.h"
 

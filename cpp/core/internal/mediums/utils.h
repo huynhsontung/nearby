@@ -17,7 +17,8 @@
 
 #include <memory>
 
-#include "proto/connections/offline_wire_formats.pb.h"
+// JFAN Portable
+// #include "proto/connections/offline_wire_formats.proto.h"
 #include "proto/connections/offline_wire_formats.pb.h"
 #include "platform/base/byte_array.h"
 

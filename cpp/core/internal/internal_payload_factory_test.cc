@@ -15,7 +15,7 @@
 #include "core/internal/internal_payload_factory.h"
 
 #include "core/internal/offline_frames.h"
-#include "proto/connections/offline_wire_formats.pb.h"
+#include "proto/connections/offline_wire_formats.proto.h"
 #include "platform/base/byte_array.h"
 #include "platform/public/pipe.h"
 #include "gmock/gmock.h"

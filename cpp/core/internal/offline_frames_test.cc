@@ -19,7 +19,7 @@
 #include <utility>
 #include <vector>
 
-#include "proto/connections/offline_wire_formats.pb.h"
+#include "proto/connections/offline_wire_formats.proto.h"
 #include "platform/base/byte_array.h"
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"

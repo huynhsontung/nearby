@@ -22,7 +22,7 @@
 #include "platform/public/logging.h"
 #include "platform/public/mutex.h"
 #include "platform/public/mutex_lock.h"
-#include "proto/connections_enums.pb.h"
+#include "proto/connections_enums.proto.h"
 #include "absl/strings/escaping.h"
 #include "absl/strings/str_cat.h"
 

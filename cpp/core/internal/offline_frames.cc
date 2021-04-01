@@ -20,7 +20,7 @@
 #include "core/internal/message_lite.h"
 #include "core/internal/offline_frames_validator.h"
 #include "core/status.h"
-#include "proto/connections/offline_wire_formats.pb.h"
+#include "proto/connections/offline_wire_formats.proto.h"
 #include "platform/base/byte_array.h"
 
 namespace location {

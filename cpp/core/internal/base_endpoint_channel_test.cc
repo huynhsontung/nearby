@@ -25,7 +25,8 @@
 #include "platform/public/multi_thread_executor.h"
 #include "platform/public/pipe.h"
 #include "platform/public/single_thread_executor.h"
-#include "proto/connections_enums.pb.h"
+// JFAN Portable
+// #include "proto/connections_enums.proto.h"
 #include "proto/connections_enums.pb.h"
 #include "securegcm/d2d_connection_context_v1.h"
 #include "securegcm/ukey2_handshake.h"

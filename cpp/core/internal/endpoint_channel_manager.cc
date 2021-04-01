@@ -17,7 +17,7 @@
 #include <memory>
 
 #include "core/internal/offline_frames.h"
-#include "proto/connections/offline_wire_formats.pb.h"
+#include "proto/connections/offline_wire_formats.proto.h"
 #include "platform/base/feature_flags.h"
 #include "platform/public/logging.h"
 #include "platform/public/mutex.h"

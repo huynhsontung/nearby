@@ -95,7 +95,7 @@ portable_proto_library(
         "-DGOOGLE_PROTOBUF_NO_RTTI=1",
     ],
     header_outs = [
-        "ble_frames.pb.h",
+        "ble_frames.proto.h",
     ],
     proto_deps = [
         ":ble_frames_proto",

@@ -17,7 +17,8 @@
 
 #include "core/strategy.h"
 #include "platform/base/byte_array.h"
-#include "proto/connections_enums.pb.h"
+// JFAN Portable
+// #include "proto/connections_enums.proto.h"
 #include "proto/connections_enums.pb.h"
 
 namespace location {

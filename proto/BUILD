@@ -86,7 +86,7 @@ portable_proto_library(
         "-DGOOGLE_PROTOBUF_NO_RTTI=1",
     ],
     header_outs = [
-        "connections_enums.pb.h",
+        "connections_enums.proto.h",
     ],
     proto_deps = [
         ":connections_enums_proto",

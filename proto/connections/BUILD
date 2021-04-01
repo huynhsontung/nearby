@@ -41,7 +41,7 @@ portable_proto_library(
         "-DGOOGLE_PROTOBUF_NO_RTTI=1",
     ],
     header_outs = [
-        "offline_wire_formats.pb.h",
+        "offline_wire_formats.proto.h",
     ],
     proto_deps = [
         ":offline_wire_formats_proto",
