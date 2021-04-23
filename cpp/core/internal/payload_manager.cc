@@ -58,8 +58,8 @@ bool PayloadManager::SendPayloadLoop(
   // Update the still-active recipients of this payload.
   if (available_endpoint_ids.empty()) {
     NEARBY_LOG(INFO,
-               "PayloadManager short-circuiting payload_id=%" PRIX64
-               " after sending %" PRIX64
+               "PayloadManager short-circuiting payload_id=%" PRIx64
+               " after sending %" PRId64
                " bytes because none of the endpoints are available anymore.",
                pending_payload.GetInternalPayload()->GetId(),
                next_chunk_offset);
@@ -70,7 +70,7 @@ bool PayloadManager::SendPayloadLoop(
   // notify the remaining recipients.
   if (pending_payload.IsLocallyCanceled()) {
     NEARBY_LOG(INFO,
-               "Aborting send of payload_id=%" PRIx64 " at offset %" PRIx64
+               "Aborting send of payload_id=%" PRIx64 " at offset %" PRId64
                " since it is marked canceled.",
                static_cast<std::int64_t>(
                    pending_payload.GetInternalPayload()->GetId()),
