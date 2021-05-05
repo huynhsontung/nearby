@@ -15,6 +15,7 @@
 #ifndef PLATFORM_IMPL_WINDOWS_ATOMIC_BOOLEAN_H_
 #define PLATFORM_IMPL_WINDOWS_ATOMIC_BOOLEAN_H_
 
+#include <atomic>
 #include "platform/api/atomic_boolean.h"
 
 namespace location {
@@ -30,14 +31,21 @@ class AtomicBoolean : public api::AtomicBoolean {
   // Atomically read and return current value.
   bool Get() const override {
     // TODO(b/184975123): replace with real implementation.
-    return false;
+    return atomicBoolean_;
   };
 
   // Atomically exchange original value with a new one. Return previous value.
   bool Set(bool value) override {
     // TODO(b/184975123): replace with real implementation.
-    return false;
+    bool original = atomicBoolean_;
+
+    atomicBoolean_ = value;
+
+    return original;
   };
+
+ private:
+  std::atomic_bool atomicBoolean_;
 };
 
 }  // namespace windows
