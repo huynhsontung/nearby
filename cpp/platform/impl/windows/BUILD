@@ -16,6 +16,7 @@ licenses(["notice"])
 cc_library(
     name = "types",
     srcs = [
+        "pch.h",
         "log_message.cc",
     ],
     hdrs = [
@@ -36,11 +37,13 @@ cc_library(
         "submittable_executor.h",
         "utils.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     deps = [
-        "//base",
+        "//base:stringprintf",
+        "//base:logging",
         "//platform/api:types",
         "//platform/base",
+        "@abseil//absl/base:log_severity",
     ],
 )
 
@@ -66,7 +69,7 @@ cc_library(
         "wifi.h",
         "wifi_lan.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     visibility = ["//visibility:private"],
     deps = [
         "//platform/api:comm",
@@ -78,21 +81,23 @@ cc_library(
 cc_library(
     name = "crypto",
     srcs = [
+        "pch.h",
         "crypto.cc",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     visibility = ["//visibility:private"],
     deps = [
-        "//absl/strings",
         "//platform/api:types",
         "//platform/base",
-        "//openssl:crypto",
+        "@abseil//absl/strings",
+        "@boringssl//:crypto",
     ],
 )
 
 cc_library(
     name = "windows",
     srcs = [
+        "pch.h",
         "bluetooth_adapter.cc",
         "bluetooth_classic_device.cc",
         "bluetooth_classic_medium.cc",
@@ -109,10 +114,10 @@ cc_library(
         "wifi_lan_nsd.cc",
         "wifi_lan_socket.cc",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
-    copts = ["-Ithird_party/nearby_connections/cpp/platform/impl/windows/generated"],
+    # compatible_with = ["//buildenv/target:non_prod"],
+    copts = ["-Icpp/platform/impl/windows/generated"],
     visibility = [
-        "//third_party/nearby_connections/windows:__subpackages__",
+        "//:__subpackages__",
     ],
     deps = [
         ":comm",
@@ -138,7 +143,7 @@ cc_library(
         "test_utils.h",
     ],
     visibility = [
-        "//third_party/nearby_connections/windows:__subpackages__",
+        "//windows:__subpackages__",
     ],
     deps = [
         "//platform/base",

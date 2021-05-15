@@ -21,22 +21,22 @@ cc_library(
     hdrs = [
         "analytics_recorder.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     copts = ["-DCORE_ADAPTER_DLL"],
     visibility = [
         "//core:__subpackages__",
         "//proto/analytics:__subpackages__",
     ],
     deps = [
-        "//absl/container:btree",
-        "//absl/time",
+        # "//absl/container:btree",
+        # "//absl/time",
         "//core:core_types",
         "//core:event_logger",
         "//platform/base",
         "//platform/base:error_code_recorder",
         "//platform/public:logging",
         "//platform/public:types",
-        "//proto:connections_enums_portable_proto",
+        "//proto:connections_enums_cc_proto",
         "//proto/analytics:connections_log_cc_proto",
         "//proto/errorcode:error_code_enums_portable_proto",
     ],
@@ -52,7 +52,7 @@ cc_test(
     deps = [
         ":analytics",
         "//testing/base/public:gunit_main",
-        "//absl/time",
+        # "//absl/time",
         "//platform/base:error_code_recorder",
         "//platform/impl/g3",  # build_cleaner: keep
         "//platform/public:logging",

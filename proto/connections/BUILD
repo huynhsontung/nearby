@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("//net/proto2/contrib/portable/cc:portable_proto_build_defs.bzl", "portable_proto_library")
+# load("//net/proto2/contrib/portable/cc:portable_proto_build_defs.bzl", "portable_proto_library")
+load("@rules_proto//proto:defs.bzl", "proto_library")
 
 licenses(["notice"])
 
@@ -20,10 +21,6 @@ proto_library(
     name = "offline_wire_formats_proto",
     srcs = [
         "offline_wire_formats.proto",
-    ],
-    cc_api_version = 2,
-    compatible_with = [
-        "//buildenv/target:non_prod",
     ],
     visibility = [
         "//googlemac/iPhone/Shared/Nearby/Connections:__subpackages__",
@@ -39,32 +36,12 @@ java_lite_proto_library(
     deps = [":offline_wire_formats_proto"],
 )
 
-portable_proto_library(
-    name = "offline_wire_formats_portable_proto",
-    compatible_with = [
-        "//buildenv/target:non_prod",
-    ],
-    config = ":offline_wire_formats_proto_config",
-    copts = [
-        "-DGOOGLE_PROTOBUF_NO_RTTI=1",
-    ],
-    header_outs = [
-        "offline_wire_formats.pb.h",
-    ],
-    proto_deps = [
-        ":offline_wire_formats_proto",
-    ],
+cc_proto_library(
+    name = "offline_wire_formats_cc_proto",
+    deps = [":offline_wire_formats_proto"],
     visibility = [
-        "//location/nearby/connections:__subpackages__",
-        "//nearby_connections:__subpackages__",
-        "//third_party/nearby_connections:__subpackages__",
-    ],
-)
-
-filegroup(
-    name = "offline_wire_formats_proto_config",
-    srcs = ["offline_wire_formats_proto_config.asciipb"],
-    compatible_with = [
-        "//buildenv/target:non_prod",
+        # "//location/nearby/connections:__subpackages__",
+        "//platform:__subpackages__",
+        "//core:__subpackages__",
     ],
 )

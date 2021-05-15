@@ -11,7 +11,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-load("//tools/build_defs/cc:cc_fake_binary.bzl", "cc_fake_binary")
+
+# load("//tools/build_defs/cc:cc_fake_binary.bzl", "cc_fake_binary")
 
 licenses(["notice"])
 
@@ -50,10 +51,10 @@ cc_library(
         "thread_check_callable.h",
         "thread_check_runnable.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     visibility = [
         "//googlemac/iPhone/Shared/Nearby/Connections:__subpackages__",
-        "//analytics:__subpackages__",
+        "//cpp/analytics:__subpackages__",
         "//core:__subpackages__",
         "//platform/base:__pkg__",
         "//platform/impl/windows:__subpackages__",
@@ -61,13 +62,13 @@ cc_library(
     ],
     deps = [
         ":logging",
-        "//absl/base:core_headers",
-        "//absl/time",
         "//platform/api:platform",
         "//platform/api:types",
         "//platform/base",
         "//platform/base:logging",
         "//platform/base:util",
+        "@abseil//absl/base:core_headers",
+        "@abseil//absl/time",
     ],
 )
 
@@ -86,7 +87,7 @@ cc_library(
         "webrtc.h",
         "wifi_lan.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     copts = ["-DCORE_ADAPTER_DLL"],
     visibility = [
         "//googlemac/iPhone/Shared/Nearby/Connections:__subpackages__",
@@ -96,14 +97,14 @@ cc_library(
     deps = [
         ":logging",
         ":types",
-        "//absl/container:flat_hash_map",
-        "//absl/strings",
+        "//proto/connections:offline_wire_formats_cc_proto",
         "//platform/api:comm",
         "//platform/api:platform",
         "//platform/base",
         "//platform/base:cancellation_flag",
-        "//proto/connections:offline_wire_formats_portable_proto",
-        "//webrtc/api:libjingle_peerconnection_api",
+        "@abseil//absl/container:flat_hash_map",
+        "@abseil//absl/strings",
+        "@webrtc//:webrtc",
     ],
 )
 
@@ -112,10 +113,10 @@ cc_library(
     hdrs = [
         "logging.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     copts = ["-DCORE_ADAPTER_DLL"],
     visibility = [
-        "//analytics:__subpackages__",
+        "//cpp/analytics:__subpackages__",
         "//core:__subpackages__",
         "//platform:__subpackages__",
         "//proto/analytics:__subpackages__",
@@ -155,23 +156,23 @@ cc_test(
         ":logging",
         ":types",
         "//testing/base/public:gunit_main",
-        "//absl/strings",
-        "//absl/synchronization",
-        "//absl/time",
         "//platform/base",
         "//platform/base:test_util",
         "//platform/impl/g3",  # build_cleaner: keep
+        "@abseil//absl/strings",
+        "@abseil//absl/synchronization",
+        "@abseil//absl/time",
     ],
 )
 
-cc_fake_binary(
-    name = "thread_check_nocompile",
-    srcs = ["thread_check_nocompile.cc"],
-    deps = [
-        ":types",
-        "//absl/time",
-    ],
-)
+# cc_fake_binary(
+#     name = "thread_check_nocompile",
+#     srcs = ["thread_check_nocompile.cc"],
+#     deps = [
+#         ":types",
+#         "@abseil//absl/time",
+#     ],
+# )
 
 py_test(
     name = "thread_check_nocompile_test",

@@ -1,0 +1,14 @@
+import "Enums.idl";
+
+namespace NearbyLibrary
+{
+    [default_interface]
+    runtimeclass Status 
+    {
+        StatusState Value;
+
+        Status();
+        Status(StatusState status);
+        Boolean Ok{ get; };
+    }
+}

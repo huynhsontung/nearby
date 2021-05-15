@@ -48,9 +48,12 @@ this is a "source root" directory of the project
 
 ## Build
 pre-requisites:
-openssl, cmake, c++ toolchain (c++17-capable)
+bazel, c++ toolchain (c++20-capable), webrtc static library built with dynamic CRT (`/MD` or `/MDd`).
 
-TODO
+```shell
+bazel build -c dbg //nearby:nearby
+
+```
 
 ## Running unit tests
 

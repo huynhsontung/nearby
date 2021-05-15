@@ -15,7 +15,7 @@ licenses(["notice"])
 
 cc_library(
     name = "types",
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     linkopts = [
         "advapi32.lib",
         "comdlg32.lib",
@@ -36,7 +36,7 @@ cc_library(
     ],
     textual_hdrs = glob(["**/*.h"]),
     visibility = [
-        "//third_party/nearby_connections/connections/windows:__subpackages__",
+        "//connections/windows:__subpackages__",
         "//platform/impl/windows:__subpackages__",
     ],
 )

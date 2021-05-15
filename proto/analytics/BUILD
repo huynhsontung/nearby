@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("//tools/build_defs/proto/cpp:cc_proto_library.bzl", "cc_proto_library")
+# load("//tools/build_defs/proto/cpp:cc_proto_library.bzl", "cc_proto_library")
 
 licenses(["notice"])
 
@@ -23,10 +23,9 @@ proto_library(
     srcs = [
         "connections_log.proto",
     ],
-    cc_api_version = 2,
-    compatible_with = ["//buildenv/target:non_prod"],
+    # cc_api_version = 2,
+    # compatible_with = ["//buildenv/target:non_prod"],
     deps = [
-        
         "//proto:connections_enums_proto",
         "//proto/errorcode:error_code_enums_proto",
     ],
@@ -34,9 +33,9 @@ proto_library(
 
 cc_proto_library(
     name = "connections_log_cc_proto",
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     visibility = [
-        "//analytics:__subpackages__",
+        "//cpp/analytics:__subpackages__",
         "//core:__subpackages__",
     ],
     deps = [":connections_log_proto"],

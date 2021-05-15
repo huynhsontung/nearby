@@ -11,7 +11,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-load("//ads/util/non_compile:non_compile.bzl", "cc_with_non_compile_test")
+
+# load("//ads/util/non_compile:non_compile.bzl", "cc_with_non_compile_test")
 
 licenses(["notice"])
 
@@ -40,24 +41,24 @@ cc_library(
         "socket.h",
         "types.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     copts = ["-DCORE_ADAPTER_DLL"],
     visibility = [
         "//googlemac/iPhone/Shared/Nearby/Connections:__subpackages__",
-        "//analytics:__subpackages__",
-        "//third_party/nearby_connections/cpp/cal:__subpackages__",
+        "//cpp/analytics:__subpackages__",
+        "//cpp/cal:__subpackages__",
         "//core:__subpackages__",
         "//platform:__subpackages__",
         "//platform/api:__subpackages__",
         "//proto/analytics:__subpackages__",
     ],
     deps = [
-        "//absl/container:flat_hash_map",
-        "//absl/meta:type_traits",
-        "//absl/strings",
-        "//absl/strings:str_format",
-        "//absl/synchronization",
-        "//absl/time",
+        "@abseil//absl/container:flat_hash_map",
+        "@abseil//absl/meta:type_traits",
+        "@abseil//absl/strings",
+        "@abseil//absl/strings:str_format",
+        "@abseil//absl/synchronization",
+        "@abseil//absl/time",
     ],
 )
 
@@ -74,7 +75,7 @@ cc_library(
         "base_pipe.h",
         "byte_utils.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     visibility = [
         "//core:__subpackages__",
         "//platform/impl:__subpackages__",
@@ -82,9 +83,9 @@ cc_library(
     ],
     deps = [
         ":base",
-        "//absl/base:core_headers",
-        "//absl/strings:str_format",
         "//platform/api:types",
+        "@abseil//absl/base:core_headers",
+        "@abseil//absl/strings:str_format",
     ],
 )
 
@@ -93,7 +94,7 @@ cc_library(
     hdrs = [
         "logging.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     visibility = [
         "//googlemac/iPhone/Shared/Nearby/Connections:__subpackages__",
         "//platform:__subpackages__",
@@ -114,7 +115,7 @@ cc_library(
         "cancellation_flag.h",
         "cancellation_flag_listener.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     visibility = [
         "//core/internal:__subpackages__",
         "//platform/api:__subpackages__",
@@ -124,8 +125,8 @@ cc_library(
     deps = [
         ":base",
         ":util",
-        "//absl/container:flat_hash_set",
-        "//absl/synchronization",
+        "@abseil//absl/container:flat_hash_set",
+        "@abseil//absl/synchronization",
     ],
 )
 
@@ -168,10 +169,10 @@ cc_library(
     deps = [
         ":base",
         ":logging",
-        "//absl/container:flat_hash_map",
-        "//absl/strings",
         "//platform/api:comm",
         "//platform/public:types",
+        "@abseil//absl/container:flat_hash_map",
+        "@abseil//absl/strings",
     ],
 )
 
@@ -230,13 +231,13 @@ cc_test(
     ],
 )
 
-cc_with_non_compile_test(
-    name = "exception_test",
-    srcs = [
-        "exception_test.cc",
-    ],
-    deps = [
-        ":base",
-        "//testing/base/public:gunit_main",
-    ],
-)
+# cc_with_non_compile_test(
+#     name = "exception_test",
+#     srcs = [
+#         "exception_test.cc",
+#     ],
+#     deps = [
+#         ":base",
+#         "//testing/base/public:gunit_main",
+#     ],
+# )

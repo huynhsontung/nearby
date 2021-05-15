@@ -12,9 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "pch.h"
 #include "platform/impl/windows/log_message.h"
 
 #include <algorithm>
+#include <stdarg.h>
 
 #include "base/stringprintf.h"
 
@@ -38,11 +40,14 @@ inline absl::LogSeverity ConvertSeverity(api::LogMessage::Severity severity) {
       return absl::LogSeverity::kError;
     case api::LogMessage::Severity::kFatal:
       return absl::LogSeverity::kFatal;
+    default:
+      return absl::LogSeverity::kInfo;
   }
 }
 
 LogMessage::LogMessage(const char* file, int line, Severity severity)
-    : log_streamer_(ConvertSeverity(severity), file, line) {}
+    : log_streamer_{ConvertSeverity(severity), file, line,
+                    std::stringstream{std::ios_base::out}} {}
 
 LogMessage::~LogMessage() = default;
 
@@ -51,11 +56,11 @@ void LogMessage::Print(const char* format, ...) {
   va_start(ap, format);
   std::string result;
   StringAppendV(&result, format, ap);
-  log_streamer_.stream() << result;
+  log_streamer_.stream << result;
   va_end(ap);
 }
 
-std::ostream& LogMessage::Stream() { return log_streamer_.stream(); }
+std::ostream& LogMessage::Stream() { return log_streamer_.stream; }
 
 }  // namespace windows
 

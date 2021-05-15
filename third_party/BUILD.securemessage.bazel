@@ -1,0 +1,41 @@
+load("@//third_party:protobuf.bzl", "cc_proto_library")
+
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+    name = "securemessage",
+    srcs = [
+        "cpp/src/securemessage/byte_buffer.cc",
+        "cpp/src/securemessage/crypto_ops.cc",
+        "cpp/src/securemessage/crypto_ops_openssl.cc",
+        "cpp/src/securemessage/public_key_proto_util.cc",
+        "cpp/src/securemessage/raw_secure_message_parser.cc",
+        "cpp/src/securemessage/secure_message_builder.cc",
+        "cpp/src/securemessage/secure_message_parser.cc",
+        "cpp/src/securemessage/secure_message_wrapper.cc",
+        "cpp/src/securemessage/util.cc",
+    ],
+    hdrs = [
+        "cpp/include/securemessage/byte_buffer.h",
+        "cpp/include/securemessage/common.h",
+        "cpp/include/securemessage/crypto_ops.h",
+        "cpp/include/securemessage/public_key_proto_util.h",
+        "cpp/include/securemessage/raw_secure_message_parser.h",
+        "cpp/include/securemessage/secure_message_builder.h",
+        "cpp/include/securemessage/secure_message_parser.h",
+        "cpp/include/securemessage/secure_message_wrapper.h",
+        "cpp/include/securemessage/util.h",
+    ],
+    strip_include_prefix = "cpp/include/",
+    deps = [
+        ":securemessage_cc_proto",
+        "@boringssl//:crypto",
+        "@boringssl//:ssl",
+    ],
+)
+
+cc_proto_library(
+    name = "securemessage_cc_proto",
+    srcs = ["proto/securemessage.proto"],
+    include = "proto",
+)

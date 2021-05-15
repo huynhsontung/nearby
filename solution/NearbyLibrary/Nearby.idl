@@ -1,0 +1,10 @@
+namespace NearbyLibrary
+{
+    [default_interface]
+    runtimeclass Nearby
+    {
+        Nearby();
+        void StartAdvertising();
+        String GetLocalEndpointId();
+    }
+}

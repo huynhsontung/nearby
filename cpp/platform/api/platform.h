@@ -43,6 +43,8 @@
 #include "platform/api/wifi_lan.h"
 #include "platform/base/payload_id.h"
 
+#undef CreateMutex  // synchapi.h
+
 namespace location {
 namespace nearby {
 namespace api {

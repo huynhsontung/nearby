@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>accd3aa8-1ba0-4223-9bbe-0c431709210b</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{926ab91d-31b4-48c3-b9a4-e681349f27f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library">
+      <UniqueIdentifier>{72c03fa1-575b-4e30-9674-8070d606e053}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Headers">
+      <UniqueIdentifier>{796c38ea-b507-4120-bca0-e02c99ee69cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Headers\platform">
+      <UniqueIdentifier>{a5345d49-116a-47a0-94e2-54aae6f99f8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Headers\platform\api">
+      <UniqueIdentifier>{6f69a156-23c8-4722-b6e9-6dc1e80de58c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Headers\platform\base">
+      <UniqueIdentifier>{7480a0f4-70a4-43f2-ad5c-1eb7f8b8c9ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Headers\platform\config">
+      <UniqueIdentifier>{7d6f5332-27e9-4650-bc1d-12cea5b36714}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Headers\platform\public">
+      <UniqueIdentifier>{2c7864cd-8240-4d84-90ed-b28ebb97bf27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Headers\platform\impl">
+      <UniqueIdentifier>{504cf749-c709-4e5d-9dee-3b35b641485e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Headers\platform\impl\shared">
+      <UniqueIdentifier>{d7d889f3-eb62-4b86-9d5a-a4da9676f1f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Headers\platform\impl\windows">
+      <UniqueIdentifier>{630d9882-cbbc-434e-8e70-dce86027f293}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Headers\core">
+      <UniqueIdentifier>{594dc612-82d7-44f6-9aa5-38b1e559d66f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Headers\core\internal">
+      <UniqueIdentifier>{7275b56e-bb5f-4eb8-91e9-75dc066de882}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Headers\core\internal\mediums">
+      <UniqueIdentifier>{9a2b363d-ba2c-4c2d-92ff-3b96d620f263}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Headers\core\internal\mediums\webrtc">
+      <UniqueIdentifier>{64c59e5f-5b5a-47c5-a70c-6436da85581d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Headers\core\internal\mediums\ble_v2">
+      <UniqueIdentifier>{c06897a5-46fb-462a-92ce-6de39bd72dcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Sources">
+      <UniqueIdentifier>{bf55f702-4526-4fd3-981a-fb7fe9dddd71}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="..\..\cpp\platform\impl\windows\system_clock.cc">
+      <Filter>Library\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cpp\platform\impl\windows\crypto.cc">
+      <Filter>Library\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cpp\platform\impl\windows\log_message.cc">
+      <Filter>Library\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cpp\platform\impl\windows\platform.cc">
+      <Filter>Library\Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="..\..\cpp\platform\api\atomic_boolean.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\atomic_reference.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\ble.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\ble_v2.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\bluetooth_adapter.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\bluetooth_classic.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\cancelable.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\condition_variable.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\count_down_latch.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\crypto.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\executor.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\future.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\input_file.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\listenable_future.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\log_message.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\mutex.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\output_file.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\platform.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\scheduled_executor.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\server_sync.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\settable_future.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\submittable_executor.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\system_clock.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\webrtc.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\wifi.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\api\wifi_lan.h">
+      <Filter>Library\Headers\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\base64_utils.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\base_input_stream.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\base_mutex_lock.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\base_pipe.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\bluetooth_utils.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\byte_array.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\byte_utils.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\callable.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\cancellation_flag.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\cancellation_flag_listener.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\exception.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\feature_flags.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\input_stream.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\listeners.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\logging.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\medium_environment.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\nsd_service_info.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\output_stream.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\payload_id.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\prng.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\runnable.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\socket.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\base\types.h">
+      <Filter>Library\Headers\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\config\config.h">
+      <Filter>Library\Headers\platform\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\config\string.h">
+      <Filter>Library\Headers\platform\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\atomic_boolean.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\atomic_reference.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\ble.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\bluetooth_adapter.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\bluetooth_classic.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\cancelable.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\cancelable_alarm.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\cancellable_task.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\condition_variable.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\count_down_latch.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\crypto.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\file.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\future.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\lockable.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\logging.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\monitored_runnable.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\multi_thread_executor.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\mutex.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\mutex_lock.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\pending_job_registry.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\pipe.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\scheduled_executor.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\settable_future.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\single_thread_executor.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\submittable_executor.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\system_clock.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\thread_check_callable.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\thread_check_runnable.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\webrtc.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\public\wifi_lan.h">
+      <Filter>Library\Headers\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\shared\file.h">
+      <Filter>Library\Headers\platform\impl\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\shared\posix_condition_variable.h">
+      <Filter>Library\Headers\platform\impl\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\shared\posix_mutex.h">
+      <Filter>Library\Headers\platform\impl\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\atomic_boolean.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\atomic_reference.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\ble.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\bluetooth_adapter.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\bluetooth_classic.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\cancelable.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\condition_variable.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\count_down_latch.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\executor.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\future.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\input_file.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\listenable_future.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\log_message.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\mutex.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\output_file.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\scheduled_executor.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\server_sync.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\settable_future.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\submittable_executor.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\webrtc.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\wifi.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\platform\impl\windows\wifi_lan.h">
+      <Filter>Library\Headers\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\core.h">
+      <Filter>Library\Headers\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\listeners.h">
+      <Filter>Library\Headers\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\options.h">
+      <Filter>Library\Headers\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\params.h">
+      <Filter>Library\Headers\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\payload.h">
+      <Filter>Library\Headers\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\status.h">
+      <Filter>Library\Headers\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\strategy.h">
+      <Filter>Library\Headers\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\base_bwu_handler.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\base_endpoint_channel.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\base_pcp_handler.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\ble_advertisement.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\ble_endpoint_channel.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\bluetooth_bwu_handler.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\bluetooth_device_name.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\bluetooth_endpoint_channel.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\bwu_handler.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\bwu_manager.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\client_proxy.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\encryption_runner.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\endpoint_channel.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\endpoint_channel_manager.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\endpoint_manager.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\injected_bluetooth_device_store.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\internal_payload.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\internal_payload_factory.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\message_lite.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mock_service_controller.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\offline_frames.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\offline_frames_validator.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\offline_service_controller.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\offline_simulation_user.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\p2p_cluster_pcp_handler.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\p2p_point_to_point_pcp_handler.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\p2p_star_pcp_handler.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\payload_manager.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\pcp.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\pcp_handler.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\pcp_manager.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\service_controller.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\service_controller_router.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\simulation_user.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\webrtc_bwu_handler.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\webrtc_endpoint_channel.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\wifi_lan_bwu_handler.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\wifi_lan_endpoint_channel.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\wifi_lan_service_info.h">
+      <Filter>Library\Headers\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\ble.h">
+      <Filter>Library\Headers\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\bloom_filter.h">
+      <Filter>Library\Headers\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\bluetooth_classic.h">
+      <Filter>Library\Headers\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\bluetooth_radio.h">
+      <Filter>Library\Headers\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\lost_entity_tracker.h">
+      <Filter>Library\Headers\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\mediums.h">
+      <Filter>Library\Headers\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\utils.h">
+      <Filter>Library\Headers\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\uuid.h">
+      <Filter>Library\Headers\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc.h">
+      <Filter>Library\Headers\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\wifi_lan.h">
+      <Filter>Library\Headers\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc\connection_flow.h">
+      <Filter>Library\Headers\core\internal\mediums\webrtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc\data_channel_listener.h">
+      <Filter>Library\Headers\core\internal\mediums\webrtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc\local_ice_candidate_listener.h">
+      <Filter>Library\Headers\core\internal\mediums\webrtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc\peer_id.h">
+      <Filter>Library\Headers\core\internal\mediums\webrtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc\session_description_wrapper.h">
+      <Filter>Library\Headers\core\internal\mediums\webrtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc\signaling_frames.h">
+      <Filter>Library\Headers\core\internal\mediums\webrtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc\webrtc_socket.h">
+      <Filter>Library\Headers\core\internal\mediums\webrtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc\webrtc_socket_wrapper.h">
+      <Filter>Library\Headers\core\internal\mediums\webrtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\ble_v2\advertisement_read_result.h">
+      <Filter>Library\Headers\core\internal\mediums\ble_v2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\ble_v2\ble_advertisement.h">
+      <Filter>Library\Headers\core\internal\mediums\ble_v2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\ble_v2\ble_advertisement_header.h">
+      <Filter>Library\Headers\core\internal\mediums\ble_v2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\ble_v2\ble_packet.h">
+      <Filter>Library\Headers\core\internal\mediums\ble_v2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\ble_v2\ble_peripheral.h">
+      <Filter>Library\Headers\core\internal\mediums\ble_v2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cpp\core\internal\mediums\ble_v2\discovered_peripheral_callback.h">
+      <Filter>Library\Headers\core\internal\mediums\ble_v2</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="Status.idl">
+      <Filter>Library</Filter>
+    </Midl>
+    <Midl Include="Nearby.idl">
+      <Filter>Library</Filter>
+    </Midl>
+    <Midl Include="MediumSelector.idl">
+      <Filter>Library</Filter>
+    </Midl>
+    <Midl Include="ConnectionOptions.idl">
+      <Filter>Library</Filter>
+    </Midl>
+    <Midl Include="Enums.idl">
+      <Filter>Library</Filter>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NearbyLibrary.def" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="readme.txt" />
+  </ItemGroup>
+</Project>

@@ -31,15 +31,12 @@ cc_library(
         "webrtc_socket.h",
         "webrtc_socket_wrapper.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     copts = ["-DCORE_ADAPTER_DLL"],
     visibility = [
         "//core/internal:__subpackages__",
     ],
     deps = [
-        "//absl/memory",
-        "//absl/strings",
-        "//absl/time",
         "//core:core_types",
         "//core/internal/mediums:utils",
         "//platform/base",
@@ -47,8 +44,10 @@ cc_library(
         "//platform/public:logging",
         "//platform/public:types",
         "//proto/mediums:web_rtc_signaling_frames_cc_proto",
-        "//webrtc/api:libjingle_peerconnection_api",
-        "//third_party/webrtc/files/stable/webrtc/pc:peerconnection",
+        "@abseil//absl/memory",
+        "@abseil//absl/strings",
+        "@abseil//absl/time",
+        "@webrtc//:webrtc",
     ],
 )
 
@@ -67,16 +66,14 @@ cc_test(
     ],
     deps = [
         ":webrtc",
-        "//net/proto2/compat/public:proto2",
-        "//testing/base/public:gunit_main",
-        "//absl/time",
         "//platform/base",
         "//platform/base:test_util",
         "//platform/impl/g3",  # buildcleaner: keep
         "//platform/public:comm",
         "//platform/public:types",
-        "//webrtc/api:libjingle_peerconnection_api",
-        "//webrtc/api:rtc_error",
-        "//webrtc/api:scoped_refptr",
+        "//net/proto2/public:proto2",
+        "//testing/base/public:gunit_main",
+        "@abseil//absl/time",
+        "@webrtc//:webrtc",
     ],
 )

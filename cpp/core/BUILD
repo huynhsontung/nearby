@@ -21,22 +21,26 @@ cc_library(
     hdrs = [
         "core.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     copts = ["-DCORE_ADAPTER_DLL"],
     visibility = [
+        "//:__subpackages__",
         "//googlemac/iPhone/Shared/Nearby/Connections:__subpackages__",
-        "//third_party/nearby_connections/windows:__subpackages__",
+        "//windows:__subpackages__",
     ],
     deps = [
         ":core_types",
         ":event_logger",
-        "//absl/strings",
-        "//absl/time",
-        "//absl/types:span",
+        # "//absl/strings",
+        # "//absl/time",
+        # "//absl/types:span",
         "//core/internal",
         "//platform/base",
         "//platform/public:logging",
         "//platform/public:types",
+        "@abseil//absl/strings",
+        "@abseil//absl/time",
+        "@abseil//absl/types:span",
     ],
 )
 
@@ -54,20 +58,22 @@ cc_library(
         "status.h",
         "strategy.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     copts = ["-DCORE_ADAPTER_DLL"],
     visibility = [
         "//googlemac/iPhone/Shared/Nearby/Connections:__subpackages__",
-        "//analytics:__subpackages__",
+        "//cpp/analytics:__subpackages__",
         "//core:__subpackages__",
     ],
     deps = [
-        "//absl/strings",
-        "//absl/types:variant",
+        # "//absl/strings",
+        # "//absl/types:variant",
         "//platform/base",
         "//platform/base:util",
         "//platform/public:types",
-        "//proto:connections_enums_portable_proto",
+        "//proto:connections_enums_cc_proto",
+        "@abseil//absl/strings",
+        "@abseil//absl/types:variant",
     ],
 )
 
@@ -76,9 +82,9 @@ cc_library(
     hdrs = [
         "event_logger.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     visibility = [
-        "//analytics:__subpackages__",
+        "//cpp/analytics:__subpackages__",
     ],
     deps = [
         "//proto/analytics:connections_log_cc_proto",
@@ -100,14 +106,17 @@ cc_test(
         ":core",
         ":core_types",
         "//testing/base/public:gunit_main",
-        "//absl/strings",
-        "//absl/time",
-        "//absl/types:variant",
+        # "//absl/strings",
+        # "//absl/time",
+        # "//absl/types:variant",
         "//core/internal",
         "//core/internal:internal_test",
         "//platform/base",
         "//platform/impl/g3",  # build_cleaner: keep
         "//platform/public:logging",
         "//platform/public:types",
+        "@abseil//absl/strings",
+        "@abseil//absl/time",
+        "@abseil//absl/types:variant",
     ],
 )

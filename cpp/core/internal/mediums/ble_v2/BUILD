@@ -29,21 +29,21 @@ cc_library(
         "ble_peripheral.h",
         "discovered_peripheral_callback.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     copts = ["-DCORE_ADAPTER_DLL"],
     visibility = [
         "//core/internal:__subpackages__",
     ],
     deps = [
-        "//absl/container:flat_hash_map",
-        "//absl/container:flat_hash_set",
-        "//absl/strings",
-        "//absl/time",
         "//core:core_types",
         "//platform/base",
         "//platform/base:util",
         "//platform/public:logging",
         "//platform/public:types",
+        "@abseil//absl/container:flat_hash_map",
+        "@abseil//absl/container:flat_hash_set",
+        "@abseil//absl/strings",
+        "@abseil//absl/time",
     ],
 )
 
@@ -59,8 +59,8 @@ cc_test(
     deps = [
         ":ble_v2",
         "//testing/base/public:gunit_main",
-        "//absl/time",
         "//platform/base",
         "//platform/impl/g3",  # buildcleaner: keep
+        "@abseil//absl/time",
     ],
 )

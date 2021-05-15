@@ -35,7 +35,7 @@ cc_library(
         "submittable_executor.h",
         "system_clock.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     visibility = [
         "//googlemac/iPhone/Shared/Nearby/Connections:__subpackages__",
         "//platform/base:__pkg__",
@@ -43,10 +43,10 @@ cc_library(
         "//platform/public:__pkg__",
     ],
     deps = [
-        "//absl/base:core_headers",
-        "//absl/strings",
-        "//absl/time",
         "//platform/base",
+        "@abseil//absl/base:core_headers",
+        "@abseil//absl/strings",
+        "@abseil//absl/time",
     ],
 )
 
@@ -63,7 +63,7 @@ cc_library(
         "wifi_lan.h",
         "wifi_lan_v2.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     visibility = [
         "//core/internal:__subpackages__",
         "//platform/base:__pkg__",
@@ -71,12 +71,12 @@ cc_library(
         "//platform/public:__pkg__",
     ],
     deps = [
-        "//absl/strings",
-        "//absl/types:optional",
+        "//proto/connections:offline_wire_formats_cc_proto",
         "//platform/base",
         "//platform/base:cancellation_flag",
-        "//proto/connections:offline_wire_formats_portable_proto",
-        "//webrtc/api:libjingle_peerconnection_api",
+        "@abseil//absl/strings",
+        "@abseil//absl/types:optional",
+        "@webrtc//:webrtc",
     ],
 )
 
@@ -85,7 +85,7 @@ cc_library(
     hdrs = [
         "platform.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     visibility = [
         "//googlemac/iPhone/Shared/Nearby/Connections:__subpackages__",
         "//platform/base:__pkg__",
@@ -95,7 +95,7 @@ cc_library(
     deps = [
         ":comm",
         ":types",
-        "//absl/strings",
         "//platform/base",
+        "@abseil//absl/strings",
     ],
 )

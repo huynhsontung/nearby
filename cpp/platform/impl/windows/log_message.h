@@ -17,6 +17,9 @@
 
 #include "base/check.h"
 #include "platform/api/log_message.h"
+#include "absl/base/log_severity.h"
+
+#include <sstream>
 
 namespace location {
 namespace nearby {
@@ -34,7 +37,14 @@ class LogMessage : public api::LogMessage {
   std::ostream& Stream() override;
 
  private:
-  absl::LogStreamer log_streamer_;
+  struct LogStreamer {
+    absl::LogSeverity log_severity;
+    const char *file;
+    int line;
+    std::stringstream stream;
+  };
+
+  LogStreamer log_streamer_;
   static api::LogMessage::Severity min_log_severity_;
 };
 

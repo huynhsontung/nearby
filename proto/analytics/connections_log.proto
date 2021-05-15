@@ -16,7 +16,6 @@ syntax = "proto2";
 
 package location.nearby.analytics.proto;
 
-
 import "proto/connections_enums.proto";
 import "proto/errorcode/error_code_enums.proto";
 
