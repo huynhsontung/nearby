@@ -1,0 +1,12 @@
+cc_library(
+  name = "libmurmur3",
+  srcs = [
+    "src/MurmurHash3.cpp",
+  ],
+  hdrs = [
+    "src/MurmurHash3.h",
+  ],
+  includes = ["src"],
+  include_prefix = "smhasher",
+  visibility = ["//visibility:public"],
+)

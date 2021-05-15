@@ -35,9 +35,9 @@ struct MediumSelector {
   T web_rtc;
   T wifi_lan;
 
-  constexpr MediumSelector() = default;
-  constexpr MediumSelector(const MediumSelector&) = default;
-  constexpr MediumSelector& operator=(const MediumSelector&) = default;
+  // constexpr MediumSelector() = default;
+  // constexpr MediumSelector(const MediumSelector&) = default;
+  // constexpr MediumSelector& operator=(const MediumSelector&) = default;
 
   constexpr bool Any(T value) const {
     return bluetooth == value || ble == value || web_rtc == value ||

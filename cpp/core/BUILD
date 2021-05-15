@@ -20,6 +20,9 @@ cc_library(
     hdrs = [
         "core.h",
     ],
+    copts = [
+        "/std:c++latest",
+    ],
     visibility = [
         "//googlemac/iPhone/Shared/Nearby/Connections_v2:__subpackages__",
         "//location/nearby/connections/windows:__subpackages__",
@@ -49,6 +52,7 @@ cc_library(
         "status.h",
         "strategy.h",
     ],
+    copts = ["/std:c++latest"],
     visibility = [
         "//core:__subpackages__",
     ],
@@ -56,7 +60,7 @@ cc_library(
         "//platform/base",
         "//platform/base:util",
         "//platform/public:types",
-        "//proto:connections_enums_portable_proto",
+        "//proto:connections_enums_cc_proto",
         "//absl/strings",
         "//absl/types:variant",
     ],

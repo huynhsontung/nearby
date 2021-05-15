@@ -1,0 +1,1 @@
+build --package_path %workspace%:third_party:third_party/absl:cpp --incompatible_blacklisted_protos_requires_proto_info=false

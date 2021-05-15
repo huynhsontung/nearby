@@ -14,16 +14,15 @@
 
 # Proto for Nearby products
 
-load("//net/proto2/contrib/portable/cc:portable_proto_build_defs.bzl", "portable_proto_library")
-load("//tools/build_defs/proto/cpp:cc_proto_library.bzl", "cc_proto_library")
+# load("//net/proto2/contrib/portable/cc:portable_proto_build_defs.bzl", "portable_proto_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+load("@rules_proto//proto:defs.bzl", "proto_library")
 
 package(default_visibility = ["//visibility:public"])
 
 proto_library(
     name = "bootstrap_enums_proto",
     srcs = ["bootstrap_enums.proto"],
-    cc_api_version = 2,
-    compatible_with = ["//buildenv/target:appengine"],
     deps = ["//logs/proto/logs_annotations"],
 )
 
@@ -38,8 +37,6 @@ java_lite_proto_library(
 proto_library(
     name = "discovery_enums_proto",
     srcs = ["discovery_enums.proto"],
-    cc_api_version = 2,
-    compatible_with = ["//buildenv/target:appengine"],
     deps = ["//logs/proto/logs_annotations"],
 )
 
@@ -50,18 +47,12 @@ java_lite_proto_library(
 
 java_proto_library(
     name = "discovery_enums_java_proto",
-    compatible_with = ["//buildenv/target:appengine"],
     deps = [":discovery_enums_proto"],
 )
 
 proto_library(
     name = "connections_enums_proto",
     srcs = ["connections_enums.proto"],
-    cc_api_version = 2,
-    compatible_with = ["//buildenv/target:appengine"],
-    deps = [
-        "//logs/proto/logs_annotations",
-    ],
 )
 
 java_lite_proto_library(
@@ -79,23 +70,28 @@ java_proto_library(
     deps = [":connections_enums_proto"],
 )
 
-portable_proto_library(
-    name = "connections_enums_portable_proto",
-    config = ":connections_enums_proto_config",
-    copts = [
-        "-DGOOGLE_PROTOBUF_NO_RTTI=1",
-    ],
-    header_outs = [
-        "connections_enums.pb.h",
-    ],
-    proto_deps = [
-        ":connections_enums_proto",
-    ],
-    visibility = [
-        "//location/nearby/connections:__subpackages__",
-        "//nearby_connections:__subpackages__",
-    ],
+cc_proto_library(
+    name = "connections_enums_cc_proto",
+    deps = [":connections_enums_proto"],
 )
+
+# portable_proto_library(
+#     name = "connections_enums_portable_proto",
+#     config = ":connections_enums_proto_config",
+#     copts = [
+#         "-DGOOGLE_PROTOBUF_NO_RTTI=1",
+#     ],
+#     header_outs = [
+#         "connections_enums.pb.h",
+#     ],
+#     proto_deps = [
+#         ":connections_enums_proto",
+#     ],
+#     visibility = [
+#         "//location/nearby/connections:__subpackages__",
+#         "//nearby_connections:__subpackages__",
+#     ],
+# )
 
 filegroup(
     name = "connections_enums_proto_config",
@@ -105,11 +101,6 @@ filegroup(
 proto_library(
     name = "setup_enums_proto",
     srcs = ["setup_enums.proto"],
-    cc_api_version = 2,
-    compatible_with = ["//buildenv/target:appengine"],
-    deps = [
-        "//logs/proto/logs_annotations",
-    ],
 )
 
 java_lite_proto_library(
@@ -120,11 +111,6 @@ java_lite_proto_library(
 proto_library(
     name = "nearby_client_enums_proto",
     srcs = ["nearby_client_enums.proto"],
-    cc_api_version = 2,
-    compatible_with = ["//buildenv/target:appengine"],
-    deps = [
-        "//logs/proto/logs_annotations",
-    ],
 )
 
 java_proto_library(
@@ -145,16 +131,10 @@ go_proto_library(
 proto_library(
     name = "magic_pair_enums_proto",
     srcs = ["magic_pair_enums.proto"],
-    cc_api_version = 2,
-    compatible_with = ["//buildenv/target:appengine"],
-    deps = [
-        "//logs/proto/logs_annotations",
-    ],
 )
 
 cc_proto_library(
     name = "magic_pair_enums_cc_proto",
-    compatible_with = ["//buildenv/target:appengine"],
     deps = [":magic_pair_enums_proto"],
 )
 
@@ -171,11 +151,6 @@ go_proto_library(
 proto_library(
     name = "sharing_enums_proto",
     srcs = ["sharing_enums.proto"],
-    cc_api_version = 2,
-    compatible_with = ["//buildenv/target:appengine"],
-    deps = [
-        "//logs/proto/logs_annotations",
-    ],
 )
 
 java_lite_proto_library(
@@ -191,11 +166,6 @@ java_proto_library(
 proto_library(
     name = "nearby_event_codes_proto",
     srcs = ["nearby_event_codes.proto"],
-    cc_api_version = 2,
-    compatible_with = ["//buildenv/target:appengine"],
-    deps = [
-        "//logs/proto/logs_annotations",
-    ],
 )
 
 java_lite_proto_library(
@@ -211,11 +181,6 @@ go_proto_library(
 proto_library(
     name = "uwb_enums_proto",
     srcs = ["uwb_enums.proto"],
-    cc_api_version = 2,
-    compatible_with = ["//buildenv/target:appengine"],
-    deps = [
-        "//logs/proto/logs_annotations",
-    ],
 )
 
 java_lite_proto_library(

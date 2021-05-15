@@ -86,13 +86,19 @@ cc_library(
         "//core:__pkg__",
         "//core/internal/fuzzers:__pkg__",
     ],
+    copts = [
+        "/std:c++latest",
+    ],
+    defines = [
+        "_HAS_DEPRECATED_RESULT_OF=1",
+    ],
     deps = [
         ":message_lite",
         "//core:core_types",
         "//core/internal/mediums",
         "//core/internal/mediums:utils",
         "//core/internal/mediums/webrtc",
-        "//proto/connections:offline_wire_formats_portable_proto",
+        "//proto/connections:offline_wire_formats_cc_proto",
         "//platform/api:comm",
         "//platform/base",
         "//platform/base:cancellation_flag",
@@ -100,8 +106,8 @@ cc_library(
         "//platform/public:comm",
         "//platform/public:logging",
         "//platform/public:types",
-        "//proto:connections_enums_portable_proto",
-        "//securegcm:ukey2",
+        "//proto:connections_enums_cc_proto",
+        "@ukey2//:ukey2",
         "//absl/base:core_headers",
         "//absl/container:btree",
         "//absl/container:flat_hash_map",
@@ -123,7 +129,7 @@ cc_library(
         "//core:__subpackages__",
     ],
     deps = [
-        "//net/proto2/compat/public:proto2_lite",
+        "//protobuf:protobuf_lite",
     ],
 )
 
@@ -186,14 +192,14 @@ cc_test(
         "//core:core_types",
         "//core/internal/mediums",
         "//core/internal/mediums:utils",
-        "//proto/connections:offline_wire_formats_portable_proto",
+        "//proto/connections:offline_wire_formats_cc_proto",
         "//platform/base",
         "//platform/base:test_util",
         "//platform/impl/g3",  # build_cleaner: keep
         "//platform/public:comm",
         "//platform/public:logging",
         "//platform/public:types",
-        "//proto:connections_enums_portable_proto",
+        "//proto:connections_enums_cc_proto",
         "//securegcm:ukey2",
         "//testing/base/public:gunit",
         "//testing/base/public:gunit_main",

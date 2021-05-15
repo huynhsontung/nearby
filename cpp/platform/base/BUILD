@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("//ads/util/non_compile:non_compile.bzl", "cc_with_non_compile_test")
+# load("//ads/util/non_compile:non_compile.bzl", "cc_with_non_compile_test")
 
 cc_library(
     name = "base",
@@ -186,13 +186,13 @@ cc_test(
     ],
 )
 
-cc_with_non_compile_test(
-    name = "exception_test",
-    srcs = [
-        "exception_test.cc",
-    ],
-    deps = [
-        ":base",
-        "//testing/base/public:gunit_main",
-    ],
-)
+# cc_with_non_compile_test(
+#     name = "exception_test",
+#     srcs = [
+#         "exception_test.cc",
+#     ],
+#     deps = [
+#         ":base",
+#         "//testing/base/public:gunit_main",
+#     ],
+# )

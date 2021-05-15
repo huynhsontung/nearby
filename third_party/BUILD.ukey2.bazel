@@ -1,0 +1,80 @@
+# load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
+
+# filegroup(
+#     name = "srcs",
+#     srcs = glob([
+#         "**/*.h",
+#         "**/*.cc",
+#         "**/CMakeLists.txt",
+#     ]),
+# )
+
+# cmake(
+#     name = "ukey2",
+#     lib_source = ":srcs",
+#     generate_args = [
+#         "-DProtobuf_LIBRARIES:PATH=\"C:/dev/vcpkg/packages/protobuf_x64-windows/lib/libprotobuf-lite.lib\"",
+#         "-DProtobuf_INCLUDE_DIR=\"C:/dev/vcpkg/packages/protobuf_x64-windows/include\"",
+#         "-DZLIB_LIBRARY=C:/dev/vcpkg/packages/zlib_x64-windows/lib",
+#         "-DZLIB_INCLUDE_DIR=C:/dev/vcpkg/packages/zlib_x64-windows/include",
+#         "-Dabsl_DIR=\"C:/dev/vcpkg/packages/abseil_x64-windows/share/absl\"",
+#         "-Dukey2_USE_LOCAL_PROTOBUF=TRUE",
+#         "-DBUILD_GMOCK:BOOL=FALSE",
+#         "-DOPENSSL_ROOT_DIR=\"C:/dev/vcpkg/packages/openssl_x64-windows\"",
+#         "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=\"ukey2/ukey2/lib\""
+#     ],
+#     env_vars = {
+#         "DEPOT_TOOLS_WIN_TOOLCHAIN": "0",
+#         "PROCESSOR_ARCHITECTURE": "AMD64",
+#     },
+#     targets = ["gtest", "gtest_main", "ukey2"],
+#     visibility = ["//visibility:public"],
+# )
+load("@//third_party:protobuf.bzl", "cc_proto_library")
+
+cc_library(
+    name = "ukey2",
+    srcs = [
+        "src/main/cpp/src/securegcm/d2d_connection_context_v1.cc",
+        "src/main/cpp/src/securegcm/d2d_crypto_ops.cc",
+        "src/main/cpp/src/securegcm/java_util.cc",
+        "src/main/cpp/src/securegcm/ukey2_handshake.cc",
+    ],
+    hdrs = [
+        "src/main/cpp/include/securegcm/d2d_connection_context_v1.h",
+        "src/main/cpp/include/securegcm/d2d_crypto_ops.h",
+        "src/main/cpp/include/securegcm/java_util.h",
+        "src/main/cpp/include/securegcm/ukey2_handshake.h",
+    ],
+    strip_include_prefix = "src/main/cpp/include/",
+    # copts = ["-I$(GENDIR)/external/ukey2/src/main"],
+    includes = ["../../$(GENDIR)/external/ukey2/src/main"],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":device_to_device_messages_cc_proto",
+        ":securegcm_cc_proto",
+        ":ukey_cc_proto",
+        "@securemessage",
+    ],
+)
+
+# Proto
+
+cc_proto_library(
+    name = "device_to_device_messages_cc_proto",
+    srcs = ["src/main/proto/device_to_device_messages.proto"],
+    include = "src/main/proto/",
+    deps = ["@securemessage//:securemessage_cc_proto"],
+)
+
+cc_proto_library(
+    name = "securegcm_cc_proto",
+    srcs = ["src/main/proto/securegcm.proto"],
+    include = "src/main/proto/",
+)
+
+cc_proto_library(
+    name = "ukey_cc_proto",
+    srcs = ["src/main/proto/ukey.proto"],
+    include = "src/main/proto",
+)
