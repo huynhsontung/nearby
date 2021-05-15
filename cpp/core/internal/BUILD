@@ -129,7 +129,7 @@ cc_library(
         "//core:__subpackages__",
     ],
     deps = [
-        "//protobuf:protobuf_lite",
+        "@protobuf//:protobuf_lite",
     ],
 )
 

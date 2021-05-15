@@ -54,6 +54,13 @@ http_archive(
     strip_prefix = "abseil-cpp-20210324.1",
 )
 
+http_archive(
+    name = "protobuf",
+    url = "https://github.com/protocolbuffers/protobuf/archive/refs/tags/v3.11.4.zip",
+    sha256 = "9748c0d90e54ea09e5e75fb7fac16edce15d2028d4356f32211cfa3c0e956564",
+    strip_prefix = "protobuf-3.11.4",
+)
+
 new_git_repository(
     name = "securemessage",
     commit = "e7b6988454bc94601616fbbf0db3559f73a1ebdf",
