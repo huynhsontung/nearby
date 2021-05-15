@@ -33,9 +33,9 @@ cc_library(
         "//platform/base",
         "//platform/public:logging",
         "//platform/public:types",
-        "//absl/strings",
-        "//absl/time",
-        "//absl/types:span",
+        "@abseil//absl/strings",
+        "@abseil//absl/time",
+        "@abseil//absl/types:span",
     ],
 )
 
@@ -61,8 +61,8 @@ cc_library(
         "//platform/base:util",
         "//platform/public:types",
         "//proto:connections_enums_cc_proto",
-        "//absl/strings",
-        "//absl/types:variant",
+        "@abseil//absl/strings",
+        "@abseil//absl/types:variant",
     ],
 )
 
@@ -87,8 +87,8 @@ cc_test(
         "//platform/public:logging",
         "//platform/public:types",
         "//testing/base/public:gunit_main",
-        "//absl/strings",
-        "//absl/time",
-        "//absl/types:variant",
+        "@abseil//absl/strings",
+        "@abseil//absl/time",
+        "@abseil//absl/types:variant",
     ],
 )

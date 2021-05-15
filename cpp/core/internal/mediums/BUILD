@@ -56,12 +56,12 @@ cc_library(
         "//platform/public:logging",
         "//platform/public:types",
         "//proto/mediums:web_rtc_signaling_frames_cc_proto",
-        "//absl/container:flat_hash_map",
-        "//absl/container:flat_hash_set",
-        "//absl/functional:bind_front",
-        "//absl/numeric:int128",
-        "//absl/strings",
-        "//absl/time",
+        "@abseil//absl/container:flat_hash_map",
+        "@abseil//absl/container:flat_hash_set",
+        "@abseil//absl/functional:bind_front",
+        "@abseil//absl/numeric:int128",
+        "@abseil//absl/strings",
+        "@abseil//absl/time",
         "@smhasher//:libmurmur3",
         "@webrtc//:libjingle_peerconnection_api",
         "@webrtc//:scoped_refptr",
@@ -104,8 +104,8 @@ cc_test(
         "//platform/public:comm",
         "//platform/public:types",
         "//testing/base/public:gunit_main",
-        "//absl/strings",
-        "//absl/time",
+        "@abseil//absl/strings",
+        "@abseil//absl/time",
     ],
 )
 
@@ -125,6 +125,6 @@ cc_test(
         "//platform/impl/g3",  # build_cleaner: keep
         "//platform/public:types",
         "//testing/base/public:gunit_main",
-        "//absl/strings",
+        "@abseil//absl/strings",
     ],
 )

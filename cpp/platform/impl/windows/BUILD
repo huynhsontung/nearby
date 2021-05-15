@@ -68,7 +68,7 @@ cc_library(
     deps = [
         "//platform/api:types",
         "//platform/base",
-        "//absl/strings",
+        "@abseil//absl/strings",
         "//openssl:crypto",
     ],
 )

@@ -47,6 +47,13 @@ http_archive(
     build_file = "@//third_party:BUILD.smhasher.bazel",
 )
 
+http_archive(
+    name = "abseil",
+    url = "https://github.com/abseil/abseil-cpp/archive/refs/tags/20210324.1.zip",
+    sha256 = "cfb1f22164808eb0a233ad91287df84c2af2084cfc8b429eca1be1e57511065d",
+    strip_prefix = "abseil-cpp-20210324.1",
+)
+
 new_git_repository(
     name = "securemessage",
     commit = "e7b6988454bc94601616fbbf0db3559f73a1ebdf",

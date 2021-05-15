@@ -41,9 +41,9 @@ cc_library(
     ],
     deps = [
         "//platform/base",
-        "//absl/base:core_headers",
-        "//absl/strings",
-        "//absl/time",
+        "@abseil//absl/base:core_headers",
+        "@abseil//absl/strings",
+        "@abseil//absl/time",
     ],
 )
 
@@ -69,8 +69,8 @@ cc_library(
         "//proto/connections:offline_wire_formats_cc_proto",
         "//platform/base",
         "//platform/base:cancellation_flag",
-        "//absl/strings",
-        "//absl/types:optional",
+        "@abseil//absl/strings",
+        "@abseil//absl/types:optional",
         "@webrtc//:libjingle_peerconnection_api",
     ],
 )
@@ -90,6 +90,6 @@ cc_library(
         ":comm",
         ":types",
         "//platform/base",
-        "//absl/strings",
+        "@abseil//absl/strings",
     ],
 )

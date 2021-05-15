@@ -1,1 +1,3 @@
-build --package_path %workspace%:third_party:third_party/absl:cpp --incompatible_blacklisted_protos_requires_proto_info=false
+common --enable_platform_specific_config
+build --package_path %workspace%:third_party:cpp --incompatible_blacklisted_protos_requires_proto_info=false
+build:windows --copt="/JMC"
