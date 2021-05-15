@@ -509,20 +509,20 @@ Status BasePcpHandler::RequestConnection(ClientProxy* client,
         // protocol. We'll mark ourselves as pending in case we get another call
         // to RequestConnection or OnIncomingConnection, so that we can cancel
         // the connection if needed.
+        auto connection_info = PendingConnectionInfo{};
+        connection_info.client = client;
+        connection_info.remote_endpoint_info = endpoint->endpoint_info;
+        connection_info.nonce = nonce;
+        connection_info.is_incoming = false;
+        connection_info.start_time = start_time;
+        connection_info.listener = info.listener;
+        connection_info.options = options;
+        connection_info.result = result;
+        connection_info.channel = std::move(channel);
         EndpointChannel* endpoint_channel =
             pending_connections_
                 .emplace(endpoint_id,
-                         PendingConnectionInfo{
-                             .client = client,
-                             .remote_endpoint_info = endpoint->endpoint_info,
-                             .nonce = nonce,
-                             .is_incoming = false,
-                             .start_time = start_time,
-                             .listener = info.listener,
-                             .options = options,
-                             .result = result,
-                             .channel = std::move(channel),
-                         })
+                         std::move(connection_info))
                 .first->second.channel.get();
 
         NEARBY_LOG(INFO, "Initiating secure connection: id=%s",
@@ -1083,22 +1083,21 @@ Exception BasePcpHandler::OnIncomingConnection(
   // the EncryptionRunner thread to start running our encryption protocol. We'll
   // mark ourselves as pending in case we get another call to RequestConnection
   // or OnIncomingConnection, so that we can cancel the connection if needed.
+  auto connection_info = PendingConnectionInfo{};
+  connection_info.client = client;
+  connection_info.remote_endpoint_info = endpoint_info;
+  connection_info.nonce = connection_request.nonce();
+  connection_info.is_incoming = true;
+  connection_info.start_time = start_time;
+  connection_info.listener = advertising_listener_;
+  connection_info.options = options;
+  connection_info.supported_mediums =
+      parser::ConnectionRequestMediumsToMediums(connection_request);
+  connection_info.channel = std::move(channel);
   auto* owned_channel =
       pending_connections_
           .emplace(connection_request.endpoint_id(),
-                   PendingConnectionInfo{
-                       .client = client,
-                       .remote_endpoint_info = endpoint_info,
-                       .nonce = connection_request.nonce(),
-                       .is_incoming = true,
-                       .start_time = start_time,
-                       .listener = advertising_listener_,
-                       .options = options,
-                       .supported_mediums =
-                           parser::ConnectionRequestMediumsToMediums(
-                               connection_request),
-                       .channel = std::move(channel),
-                   })
+                   std::move(connection_info))
           .first->second.channel.get();
 
   // Next, we'll set up encryption.

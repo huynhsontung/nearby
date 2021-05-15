@@ -1,0 +1,104 @@
+filegroup(
+    name = "hdrs",
+    srcs = glob([
+        "**/*.h",
+        # "third_party/abseil-cpp/**/*.h",
+        # "third_party/libyuv/include/**/*.h",
+    ]),
+)
+
+cc_import(
+    name = "libjingle_peerconnection_api_private",
+    hdrs = [
+        # "api/candidate.h",
+        # "api/crypto_params.h",
+        # "api/data_channel_interface.h",
+        # "api/dtls_transport_interface.h",
+        # "api/dtmf_sender_interface.h",
+        # "api/ice_transport_interface.h",
+        # "api/jsep.h",
+        # "api/jsep_ice_candidate.h",
+        # "api/jsep_session_description.h",
+        # "api/media_stream_proxy.h",
+        # "api/media_stream_track_proxy.h",
+        # "api/peer_connection_factory_proxy.h",
+        # "api/peer_connection_interface.h",
+        # "api/peer_connection_proxy.h",
+        # "api/proxy.h",
+        # "api/rtp_receiver_interface.h",
+        # "api/rtp_sender_interface.h",
+        # "api/rtp_transceiver_interface.h",
+        # "api/sctp_transport_interface.h",
+        # "api/set_local_description_observer_interface.h",
+        # "api/set_remote_description_observer_interface.h",
+        # "api/stats_types.h",
+        # "api/turn_customizer.h",
+        # "api/uma_metrics.h",
+        # "api/video_track_source_proxy.h",
+        ":hdrs",
+    ],
+    static_library = "out/Default/obj/api/libjingle_peerconnection_api.lib",
+)
+
+cc_library(
+    name = "libjingle_peerconnection_api",
+    hdrs = [
+        # "api/candidate.h",
+        # "api/crypto_params.h",
+        # "api/data_channel_interface.h",
+        # "api/dtls_transport_interface.h",
+        # "api/dtmf_sender_interface.h",
+        # "api/ice_transport_interface.h",
+        # "api/jsep.h",
+        # "api/jsep_ice_candidate.h",
+        # "api/jsep_session_description.h",
+        # "api/media_stream_proxy.h",
+        # "api/media_stream_track_proxy.h",
+        # "api/peer_connection_factory_proxy.h",
+        # "api/peer_connection_interface.h",
+        # "api/peer_connection_proxy.h",
+        # "api/proxy.h",
+        # "api/rtp_receiver_interface.h",
+        # "api/rtp_sender_interface.h",
+        # "api/rtp_transceiver_interface.h",
+        # "api/sctp_transport_interface.h",
+        # "api/set_local_description_observer_interface.h",
+        # "api/set_remote_description_observer_interface.h",
+        # "api/stats_types.h",
+        # "api/turn_customizer.h",
+        # "api/uma_metrics.h",
+        # "api/video_track_source_proxy.h",
+        ":hdrs",
+    ],
+    # includes = ["api"],
+    defines = ["WEBRTC_WIN"],
+    include_prefix = "webrtc",
+    deps = [":libjingle_peerconnection_api_private"],
+    visibility = ["//visibility:public"],
+)
+
+cc_import(
+    name = "rtc_error",
+    hdrs = [
+        # "api/rtc_error.h",
+        ":hdrs",
+    ],
+    static_library = "out/Default/obj/api/rtc_error.lib",
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "scoped_refptr",
+    hdrs = ["api/scoped_refptr.h"],
+    visibility = ["//visibility:public"],
+)
+
+cc_import(
+    name = "default_task_queue_factory",
+    hdrs = [
+        # "api/task_queue/default_task_queue_factory.h",
+        ":hdrs",
+    ],
+    static_library = "out/Default/obj/api/task_queue/default_task_queue_factory.lib",
+    visibility = ["//visibility:public"],
+)

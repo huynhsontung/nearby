@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("//tools/build_defs/cc:cc_fake_binary.bzl", "cc_fake_binary")
+# load("//tools/build_defs/cc:cc_fake_binary.bzl", "cc_fake_binary")
 
 cc_library(
     name = "types",
@@ -80,6 +80,12 @@ cc_library(
         "webrtc.h",
         "wifi_lan.h",
     ],
+    copts = [
+        "/std:c++latest",
+    ],
+    defines = [
+        "_HAS_DEPRECATED_RESULT_OF=1",
+    ],
     visibility = [
         "//googlemac/iPhone/Shared/Nearby/Connections:__subpackages__",
         "//core:__subpackages__",
@@ -88,14 +94,14 @@ cc_library(
     deps = [
         ":logging",
         ":types",
-        "//proto/connections:offline_wire_formats_portable_proto",
+        "//proto/connections:offline_wire_formats_cc_proto",
         "//platform/api:comm",
         "//platform/api:platform",
         "//platform/base",
         "//platform/base:cancellation_flag",
         "//absl/container:flat_hash_map",
         "//absl/strings",
-        "//webrtc/api:libjingle_peerconnection_api",
+        "@webrtc//:libjingle_peerconnection_api",
     ],
 )
 
@@ -151,14 +157,14 @@ cc_test(
     ],
 )
 
-cc_fake_binary(
-    name = "thread_check_nocompile",
-    srcs = ["thread_check_nocompile.cc"],
-    deps = [
-        ":types",
-        "//absl/time",
-    ],
-)
+# cc_fake_binary(
+#     name = "thread_check_nocompile",
+#     srcs = ["thread_check_nocompile.cc"],
+#     deps = [
+#         ":types",
+#         "//absl/time",
+#     ],
+# )
 
 py_test(
     name = "thread_check_nocompile_test",

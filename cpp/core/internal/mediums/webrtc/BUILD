@@ -30,6 +30,12 @@ cc_library(
         "webrtc_socket.h",
         "webrtc_socket_wrapper.h",
     ],
+    copts = [
+        "/std:c++latest",
+    ],
+    defines = [
+        "_HAS_DEPRECATED_RESULT_OF=1",
+    ],
     visibility = [
         "//core/internal:__subpackages__",
     ],
@@ -40,11 +46,11 @@ cc_library(
         "//platform/public:comm",
         "//platform/public:logging",
         "//platform/public:types",
-        "//location/nearby/mediums/proto:web_rtc_signaling_frames_cc_proto",
+        "//proto/mediums:web_rtc_signaling_frames_cc_proto",
         "//absl/memory",
         "//absl/strings",
         "//absl/time",
-        "//webrtc/api:libjingle_peerconnection_api",
+        "@webrtc//:libjingle_peerconnection_api",
     ],
 )
 
@@ -68,8 +74,8 @@ cc_test(
         "//net/proto2/public:proto2",
         "//testing/base/public:gunit_main",
         "//absl/time",
-        "//webrtc/api:libjingle_peerconnection_api",
-        "//webrtc/api:rtc_error",
-        "//webrtc/api:scoped_refptr",
+        "@webrtc//:libjingle_peerconnection_api",
+        "@webrtc//:rtc_error",
+        "@webrtc//:scoped_refptr",
     ],
 )

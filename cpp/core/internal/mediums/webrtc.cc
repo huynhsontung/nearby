@@ -26,7 +26,7 @@
 #include "platform/public/future.h"
 #include "platform/public/logging.h"
 #include "platform/public/mutex_lock.h"
-#include "location/nearby/mediums/proto/web_rtc_signaling_frames.pb.h"
+#include "proto/mediums/web_rtc_signaling_frames.pb.h"
 #include "absl/functional/bind_front.h"
 #include "absl/strings/str_cat.h"
 #include "absl/time/time.h"

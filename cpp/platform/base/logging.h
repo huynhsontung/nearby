@@ -18,6 +18,9 @@
 #include "platform/api/log_message.h"
 #include "platform/api/platform.h"
 
+#define CHECK(x) if(x)printf("Check failed at %s:%d\\n",__FILE__,__LINE__);
+#define DCHECK(x) if(x)printf("Check failed at %s:%d\\n",__FILE__,__LINE__);
+
 namespace location {
 namespace nearby {
 
