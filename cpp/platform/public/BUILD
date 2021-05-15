@@ -61,8 +61,8 @@ cc_library(
         "//platform/base",
         "//platform/base:logging",
         "//platform/base:util",
-        "//absl/base:core_headers",
-        "//absl/time",
+        "@abseil//absl/base:core_headers",
+        "@abseil//absl/time",
     ],
 )
 
@@ -99,8 +99,8 @@ cc_library(
         "//platform/api:platform",
         "//platform/base",
         "//platform/base:cancellation_flag",
-        "//absl/container:flat_hash_map",
-        "//absl/strings",
+        "@abseil//absl/container:flat_hash_map",
+        "@abseil//absl/strings",
         "@webrtc//:libjingle_peerconnection_api",
     ],
 )
@@ -151,9 +151,9 @@ cc_test(
         "//platform/base:test_util",
         "//platform/impl/g3",  # build_cleaner: keep
         "//testing/base/public:gunit_main",
-        "//absl/strings",
-        "//absl/synchronization",
-        "//absl/time",
+        "@abseil//absl/strings",
+        "@abseil//absl/synchronization",
+        "@abseil//absl/time",
     ],
 )
 
@@ -162,7 +162,7 @@ cc_test(
 #     srcs = ["thread_check_nocompile.cc"],
 #     deps = [
 #         ":types",
-#         "//absl/time",
+#         "@abseil//absl/time",
 #     ],
 # )
 

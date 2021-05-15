@@ -43,10 +43,10 @@ cc_library(
         "//platform/base:util",
         "//platform/public:logging",
         "//platform/public:types",
-        "//absl/container:flat_hash_map",
-        "//absl/container:flat_hash_set",
-        "//absl/strings",
-        "//absl/time",
+        "@abseil//absl/container:flat_hash_map",
+        "@abseil//absl/container:flat_hash_set",
+        "@abseil//absl/strings",
+        "@abseil//absl/time",
     ],
 )
 
@@ -64,6 +64,6 @@ cc_test(
         "//platform/base",
         "//platform/impl/g3",  # buildcleaner: keep
         "//testing/base/public:gunit_main",
-        "//absl/time",
+        "@abseil//absl/time",
     ],
 )
