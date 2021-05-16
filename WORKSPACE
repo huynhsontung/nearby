@@ -1,24 +1,15 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository", "new_git_repository")
 
-git_repository(
+# rules_proto that uses protoc 3.13.0
+http_archive(
     name = "rules_proto",
-    commit = "40298556293ae502c66579620a7ce867d5f57311",
-    shallow_since = "1597680614 +0200",
-    remote = "https://github.com/bazelbuild/rules_proto.git",
+    url = "https://github.com/bazelbuild/rules_proto/archive/f7a30f6f80006b591fa7c437fe5a951eb10bcbcf.zip",
+    sha256 = "a4382f78723af788f0bc19fd4c8411f44ffe0a72723670a34692ffad56ada3ac",
+    strip_prefix = "rules_proto-f7a30f6f80006b591fa7c437fe5a951eb10bcbcf",
 )
 load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
 rules_proto_dependencies()
 rules_proto_toolchains()
-
-# git_repository(
-#     name = "rules_foreign_cc",
-#     commit = "b8b88cd2d16035aa1639434eb808f4d67a34d5ae", 
-#     shallow_since = "1620401997 -0700",
-#     remote = "https://github.com/bazelbuild/rules_foreign_cc.git",
-# )
-# load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
-# rules_foreign_cc_dependencies()
 
 http_archive(
     name = "io_bazel_rules_go",
@@ -56,24 +47,24 @@ http_archive(
 
 http_archive(
     name = "protobuf",
-    url = "https://github.com/protocolbuffers/protobuf/archive/refs/tags/v3.11.4.zip",
-    sha256 = "9748c0d90e54ea09e5e75fb7fac16edce15d2028d4356f32211cfa3c0e956564",
-    strip_prefix = "protobuf-3.11.4",
+    url = "https://github.com/protocolbuffers/protobuf/archive/refs/tags/v3.13.0.tar.gz",
+    sha256 = "9b4ee22c250fe31b16f1a24d61467e40780a3fbb9b91c3b65be2a376ed913a1a",
+    strip_prefix = "protobuf-3.13.0",
 )
 
-new_git_repository(
+http_archive(
     name = "securemessage",
-    commit = "e7b6988454bc94601616fbbf0db3559f73a1ebdf",
-    shallow_since = "1591333180 -0700",
-    remote = "https://github.com/google/securemessage",
+    url = "https://github.com/google/securemessage/archive/e7b6988454bc94601616fbbf0db3559f73a1ebdf.zip",
+    sha256 = "8d16be4a4a7066f6cbff6c64aec1d94427e814e5ed9ccf210f10fb26b9da4127",
+    strip_prefix = "securemessage-e7b6988454bc94601616fbbf0db3559f73a1ebdf",
     build_file = "@//third_party:BUILD.securemessage.bazel",
 )
 
-new_git_repository(
+http_archive(
     name = "ukey2",
-    commit = "0275885d8e6038c39b8a8ca55e75d1d4d1727f47",
-    shallow_since = "1594050458 -0700",
-    remote = "https://github.com/google/ukey2.git",
+    url = "https://github.com/google/ukey2/archive/0275885d8e6038c39b8a8ca55e75d1d4d1727f47.zip",
+    sha256 = "2026c6f8532e743bb17ab3f03e8c40a5c6d723603c8d9dbe3de72395a120d1d5",
+    strip_prefix = "ukey2-0275885d8e6038c39b8a8ca55e75d1d4d1727f47",
     build_file = "@//third_party:BUILD.ukey2.bazel",
 )
 
