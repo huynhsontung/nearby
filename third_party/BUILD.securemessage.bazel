@@ -1,4 +1,3 @@
-load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@//third_party:protobuf.bzl", "cc_proto_library")
 
 package(default_visibility = ["//visibility:public"])
@@ -35,24 +34,8 @@ cc_library(
     ],
 )
 
-# proto_library(
-#     name = "securemessage_proto",
-#     srcs = ["proto/securemessage.proto"],
-#     strip_import_prefix = "proto/",
-# )
-
 cc_proto_library(
     name = "securemessage_cc_proto",
     srcs = ["proto/securemessage.proto"],
     include = "proto",
-    # include_prefix = "proto",
-    # deps = [":securemessage_proto"],
 )
-
-# cc_library(
-#     name = "proto_securemessage_cc_proto",
-#     srcs = [":securemessage_cc_proto"],
-#     hdrs = ["securemessage.pb.h"],
-#     include_prefix = "proto",
-#     deps = [":securemessage_cc_proto"],
-# )

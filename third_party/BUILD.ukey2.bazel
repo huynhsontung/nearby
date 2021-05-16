@@ -47,8 +47,7 @@ cc_library(
         "src/main/cpp/include/securegcm/ukey2_handshake.h",
     ],
     strip_include_prefix = "src/main/cpp/include/",
-    # copts = ["-I$(GENDIR)/external/ukey2/src/main"],
-    includes = ["../../$(GENDIR)/external/ukey2/src/main"],
+    includes = ["src/main"],
     visibility = ["//visibility:public"],
     deps = [
         ":device_to_device_messages_cc_proto",
