@@ -90,7 +90,7 @@ cc_library(
         "/std:c++latest",
     ],
     defines = [
-        "_HAS_DEPRECATED_RESULT_OF=1",
+        "_HAS_DEPRECATED_RESULT_OF=1",  # TODO: Remove when Abseil resolves their code
     ],
     deps = [
         ":message_lite",
