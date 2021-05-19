@@ -29,8 +29,8 @@ cc_library(
     strip_include_prefix = "cpp/include/",
     deps = [
         ":securemessage_cc_proto",
-        "@openssl//:crypto",
-        "@openssl//:ssl",
+        "@boringssl//:crypto",
+        "@boringssl//:ssl",
     ],
 )
 
