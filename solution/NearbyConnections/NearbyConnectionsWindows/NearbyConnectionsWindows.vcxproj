@@ -86,15 +86,19 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;NEARBYCONNECTIONSWINDOWS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;NEARBYCONNECTIONSWINDOWS_EXPORTS;_WINDOWS;_USRDLL;NEARBY_WINDOWS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\tung7\source\repos\nearby-connections\cpp;C:\Users\tung7\source\repos\nearby-connections\bazel-nearby-connections\external\abseil;C:\Users\tung7\source\repos\nearby-connections\bazel-nearby-connections\external\boringssl\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>C:\Users\tung7\source\repos\nearby-connections\bazel-bin\core;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>core.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -155,6 +159,10 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\cpp\platform\impl\windows\crypto.cc" />
+    <ClCompile Include="..\..\..\cpp\platform\impl\windows\log_message.cc" />
+    <ClCompile Include="..\..\..\cpp\platform\impl\windows\platform.cc" />
+    <ClCompile Include="..\..\..\cpp\platform\impl\windows\system_clock.cc" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
