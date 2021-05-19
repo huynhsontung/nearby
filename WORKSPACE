@@ -1,4 +1,5 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 # rules_proto that uses protoc 3.13.0
 http_archive(
@@ -68,14 +69,16 @@ http_archive(
     build_file = "@//third_party:BUILD.ukey2.bazel",
 )
 
+git_repository(
+    name = "boringssl",
+    # branch = "master-with-bazel",
+    commit = "38f2c0e84c67e778ce5db89b44660ea46d26f86c",
+    shallow_since = "1621355724 +0000",
+    remote = "https://boringssl.googlesource.com/boringssl",
+)
+
 new_local_repository(
     name = "webrtc",
     path = "C:/Users/tung7/source/repos/webrtc/src",
     build_file = "third_party/BUILD.webrtc.bazel",
-)
-
-new_local_repository(
-    name = "openssl",
-    path = "C:/dev/vcpkg/packages/openssl_x64-windows",
-    build_file = "third_party/BUILD.openssl.bazel",
 )

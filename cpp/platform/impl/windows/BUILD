@@ -70,7 +70,7 @@ cc_library(
         "//platform/api:types",
         "//platform/base",
         "@abseil//absl/strings",
-        "//openssl:crypto",
+        "@boringssl//:crypto",
     ],
 )
 
