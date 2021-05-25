@@ -48,9 +48,12 @@ this is a "source root" directory of the project
 
 ## Build
 pre-requisites:
-openssl, cmake, c++ toolchain (c++17-capable)
+bazel, c++ toolchain (c++20-capable)
 
-TODO
+```shell
+bazel build -c dbg //core:core @boringssl//:crypto
+
+```
 
 ## Running unit tests
 
