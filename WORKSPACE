@@ -47,13 +47,6 @@ http_archive(
 )
 
 http_archive(
-    name = "protobuf",
-    url = "https://github.com/protocolbuffers/protobuf/archive/refs/tags/v3.13.0.tar.gz",
-    sha256 = "9b4ee22c250fe31b16f1a24d61467e40780a3fbb9b91c3b65be2a376ed913a1a",
-    strip_prefix = "protobuf-3.13.0",
-)
-
-http_archive(
     name = "securemessage",
     url = "https://github.com/google/securemessage/archive/e7b6988454bc94601616fbbf0db3559f73a1ebdf.zip",
     sha256 = "8d16be4a4a7066f6cbff6c64aec1d94427e814e5ed9ccf210f10fb26b9da4127",
