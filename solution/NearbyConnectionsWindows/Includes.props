@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\cpp;$(SolutionDir)..\bazel-nearby-connections\external;$(SolutionDir)..\bazel-nearby-connections\external\webrtc;$(SolutionDir)..\bazel-nearby-connections\external\abseil;$(SolutionDir)..\bazel-nearby-connections\external\com_github_protocolbuffers_protobuf\src;$(SolutionDir)..\bazel-nearby-connections\external\ukey2\src\main\cpp\include;$(SolutionDir)..\bazel-nearby-connections\external\securemessage\cpp\include;$(SolutionDir)..\bazel-nearby-connections\external\boringssl\src\include;$(SolutionDir)..\bazel-bin;$(SolutionDir)..\bazel-bin\external\ukey2\src\main</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>

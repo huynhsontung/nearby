@@ -1,0 +1,849 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\core">
+      <UniqueIdentifier>{edea9df1-61b2-4778-bd57-99a7b6efff25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\platform">
+      <UniqueIdentifier>{4ef39771-26bf-4565-98fe-197196e04769}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\internal">
+      <UniqueIdentifier>{0268255e-2aa7-4dfa-95b6-31e094d892ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\internal\mediums">
+      <UniqueIdentifier>{4ec2fe8a-6e5c-4fee-b0dc-972f51dbc4bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\internal\mediums\webrtc">
+      <UniqueIdentifier>{7dbe37e7-0b8e-4ae3-a341-ddca807ea1df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\internal\mediums\ble_v2">
+      <UniqueIdentifier>{aabbde27-f3d7-4c0e-96e9-84a5bfcd956e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\platform\api">
+      <UniqueIdentifier>{d5d752f4-0976-49b1-b0e4-76c29a310de4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\platform\base">
+      <UniqueIdentifier>{42efa6e5-b9d7-423f-8d87-e41891b57924}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\platform\config">
+      <UniqueIdentifier>{2837f2a6-92ef-48a5-822b-804711a19192}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\platform\public">
+      <UniqueIdentifier>{37948d17-c1af-4e0d-a919-fe2e6aff918b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\platform\impl">
+      <UniqueIdentifier>{bd3c44a3-2e33-4ce0-b937-fd0e84c6dc8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\platform\impl\shared">
+      <UniqueIdentifier>{dd5ed302-8fa0-4641-aa31-3dccd5476831}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\platform\impl\windows">
+      <UniqueIdentifier>{ab2a240f-9416-4d56-b4b2-b546a1400b14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core">
+      <UniqueIdentifier>{7989c7b4-063e-4b39-9598-e36b874bf03a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core\internal">
+      <UniqueIdentifier>{8a59d444-70df-4bcc-b267-67c2670ea535}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core\internal\mediums">
+      <UniqueIdentifier>{2c115c40-2931-4ade-858e-ee98b64d1b7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core\internal\mediums\webrtc">
+      <UniqueIdentifier>{c377734a-4cd0-4997-9b22-c7198d4c646a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core\internal\mediums\ble_v2">
+      <UniqueIdentifier>{4a361181-788a-4469-ac08-df19c0964efc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core\internal\fuzzers">
+      <UniqueIdentifier>{a2172f75-57cf-4681-b554-dbb2305d8b2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\platform">
+      <UniqueIdentifier>{fcf0b872-b7ef-4cd3-a270-4e1be29462b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\platform\base">
+      <UniqueIdentifier>{8c7e5d17-91f8-46c0-a808-f9aff1072605}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\platform\public">
+      <UniqueIdentifier>{033c15a1-509b-4903-9336-7786c4e7c986}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\platform\impl">
+      <UniqueIdentifier>{c44b8c41-903f-4dd2-9f5b-0216950e6386}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\platform\impl\shared">
+      <UniqueIdentifier>{6da5df8c-e23f-4889-b451-bdd7dbd49acc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\platform\impl\windows">
+      <UniqueIdentifier>{ca0dec3a-ea7e-430b-bbeb-3f031bdaeefc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\options.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\params.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\payload.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\status.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\strategy.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\core.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\listeners.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\base_pcp_handler.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\ble_advertisement.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\ble_endpoint_channel.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\bluetooth_bwu_handler.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\bluetooth_device_name.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\bluetooth_endpoint_channel.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\bwu_handler.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\bwu_manager.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\client_proxy.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\encryption_runner.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\endpoint_channel.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\endpoint_channel_manager.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\endpoint_manager.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\injected_bluetooth_device_store.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\internal_payload.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\internal_payload_factory.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\message_lite.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mock_service_controller.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\offline_frames.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\offline_frames_validator.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\offline_service_controller.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\offline_simulation_user.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\p2p_cluster_pcp_handler.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\p2p_point_to_point_pcp_handler.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\p2p_star_pcp_handler.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\payload_manager.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\pcp.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\pcp_handler.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\pcp_manager.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\service_controller.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\service_controller_router.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\simulation_user.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\webrtc_bwu_handler.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\webrtc_endpoint_channel.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\wifi_lan_bwu_handler.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\wifi_lan_endpoint_channel.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\wifi_lan_service_info.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\base_bwu_handler.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\base_endpoint_channel.h">
+      <Filter>Header Files\core\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\bluetooth_radio.h">
+      <Filter>Header Files\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\lost_entity_tracker.h">
+      <Filter>Header Files\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\mediums.h">
+      <Filter>Header Files\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\utils.h">
+      <Filter>Header Files\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\uuid.h">
+      <Filter>Header Files\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc.h">
+      <Filter>Header Files\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\wifi_lan.h">
+      <Filter>Header Files\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\ble.h">
+      <Filter>Header Files\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\bloom_filter.h">
+      <Filter>Header Files\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\bluetooth_classic.h">
+      <Filter>Header Files\core\internal\mediums</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc\peer_id.h">
+      <Filter>Header Files\core\internal\mediums\webrtc</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc\session_description_wrapper.h">
+      <Filter>Header Files\core\internal\mediums\webrtc</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc\signaling_frames.h">
+      <Filter>Header Files\core\internal\mediums\webrtc</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc\webrtc_socket.h">
+      <Filter>Header Files\core\internal\mediums\webrtc</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc\webrtc_socket_wrapper.h">
+      <Filter>Header Files\core\internal\mediums\webrtc</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc\connection_flow.h">
+      <Filter>Header Files\core\internal\mediums\webrtc</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc\data_channel_listener.h">
+      <Filter>Header Files\core\internal\mediums\webrtc</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc\local_ice_candidate_listener.h">
+      <Filter>Header Files\core\internal\mediums\webrtc</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\ble_v2\ble_packet.h">
+      <Filter>Header Files\core\internal\mediums\ble_v2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\ble_v2\ble_peripheral.h">
+      <Filter>Header Files\core\internal\mediums\ble_v2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\ble_v2\discovered_peripheral_callback.h">
+      <Filter>Header Files\core\internal\mediums\ble_v2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\ble_v2\advertisement_read_result.h">
+      <Filter>Header Files\core\internal\mediums\ble_v2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\ble_v2\ble_advertisement.h">
+      <Filter>Header Files\core\internal\mediums\ble_v2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\core\internal\mediums\ble_v2\ble_advertisement_header.h">
+      <Filter>Header Files\core\internal\mediums\ble_v2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\log_message.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\mutex.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\output_file.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\platform.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\scheduled_executor.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\server_sync.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\settable_future.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\submittable_executor.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\system_clock.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\webrtc.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\wifi.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\wifi_lan.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\atomic_boolean.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\atomic_reference.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\ble.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\ble_v2.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\bluetooth_adapter.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\bluetooth_classic.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\cancelable.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\condition_variable.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\count_down_latch.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\crypto.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\executor.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\future.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\input_file.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\api\listenable_future.h">
+      <Filter>Header Files\platform\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\nsd_service_info.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\output_stream.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\payload_id.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\prng.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\runnable.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\socket.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\types.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\base_input_stream.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\base_mutex_lock.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\base_pipe.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\base64_utils.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\bluetooth_utils.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\byte_array.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\byte_utils.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\callable.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\cancellation_flag.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\cancellation_flag_listener.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\exception.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\feature_flags.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\input_stream.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\listeners.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\logging.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\base\medium_environment.h">
+      <Filter>Header Files\platform\base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\config\config.h">
+      <Filter>Header Files\platform\config</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\config\string.h">
+      <Filter>Header Files\platform\config</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\thread_check_runnable.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\webrtc.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\wifi_lan.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\atomic_boolean.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\atomic_reference.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\ble.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\bluetooth_adapter.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\bluetooth_classic.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\cancelable.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\cancelable_alarm.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\cancellable_task.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\condition_variable.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\count_down_latch.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\crypto.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\file.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\future.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\lockable.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\logging.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\monitored_runnable.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\multi_thread_executor.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\mutex.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\mutex_lock.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\pending_job_registry.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\pipe.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\scheduled_executor.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\settable_future.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\single_thread_executor.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\submittable_executor.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\system_clock.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\public\thread_check_callable.h">
+      <Filter>Header Files\platform\public</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\shared\posix_condition_variable.h">
+      <Filter>Header Files\platform\impl\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\shared\posix_mutex.h">
+      <Filter>Header Files\platform\impl\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\shared\file.h">
+      <Filter>Header Files\platform\impl\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\log_message.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\mutex.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\output_file.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\scheduled_executor.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\server_sync.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\settable_future.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\submittable_executor.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\webrtc.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\wifi.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\wifi_lan.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\atomic_boolean.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\atomic_reference.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\ble.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\bluetooth_adapter.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\bluetooth_classic.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\cancelable.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\condition_variable.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\count_down_latch.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\executor.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\future.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\input_file.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)..\cpp\platform\impl\windows\listenable_future.h">
+      <Filter>Header Files\platform\impl\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="interop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="interop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\strategy.cc">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\core.cc">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\service_controller_router.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\webrtc_bwu_handler.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\webrtc_endpoint_channel.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\wifi_lan_bwu_handler.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\wifi_lan_endpoint_channel.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\wifi_lan_service_info.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\base_endpoint_channel.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\base_pcp_handler.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\ble_advertisement.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\ble_endpoint_channel.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\bluetooth_bwu_handler.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\bluetooth_device_name.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\bluetooth_endpoint_channel.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\bwu_manager.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\client_proxy.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\encryption_runner.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\endpoint_channel_manager.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\endpoint_manager.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\injected_bluetooth_device_store.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\internal_payload.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\internal_payload_factory.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\offline_frames.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\offline_frames_validator.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\offline_service_controller.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\p2p_cluster_pcp_handler.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\p2p_point_to_point_pcp_handler.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\p2p_star_pcp_handler.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\payload_manager.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\pcp_manager.cc">
+      <Filter>Source Files\core\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\bluetooth_radio.cc">
+      <Filter>Source Files\core\internal\mediums</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\mediums.cc">
+      <Filter>Source Files\core\internal\mediums</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\utils.cc">
+      <Filter>Source Files\core\internal\mediums</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\uuid.cc">
+      <Filter>Source Files\core\internal\mediums</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc.cc">
+      <Filter>Source Files\core\internal\mediums</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\wifi_lan.cc">
+      <Filter>Source Files\core\internal\mediums</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\ble.cc">
+      <Filter>Source Files\core\internal\mediums</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\bloom_filter.cc">
+      <Filter>Source Files\core\internal\mediums</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\bluetooth_classic.cc">
+      <Filter>Source Files\core\internal\mediums</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc\peer_id.cc">
+      <Filter>Source Files\core\internal\mediums\webrtc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc\signaling_frames.cc">
+      <Filter>Source Files\core\internal\mediums\webrtc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc\webrtc_socket.cc">
+      <Filter>Source Files\core\internal\mediums\webrtc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc\connection_flow.cc">
+      <Filter>Source Files\core\internal\mediums\webrtc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\ble_v2\ble_advertisement.cc">
+      <Filter>Source Files\core\internal\mediums\ble_v2</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\ble_v2\ble_advertisement_header.cc">
+      <Filter>Source Files\core\internal\mediums\ble_v2</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\ble_v2\ble_packet.cc">
+      <Filter>Source Files\core\internal\mediums\ble_v2</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\ble_v2\advertisement_read_result.cc">
+      <Filter>Source Files\core\internal\mediums\ble_v2</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\fuzzers\offline_frames_fuzzer.cc">
+      <Filter>Source Files\core\internal\fuzzers</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\base\cancellation_flag.cc">
+      <Filter>Source Files\platform\base</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\base\medium_environment.cc">
+      <Filter>Source Files\platform\base</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\base\prng.cc">
+      <Filter>Source Files\platform\base</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\base\base_input_stream.cc">
+      <Filter>Source Files\platform\base</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\base\base_pipe.cc">
+      <Filter>Source Files\platform\base</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\base\base64_utils.cc">
+      <Filter>Source Files\platform\base</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\base\bluetooth_utils.cc">
+      <Filter>Source Files\platform\base</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\base\byte_utils.cc">
+      <Filter>Source Files\platform\base</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\public\pending_job_registry.cc">
+      <Filter>Source Files\platform\public</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\public\pipe.cc">
+      <Filter>Source Files\platform\public</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\public\thread_check_nocompile.cc">
+      <Filter>Source Files\platform\public</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\public\wifi_lan.cc">
+      <Filter>Source Files\platform\public</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\public\ble.cc">
+      <Filter>Source Files\platform\public</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\public\bluetooth_classic.cc">
+      <Filter>Source Files\platform\public</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\public\monitored_runnable.cc">
+      <Filter>Source Files\platform\public</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\impl\shared\file.cc">
+      <Filter>Source Files\platform\impl\shared</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\impl\windows\crypto.cc">
+      <Filter>Source Files\platform\impl\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\impl\windows\platform.cc">
+      <Filter>Source Files\platform\impl\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\impl\windows\system_clock.cc">
+      <Filter>Source Files\platform\impl\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)..\cpp\platform\impl\windows\log_message.cc">
+      <Filter>Source Files\platform\impl\windows</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
