@@ -92,7 +92,7 @@ cc_library(
     ],
     copts = ["-Iplatform/impl/windows/generated"],
     visibility = [
-        "//location/nearby/connections/windows:__subpackages__",
+        "//:__subpackages__",
     ],
     deps = [
         ":comm",
