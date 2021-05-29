@@ -80,12 +80,6 @@ cc_library(
         "webrtc.h",
         "wifi_lan.h",
     ],
-    copts = [
-        "/std:c++latest",
-    ],
-    defines = [
-        "_HAS_DEPRECATED_RESULT_OF=1",
-    ],
     visibility = [
         "//googlemac/iPhone/Shared/Nearby/Connections:__subpackages__",
         "//core:__subpackages__",

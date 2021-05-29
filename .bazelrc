@@ -1,4 +1,4 @@
 startup --windows_enable_symlinks
 common --enable_platform_specific_config
 build --package_path %workspace%:cpp --incompatible_blacklisted_protos_requires_proto_info=false
-build:windows --copt="/JMC"
+build:windows --copt="/JMC" --copt="/std:c++latest" --copt="/D_HAS_DEPRECATED_RESULT_OF"

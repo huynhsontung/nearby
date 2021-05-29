@@ -35,12 +35,6 @@ cc_library(
         "webrtc.h",
         "wifi_lan.h",
     ],
-    copts = [
-        "/std:c++latest",
-    ],
-    defines = [
-        "_HAS_DEPRECATED_RESULT_OF=1",  # TODO: Remove when Abseil resolves their code
-    ],
     visibility = [
         "//core/internal:__subpackages__",
     ],
