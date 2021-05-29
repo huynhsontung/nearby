@@ -43,6 +43,8 @@
 #include "platform/base/payload_id.h"
 #include "absl/strings/string_view.h"
 
+#undef CreateMutex  // synchapi.h
+
 namespace location {
 namespace nearby {
 namespace api {

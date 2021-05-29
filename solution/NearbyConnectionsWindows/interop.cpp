@@ -5,7 +5,8 @@
 class CCore
 {
 public:
-    void StartDiscovery()
+    CCore() : _core(location::nearby::connections::Core()) {}
+    /*void StartDiscovery()
     {
         auto options = location::nearby::connections::ConnectionOptions{};
         options.strategy = location::nearby::connections::Strategy::kP2pCluster;
@@ -25,7 +26,7 @@ public:
         };
 
         _core.StartDiscovery("com.windows.nearby-client", std::move(options), std::move(listeners), std::move(cb));
-    }
+    }*/
 
 private:
     location::nearby::connections::Core _core;
@@ -55,5 +56,5 @@ void Core_StartDiscovery(void* ptr)
     }
 
     auto ccore = static_cast<CCore*>(ptr);
-    ccore->StartDiscovery();
+    //ccore->StartDiscovery();
 }

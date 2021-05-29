@@ -99,7 +99,6 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ObjectFileName>%(RelativeDir)objs/</ObjectFileName>
     </ClCompile>
@@ -107,8 +106,63 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>C:\Users\tung7\source\repos\nearby-connections\bazel-bin\core;C:\Users\tung7\source\repos\nearby-connections\bazel-bin\external\boringssl;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>core.lib;crypto.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\bazel-bin\core;$(SolutionDir)..\bazel-bin\external\boringssl;$(SolutionDir)..\bazel-bin\platform\public;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>../../bazel-bin/core/core.lib
+../../bazel-bin/core/internal/internal.lib
+../../bazel-bin/core/internal/mediums/mediums.lib
+../../bazel-bin/core/internal/mediums/ble_v2/ble_v2.lib
+../../bazel-bin/external/smhasher/libmurmur3.lib
+../../bazel-bin/core/internal/mediums/webrtc/webrtc.lib
+../../bazel-bin/core/core_types.lib
+../../bazel-bin/core/internal/mediums/utils.lib
+../../bazel-bin/proto/mediums/web_rtc_signaling_frames_proto.lib
+../../bazel-bin/platform/public/comm.lib
+../../bazel-bin/proto/connections_enums_proto.lib
+../../bazel-bin/external/ukey2/ukey2.lib
+../../bazel-bin/external/ukey2/device_to_device_messages_cc_proto.lib
+../../bazel-bin/external/ukey2/securegcm_cc_proto.lib
+../../bazel-bin/external/ukey2/ukey_cc_proto.lib
+../../bazel-bin/external/securemessage/securemessage.lib
+../../bazel-bin/external/securemessage/securemessage_cc_proto.lib
+../../bazel-bin/external/boringssl/ssl.lib
+../../bazel-bin/platform/public/types.lib
+../../bazel-bin/external/boringssl/crypto.lib
+../../bazel-bin/proto/connections/offline_wire_formats_proto.lib
+../../bazel-bin/external/com_github_protocolbuffers_protobuf/protobuf.lib
+../../bazel-bin/external/com_github_protocolbuffers_protobuf/protobuf_lite.lib
+../../bazel-bin/platform/base/cancellation_flag.lib
+../../bazel-bin/platform/base/util.lib
+../../bazel-bin/platform/base/base.lib
+../../bazel-bin/external/abseil/absl/hash/hash.lib
+../../bazel-bin/external/abseil/absl/hash/city.lib
+../../bazel-bin/external/abseil/absl/hash/wyhash.lib
+../../bazel-bin/external/abseil/absl/types/bad_variant_access.lib
+../../bazel-bin/external/abseil/absl/strings/cord.lib
+../../bazel-bin/external/abseil/absl/strings/cord_internal.lib
+../../bazel-bin/external/abseil/absl/container/raw_hash_set.lib
+../../bazel-bin/external/abseil/absl/container/hashtablez_sampler.lib
+../../bazel-bin/external/abseil/absl/base/exponential_biased.lib
+../../bazel-bin/external/abseil/absl/strings/str_format_internal.lib
+../../bazel-bin/external/abseil/absl/types/bad_optional_access.lib
+../../bazel-bin/external/abseil/absl/synchronization/synchronization.lib
+../../bazel-bin/external/abseil/absl/synchronization/graphcycles_internal.lib
+../../bazel-bin/external/abseil/absl/debugging/stacktrace.lib
+../../bazel-bin/external/abseil/absl/debugging/symbolize.lib
+../../bazel-bin/external/abseil/absl/debugging/debugging_internal.lib
+../../bazel-bin/external/abseil/absl/debugging/demangle_internal.lib
+../../bazel-bin/external/abseil/absl/base/malloc_internal.lib
+../../bazel-bin/external/abseil/absl/time/time.lib
+../../bazel-bin/external/abseil/absl/strings/strings.lib
+../../bazel-bin/external/abseil/absl/strings/internal.lib
+../../bazel-bin/external/abseil/absl/base/base.lib
+../../bazel-bin/external/abseil/absl/base/spinlock_wait.lib
+../../bazel-bin/external/abseil/absl/base/throw_delegate.lib
+../../bazel-bin/external/abseil/absl/base/raw_logging_internal.lib
+../../bazel-bin/external/abseil/absl/base/log_severity.lib
+../../bazel-bin/external/abseil/absl/numeric/int128.lib
+../../bazel-bin/external/abseil/absl/time/internal/cctz/time_zone.lib
+../../bazel-bin/external/abseil/absl/time/internal/cctz/civil_time.lib
+../../bazel-nearby-connections/external/webrtc/out/Default/obj/api/libjingle_peerconnection_api.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -142,7 +196,6 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ObjectFileName>%(RelativeDir)objs/</ObjectFileName>
     </ClCompile>
@@ -150,8 +203,62 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>core.lib;crypto.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\tung7\source\repos\nearby-connections\bazel-bin\core;C:\Users\tung7\source\repos\nearby-connections\bazel-bin\external\boringssl;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>../../bazel-bin/core/core.lib
+../../bazel-bin/core/internal/internal.lib
+../../bazel-bin/core/internal/mediums/mediums.lib
+../../bazel-bin/core/internal/mediums/ble_v2/ble_v2.lib
+../../bazel-bin/external/smhasher/libmurmur3.lib
+../../bazel-bin/core/internal/mediums/webrtc/webrtc.lib
+../../bazel-bin/core/core_types.lib
+../../bazel-bin/core/internal/mediums/utils.lib
+../../bazel-bin/proto/mediums/web_rtc_signaling_frames_proto.lib
+../../bazel-bin/platform/public/comm.lib
+../../bazel-bin/proto/connections_enums_proto.lib
+../../bazel-bin/external/ukey2/ukey2.lib
+../../bazel-bin/external/ukey2/device_to_device_messages_cc_proto.lib
+../../bazel-bin/external/ukey2/securegcm_cc_proto.lib
+../../bazel-bin/external/ukey2/ukey_cc_proto.lib
+../../bazel-bin/external/securemessage/securemessage.lib
+../../bazel-bin/external/securemessage/securemessage_cc_proto.lib
+../../bazel-bin/external/boringssl/ssl.lib
+../../bazel-bin/platform/public/types.lib
+../../bazel-bin/external/boringssl/crypto.lib
+../../bazel-bin/proto/connections/offline_wire_formats_proto.lib
+../../bazel-bin/external/com_github_protocolbuffers_protobuf/protobuf.lib
+../../bazel-bin/external/com_github_protocolbuffers_protobuf/protobuf_lite.lib
+../../bazel-bin/platform/base/cancellation_flag.lib
+../../bazel-bin/platform/base/util.lib
+../../bazel-bin/platform/base/base.lib
+../../bazel-bin/external/abseil/absl/hash/hash.lib
+../../bazel-bin/external/abseil/absl/hash/city.lib
+../../bazel-bin/external/abseil/absl/hash/wyhash.lib
+../../bazel-bin/external/abseil/absl/types/bad_variant_access.lib
+../../bazel-bin/external/abseil/absl/strings/cord.lib
+../../bazel-bin/external/abseil/absl/strings/cord_internal.lib
+../../bazel-bin/external/abseil/absl/container/raw_hash_set.lib
+../../bazel-bin/external/abseil/absl/container/hashtablez_sampler.lib
+../../bazel-bin/external/abseil/absl/base/exponential_biased.lib
+../../bazel-bin/external/abseil/absl/strings/str_format_internal.lib
+../../bazel-bin/external/abseil/absl/types/bad_optional_access.lib
+../../bazel-bin/external/abseil/absl/synchronization/synchronization.lib
+../../bazel-bin/external/abseil/absl/synchronization/graphcycles_internal.lib
+../../bazel-bin/external/abseil/absl/debugging/stacktrace.lib
+../../bazel-bin/external/abseil/absl/debugging/symbolize.lib
+../../bazel-bin/external/abseil/absl/debugging/debugging_internal.lib
+../../bazel-bin/external/abseil/absl/debugging/demangle_internal.lib
+../../bazel-bin/external/abseil/absl/base/malloc_internal.lib
+../../bazel-bin/external/abseil/absl/time/time.lib
+../../bazel-bin/external/abseil/absl/strings/strings.lib
+../../bazel-bin/external/abseil/absl/strings/internal.lib
+../../bazel-bin/external/abseil/absl/base/base.lib
+../../bazel-bin/external/abseil/absl/base/spinlock_wait.lib
+../../bazel-bin/external/abseil/absl/base/throw_delegate.lib
+../../bazel-bin/external/abseil/absl/base/raw_logging_internal.lib
+../../bazel-bin/external/abseil/absl/base/log_severity.lib
+../../bazel-bin/external/abseil/absl/numeric/int128.lib
+../../bazel-bin/external/abseil/absl/time/internal/cctz/time_zone.lib
+../../bazel-bin/external/abseil/absl/time/internal/cctz/civil_time.lib
+../../bazel-nearby-connections/external/webrtc/out/Default/obj/api/libjingle_peerconnection_api.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -362,71 +469,6 @@
     <ClCompile Include="$(SolutionDir)..\cpp\platform\impl\windows\log_message.cc" />
     <ClCompile Include="$(SolutionDir)..\cpp\platform\impl\windows\platform.cc" />
     <ClCompile Include="$(SolutionDir)..\cpp\platform\impl\windows\system_clock.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\core.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\base_endpoint_channel.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\base_pcp_handler.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\ble_advertisement.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\ble_endpoint_channel.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\bluetooth_bwu_handler.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\bluetooth_device_name.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\bluetooth_endpoint_channel.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\bwu_manager.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\client_proxy.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\encryption_runner.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\endpoint_channel_manager.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\endpoint_manager.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\fuzzers\offline_frames_fuzzer.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\injected_bluetooth_device_store.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\internal_payload.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\internal_payload_factory.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\ble.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\ble_v2\advertisement_read_result.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\ble_v2\ble_advertisement.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\ble_v2\ble_advertisement_header.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\ble_v2\ble_packet.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\bloom_filter.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\bluetooth_classic.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\bluetooth_radio.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\mediums.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\utils.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\uuid.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc\connection_flow.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc\peer_id.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc\signaling_frames.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\webrtc\webrtc_socket.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\mediums\wifi_lan.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\offline_frames.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\offline_frames_validator.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\offline_service_controller.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\p2p_cluster_pcp_handler.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\p2p_point_to_point_pcp_handler.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\p2p_star_pcp_handler.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\payload_manager.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\pcp_manager.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\service_controller_router.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\webrtc_bwu_handler.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\webrtc_endpoint_channel.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\wifi_lan_bwu_handler.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\wifi_lan_endpoint_channel.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\internal\wifi_lan_service_info.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\core\strategy.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\platform\base\base64_utils.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\platform\base\base_input_stream.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\platform\base\base_pipe.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\platform\base\bluetooth_utils.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\platform\base\byte_utils.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\platform\base\cancellation_flag.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\platform\base\medium_environment.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\platform\base\prng.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\platform\impl\shared\file.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\platform\public\ble.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\platform\public\bluetooth_classic.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\platform\public\monitored_runnable.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\platform\public\pending_job_registry.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\platform\public\pipe.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\platform\public\thread_check_nocompile.cc" />
-    <ClCompile Include="$(SolutionDir)..\cpp\platform\public\wifi_lan.cc" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="interop.cpp" />
     <ClCompile Include="pch.cpp">
