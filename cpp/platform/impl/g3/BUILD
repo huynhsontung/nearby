@@ -77,9 +77,7 @@ cc_library(
         "@abseil//absl/container:flat_hash_set",
         "@abseil//absl/strings",
         "@abseil//absl/synchronization",
-        "@webrtc//:create_peerconnection_factory",  #buildcleaner: keep
-        "@webrtc//:libjingle_peerconnection_api",
-        "@webrtc//:default_task_queue_factory",
+        "@webrtc//:webrtc",
     ],
 )
 

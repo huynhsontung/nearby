@@ -71,7 +71,7 @@ cc_library(
         "//platform/base:cancellation_flag",
         "@abseil//absl/strings",
         "@abseil//absl/types:optional",
-        "@webrtc//:libjingle_peerconnection_api",
+        "@webrtc//:webrtc",
     ],
 )
 

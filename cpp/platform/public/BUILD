@@ -95,7 +95,7 @@ cc_library(
         "//platform/base:cancellation_flag",
         "@abseil//absl/container:flat_hash_map",
         "@abseil//absl/strings",
-        "@webrtc//:libjingle_peerconnection_api",
+        "@webrtc//:webrtc",
     ],
 )
 

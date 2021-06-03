@@ -57,8 +57,7 @@ cc_library(
         "@abseil//absl/strings",
         "@abseil//absl/time",
         "@smhasher//:libmurmur3",
-        "@webrtc//:libjingle_peerconnection_api",
-        "@webrtc//:scoped_refptr",
+        "@webrtc//:webrtc",
     ],
 )
 

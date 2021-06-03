@@ -44,7 +44,7 @@ cc_library(
         "@abseil//absl/memory",
         "@abseil//absl/strings",
         "@abseil//absl/time",
-        "@webrtc//:libjingle_peerconnection_api",
+        "@webrtc//:webrtc",
     ],
 )
 
@@ -68,8 +68,6 @@ cc_test(
         "//net/proto2/public:proto2",
         "//testing/base/public:gunit_main",
         "@abseil//absl/time",
-        "@webrtc//:libjingle_peerconnection_api",
-        "@webrtc//:rtc_error",
-        "@webrtc//:scoped_refptr",
+        "@webrtc//:webrtc",
     ],
 )
