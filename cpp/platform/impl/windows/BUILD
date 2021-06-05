@@ -15,6 +15,7 @@
 cc_library(
     name = "types",
     srcs = [
+        "pch.h",
         "log_message.cc",
         "system_clock.cc",
     ],
@@ -63,6 +64,7 @@ cc_library(
 cc_library(
     name = "crypto",
     srcs = [
+        "pch.h",
         "crypto.cc",
     ],
     visibility = ["//visibility:private"],
@@ -77,6 +79,7 @@ cc_library(
 cc_library(
     name = "windows",
     srcs = [
+        "pch.h",
         "bluetooth_classic_device.cc",
         "bluetooth_classic_medium.cc",
         "bluetooth_classic_server_socket.cc",
