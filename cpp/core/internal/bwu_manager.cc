@@ -89,8 +89,8 @@ BwuManager::~BwuManager() {
 void BwuManager::InitBwuHandlers() {
   // Register the supported concrete BwuMedium implementations.
   BwuHandler::BwuNotifications notifications{
-      .incoming_connection_cb =
-          absl::bind_front(&BwuManager::OnIncomingConnection, this),
+      // .incoming_connection_cb =
+      absl::bind_front(&BwuManager::OnIncomingConnection, this),
   };
   if (config_.allow_upgrade_to.wifi_lan) {
     handlers_.emplace(Medium::WIFI_LAN,
