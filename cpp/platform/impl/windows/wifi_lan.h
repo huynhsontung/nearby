@@ -76,16 +76,16 @@ class WifiLanSocket : public api::WifiLanSocket {
     ExceptionOr<ByteArray> Read(std::int64_t size) override {
       return ExceptionOr<ByteArray>(Exception::kFailed);
     }
-    Exception Close() override { return {Exception::kFailed}; }
+    Exception Close() override { return {.value = Exception::kFailed}; }
   };
   class FakeOutputStream : public OutputStream {
     ~FakeOutputStream() override = default;
 
     Exception Write(const ByteArray& data) override {
-      return {Exception::kFailed};
+      return {.value = Exception::kFailed};
     }
-    Exception Flush() override { return {Exception::kFailed}; }
-    Exception Close() override { return {Exception::kFailed}; }
+    Exception Flush() override { return {.value = Exception::kFailed}; }
+    Exception Close() override { return {.value = Exception::kFailed}; }
   };
   FakeInputStream fake_input_stream_;
   FakeOutputStream fake_output_stream_;

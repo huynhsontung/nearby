@@ -180,30 +180,32 @@ bool Ble::StartScanning(const std::string& service_id,
 
   if (!medium_.StartScanning(
           service_id, fast_advertisement_service_uuid,
-          DiscoveredPeripheralCallback{
-              // .peripheral_discovered_cb =
-              [this](BlePeripheral& peripheral, const std::string& service_id,
-                     const ByteArray& medium_advertisement_bytes,
-                     bool fast_advertisement) {
-                // Don't bother trying to parse zero byte advertisements.
-                if (medium_advertisement_bytes.size() == 0) {
-                  NEARBY_LOGS(INFO) << "Skipping zero byte advertisement "
-                                    << "with service_id: " << service_id;
-                  return;
-                }
-                // Unwrap connection BleAdvertisement from medium
-                // BleAdvertisement.
-                auto connection_advertisement_bytes =
-                    UnwrapAdvertisementBytes(medium_advertisement_bytes);
-                discovered_peripheral_callback_.peripheral_discovered_cb(
-                    peripheral, service_id, connection_advertisement_bytes,
-                    fast_advertisement);
-              },
-              // .peripheral_lost_cb =
-              [this](BlePeripheral& peripheral, const std::string& service_id) {
-                discovered_peripheral_callback_.peripheral_lost_cb(peripheral,
-                                                                   service_id);
-              },
+          {
+              .peripheral_discovered_cb =
+                  [this](BlePeripheral& peripheral,
+                         const std::string& service_id,
+                         const ByteArray& medium_advertisement_bytes,
+                         bool fast_advertisement) {
+                    // Don't bother trying to parse zero byte advertisements.
+                    if (medium_advertisement_bytes.size() == 0) {
+                      NEARBY_LOGS(INFO) << "Skipping zero byte advertisement "
+                                        << "with service_id: " << service_id;
+                      return;
+                    }
+                    // Unwrap connection BleAdvertisement from medium
+                    // BleAdvertisement.
+                    auto connection_advertisement_bytes =
+                        UnwrapAdvertisementBytes(medium_advertisement_bytes);
+                    discovered_peripheral_callback_.peripheral_discovered_cb(
+                        peripheral, service_id, connection_advertisement_bytes,
+                        fast_advertisement);
+                  },
+              .peripheral_lost_cb =
+                  [this](BlePeripheral& peripheral,
+                         const std::string& service_id) {
+                    discovered_peripheral_callback_.peripheral_lost_cb(
+                        peripheral, service_id);
+                  },
           })) {
     NEARBY_LOGS(INFO) << "Failed to start scan of BLE services.";
     return false;

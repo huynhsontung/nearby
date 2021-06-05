@@ -50,8 +50,7 @@ ByteArray WifiLanBwuHandler::InitializeUpgradedMediumForEndpoint(
     if (!wifi_lan_medium_.StartAcceptingConnections(
             upgrade_service_id,
             {
-                // .accepted_cb =
-                absl::bind_front(
+                .accepted_cb = absl::bind_front(
                     &WifiLanBwuHandler::OnIncomingWifiLanConnection, this,
                     client),
             })) {
@@ -155,3 +154,4 @@ void WifiLanBwuHandler::OnIncomingWifiLanConnection(
 }  // namespace connections
 }  // namespace nearby
 }  // namespace location
+

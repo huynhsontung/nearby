@@ -240,11 +240,12 @@ void ClientProxy::OnConnectionInitiated(const std::string& endpoint_id,
   // Whether this is incoming or outgoing, the local and remote endpoints both
   // still need to accept this connection, so set its establishment status to
   // PENDING.
-  auto connection = Connection{};
-  connection.is_incoming = info.is_incoming_connection;
-  connection.connection_listener = listener;
-  connection.connection_options = options;
-  auto result = connections_.emplace(endpoint_id, std::move(connection));
+  auto result = connections_.emplace(
+      endpoint_id, Connection{
+                       .is_incoming = info.is_incoming_connection,
+                       .connection_listener = listener,
+                       .connection_options = options,
+                   });
   // Instead of using structured binding which is nice, but banned
   // (can not use c++17 features, until chromium does) we unpack manually.
   auto& pair_iter = result.first;

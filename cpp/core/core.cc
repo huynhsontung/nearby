@@ -31,11 +31,10 @@ constexpr absl::Duration Core::kWaitForDisconnect;
 
 Core::~Core() {
   CountDownLatch latch(1);
-  router_.ClientDisconnecting(&client_,
-                              {
-                                  // .result_cb =
-                                  [&latch](Status) { latch.CountDown(); },
-                              });
+  router_.ClientDisconnecting(
+      &client_, {
+                    .result_cb = [&latch](Status) { latch.CountDown(); },
+                });
   if (!latch.Await(kWaitForDisconnect).result()) {
     NEARBY_LOG(FATAL, "Unable to shutdown");
   }

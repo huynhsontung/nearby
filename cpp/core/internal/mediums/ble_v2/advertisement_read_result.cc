@@ -27,12 +27,9 @@ namespace connections {
 namespace mediums {
 
 const AdvertisementReadResult::Config AdvertisementReadResult::kDefaultConfig{
-    // .backoff_multiplier =
-    2.0,
-    // .base_backoff_duration =
-    absl::Seconds(1),
-    // .max_backoff_duration =
-    absl::Minutes(5),
+    .backoff_multiplier = 2.0,
+    .base_backoff_duration = absl::Seconds(1),
+    .max_backoff_duration = absl::Minutes(5),
 };
 
 // Adds a successfully read advertisement for the specified slot to this read

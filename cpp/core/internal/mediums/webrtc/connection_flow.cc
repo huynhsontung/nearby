@@ -404,8 +404,7 @@ void ConnectionFlow::CreateSocketFromDataChannel(
   auto socket =
       std::make_unique<WebRtcSocket>("WebRtcSocket", std::move(data_channel));
   socket->SetSocketListener({
-      // .socket_ready_cb =
-      {[this](WebRtcSocket* socket) {
+      .socket_ready_cb = {[this](WebRtcSocket* socket) {
         CHECK(IsRunningOnSignalingThread());
         if (!TransitionState(State::kWaitingToConnect, State::kConnected)) {
           NEARBY_LOG(ERROR,
@@ -417,9 +416,9 @@ void ConnectionFlow::CreateSocketFromDataChannel(
         // Pass socket wrapper by copy on purpose
         data_channel_listener_.data_channel_open_cb(socket_wrapper_);
       }},
-      // .socket_closed_cb =
-      [callback = data_channel_listener_.data_channel_closed_cb](
-          WebRtcSocket*) { callback(); },
+      .socket_closed_cb = [callback =
+                               data_channel_listener_.data_channel_closed_cb](
+                              WebRtcSocket*) { callback(); },
   });
   socket_wrapper_ = WebRtcSocketWrapper(std::move(socket));
 }
@@ -523,7 +522,8 @@ bool ConnectionFlow::RunOnSignalingThread(Runnable&& runnable) {
         // (signaling thread). This guarantees that if the weak_ptr is valid
         // when this task starts, it will stay valid until the task ends.
         if (!can_run_tasks.lock()) {
-          NEARBY_LOG(INFO, "Peer connection already closed. Cannot run tasks.");
+          NEARBY_LOG(INFO,
+                     "Peer connection already closed. Cannot run tasks.");
           return;
         }
         task();

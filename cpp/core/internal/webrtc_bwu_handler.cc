@@ -79,9 +79,9 @@ ByteArray WebrtcBwuHandler::InitializeUpgradedMediumForEndpoint(
     if (!webrtc_.StartAcceptingConnections(
             upgrade_service_id, self_id, location_hint,
             {
-                // .accepted_cb =
-                absl::bind_front(&WebrtcBwuHandler::OnIncomingWebrtcConnection,
-                                 this, client, upgrade_service_id),
+                .accepted_cb = absl::bind_front(
+                    &WebrtcBwuHandler::OnIncomingWebrtcConnection, this, client,
+                    upgrade_service_id),
             })) {
       NEARBY_LOG(ERROR,
                  "WebRtcBwuHandler couldn't initiate the WEB_RTC upgrade for "

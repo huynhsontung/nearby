@@ -354,40 +354,33 @@ void BasePcpHandler::OnEncryptionSuccessRunnable(
   endpoint_manager_->RegisterEndpoint(
       connection_info.client, endpoint_id,
       {
-          // .remote_endpoint_info =
-          connection_info.remote_endpoint_info,
-          // .authentication_token =
-          auth_token,
-          // .raw_authentication_token =
-          raw_auth_token,
-          // .is_incoming_connection =
-          connection_info.is_incoming,
+          .remote_endpoint_info = connection_info.remote_endpoint_info,
+          .authentication_token = auth_token,
+          .raw_authentication_token = raw_auth_token,
+          .is_incoming_connection = connection_info.is_incoming,
       },
       {
-          // .strategy =
-          connection_info.options.strategy,
-          // .allowed =
-          ComputeIntersectionOfSupportedMediums(connection_info),
-          // .auto_upgrade_bandwidth =
-          connection_info.options.auto_upgrade_bandwidth,
-          // .enforce_topology_constraints =
-          connection_info.options.enforce_topology_constraints,
-          // .low_power =
-          connection_info.options.low_power,
-          // .enable_bluetooth_listening =
-          connection_info.options.enable_bluetooth_listening,
-          // .enable_webrtc_listening =
-          connection_info.options.enable_webrtc_listening,
-          // .is_out_of_band_connection =
-          connection_info.options.is_out_of_band_connection,
-          // .remote_bluetooth_mac_address =
-          connection_info.options.remote_bluetooth_mac_address,
-          // .fast_advertisement_service_uuid =
-          connection_info.options.fast_advertisement_service_uuid,
-          // .keep_alive_interval_millis =
-          connection_info.options.keep_alive_interval_millis,
-          // .keep_alive_timeout_millis =
-          connection_info.options.keep_alive_timeout_millis,
+          .strategy = connection_info.options.strategy,
+          .allowed = ComputeIntersectionOfSupportedMediums(connection_info),
+          .auto_upgrade_bandwidth =
+              connection_info.options.auto_upgrade_bandwidth,
+          .enforce_topology_constraints =
+              connection_info.options.enforce_topology_constraints,
+          .low_power = connection_info.options.low_power,
+          .enable_bluetooth_listening =
+              connection_info.options.enable_bluetooth_listening,
+          .enable_webrtc_listening =
+              connection_info.options.enable_webrtc_listening,
+          .is_out_of_band_connection =
+              connection_info.options.is_out_of_band_connection,
+          .remote_bluetooth_mac_address =
+              connection_info.options.remote_bluetooth_mac_address,
+          .fast_advertisement_service_uuid =
+              connection_info.options.fast_advertisement_service_uuid,
+          .keep_alive_interval_millis =
+              connection_info.options.keep_alive_interval_millis,
+          .keep_alive_timeout_millis =
+              connection_info.options.keep_alive_timeout_millis,
       },
       std::move(connection_info.channel), connection_info.listener);
 
@@ -1101,9 +1094,8 @@ Exception BasePcpHandler::OnIncomingConnection(
   // Retrieve the keep-alive frame interval and timeout fields. If the frame
   // doesn't have those fields, we need to get them as default from feature
   // flags to prevent 0-values causing thread ill.
-  ConnectionOptions options{};
-  options.keep_alive_interval_millis = 0;
-  options.keep_alive_timeout_millis = 0;
+  ConnectionOptions options = {.keep_alive_interval_millis = 0,
+                               .keep_alive_timeout_millis = 0};
   if (connection_request.has_keep_alive_interval_millis() &&
       connection_request.has_keep_alive_timeout_millis()) {
     options.keep_alive_interval_millis =

@@ -41,35 +41,36 @@ bool BleMedium::StartScanning(
     peripherals_.clear();
   }
   return impl_->StartScanning(
-      service_id, fast_advertisement_service_uuid,
+      service_id,
+      fast_advertisement_service_uuid,
       {
-          // .peripheral_discovered_cb =
-          [this](api::BlePeripheral& peripheral, const std::string& service_id,
-                 bool fast_advertisement) {
-            MutexLock lock(&mutex_);
-            auto pair = peripherals_.emplace(&peripheral,
-                                             absl::make_unique<ScanningInfo>());
-            auto& context = *pair.first->second;
-            if (pair.second) {
-              context.peripheral = BlePeripheral(&peripheral);
-              discovered_peripheral_callback_.peripheral_discovered_cb(
-                  context.peripheral, service_id,
-                  context.peripheral.GetAdvertisementBytes(service_id),
-                  fast_advertisement);
-            }
-          },
-          // .peripheral_lost_cb =
-          [this](api::BlePeripheral& peripheral,
-                 const std::string& service_id) {
-            MutexLock lock(&mutex_);
-            if (peripherals_.empty()) return;
-            auto context = peripherals_.find(&peripheral);
-            if (context == peripherals_.end()) return;
-            NEARBY_LOG(INFO, "Removing peripheral=%p, impl=%p",
-                       &(context->second->peripheral), &peripheral);
-            discovered_peripheral_callback_.peripheral_lost_cb(
-                context->second->peripheral, service_id);
-          },
+          .peripheral_discovered_cb =
+              [this](api::BlePeripheral& peripheral,
+                     const std::string& service_id, bool fast_advertisement) {
+                MutexLock lock(&mutex_);
+                auto pair = peripherals_.emplace(
+                    &peripheral, absl::make_unique<ScanningInfo>());
+                auto& context = *pair.first->second;
+                if (pair.second) {
+                  context.peripheral = BlePeripheral(&peripheral);
+                  discovered_peripheral_callback_.peripheral_discovered_cb(
+                      context.peripheral, service_id,
+                      context.peripheral.GetAdvertisementBytes(service_id),
+                      fast_advertisement);
+                }
+              },
+          .peripheral_lost_cb =
+              [this](api::BlePeripheral& peripheral,
+                     const std::string& service_id) {
+                MutexLock lock(&mutex_);
+                if (peripherals_.empty()) return;
+                auto context = peripherals_.find(&peripheral);
+                if (context == peripherals_.end()) return;
+                NEARBY_LOG(INFO, "Removing peripheral=%p, impl=%p",
+                           &(context->second->peripheral), &peripheral);
+                discovered_peripheral_callback_.peripheral_lost_cb(
+                    context->second->peripheral, service_id);
+              },
       });
 }
 
@@ -92,23 +93,23 @@ bool BleMedium::StartAcceptingConnections(const std::string& service_id,
   return impl_->StartAcceptingConnections(
       service_id,
       {
-          // .accepted_cb =
-          [this](api::BleSocket& socket, const std::string& service_id) {
-            MutexLock lock(&mutex_);
-            auto pair = sockets_.emplace(
-                &socket, absl::make_unique<AcceptedConnectionInfo>());
-            auto& context = *pair.first->second;
-            if (!pair.second) {
-              NEARBY_LOG(INFO, "Accepting (again) socket=%p, impl=%p",
-                         &context.socket, &socket);
-            } else {
-              context.socket = BleSocket(&socket);
-              NEARBY_LOG(INFO, "Accepting socket=%p, impl=%p", &context.socket,
-                         &socket);
-            }
-            accepted_connection_callback_.accepted_cb(context.socket,
-                                                      service_id);
-          },
+          .accepted_cb =
+              [this](api::BleSocket& socket, const std::string& service_id) {
+                MutexLock lock(&mutex_);
+                auto pair = sockets_.emplace(
+                    &socket, absl::make_unique<AcceptedConnectionInfo>());
+                auto& context = *pair.first->second;
+                if (!pair.second) {
+                  NEARBY_LOG(INFO, "Accepting (again) socket=%p, impl=%p",
+                             &context.socket, &socket);
+                } else {
+                  context.socket = BleSocket(&socket);
+                  NEARBY_LOG(INFO, "Accepting socket=%p, impl=%p",
+                             &context.socket, &socket);
+                }
+                accepted_connection_callback_.accepted_cb(context.socket,
+                                                          service_id);
+              },
       });
 }
 

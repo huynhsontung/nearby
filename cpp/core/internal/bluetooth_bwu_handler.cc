@@ -51,10 +51,9 @@ void BluetoothBwuHandler::OnIncomingBluetoothConnection(
       absl::make_unique<BluetoothEndpointChannel>(service_id, socket);
   std::unique_ptr<IncomingSocketConnection> connection{
       new IncomingSocketConnection{
-          // .socket =
-          std::make_unique<BluetoothIncomingSocket>(service_id, socket),
-          // .channel =
-          std::move(channel),
+          .socket =
+              std::make_unique<BluetoothIncomingSocket>(service_id, socket),
+          .channel = std::move(channel),
       }};
   bwu_notifications_.incoming_connection_cb(client, std::move(connection));
 }
@@ -76,8 +75,7 @@ ByteArray BluetoothBwuHandler::InitializeUpgradedMediumForEndpoint(
     if (!bluetooth_medium_.StartAcceptingConnections(
             upgrade_service_id,
             {
-                // .accepted_cb =
-                absl::bind_front(
+                .accepted_cb = absl::bind_front(
                     &BluetoothBwuHandler::OnIncomingBluetoothConnection, this,
                     client, service_id),
             })) {

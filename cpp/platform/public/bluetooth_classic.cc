@@ -39,41 +39,42 @@ bool BluetoothClassicMedium::StartDiscovery(DiscoveryCallback callback) {
     return false;
   }
   bool success = impl_->StartDiscovery({
-      // .device_discovered_cb =
-      [this](api::BluetoothDevice& device) {
-        MutexLock lock(&mutex_);
-        auto pair =
-            devices_.emplace(&device, absl::make_unique<DeviceDiscoveryInfo>());
-        auto& context = *pair.first->second;
-        if (!pair.second) {
-          NEARBY_LOG(INFO, "Adding (again) device=%p, impl=%p", &context.device,
-                     &device);
-          return;
-        }
-        context.device = BluetoothDevice(&device);
-        NEARBY_LOG(INFO, "Adding device=%p, impl=%p", &context.device, &device);
-        if (!discovery_enabled_) return;
-        discovery_callback_.device_discovered_cb(context.device);
-      },
-      // .device_name_changed_cb =
-      [this](api::BluetoothDevice& device) {
-        MutexLock lock(&mutex_);
-        auto& context = *devices_[&device];
-        NEARBY_LOG(INFO, "Renaming device=%p, impl=%p", &context.device,
-                   &device);
-        if (!discovery_enabled_) return;
-        discovery_callback_.device_name_changed_cb(context.device);
-      },
-      // .device_lost_cb =
-      [this](api::BluetoothDevice& device) {
-        MutexLock lock(&mutex_);
-        auto item = devices_.extract(&device);
-        auto& context = *item.mapped();
-        NEARBY_LOG(INFO, "Removing device=%p, impl=%p", &context.device,
-                   &device);
-        if (!discovery_enabled_) return;
-        discovery_callback_.device_lost_cb(context.device);
-      },
+      .device_discovered_cb =
+          [this](api::BluetoothDevice& device) {
+            MutexLock lock(&mutex_);
+            auto pair = devices_.emplace(
+                &device, absl::make_unique<DeviceDiscoveryInfo>());
+            auto& context = *pair.first->second;
+            if (!pair.second) {
+              NEARBY_LOG(INFO, "Adding (again) device=%p, impl=%p",
+                         &context.device, &device);
+              return;
+            }
+            context.device = BluetoothDevice(&device);
+            NEARBY_LOG(INFO, "Adding device=%p, impl=%p", &context.device,
+                       &device);
+            if (!discovery_enabled_) return;
+            discovery_callback_.device_discovered_cb(context.device);
+          },
+      .device_name_changed_cb =
+          [this](api::BluetoothDevice& device) {
+            MutexLock lock(&mutex_);
+            auto& context = *devices_[&device];
+            NEARBY_LOG(INFO, "Renaming device=%p, impl=%p", &context.device,
+                       &device);
+            if (!discovery_enabled_) return;
+            discovery_callback_.device_name_changed_cb(context.device);
+          },
+      .device_lost_cb =
+          [this](api::BluetoothDevice& device) {
+            MutexLock lock(&mutex_);
+            auto item = devices_.extract(&device);
+            auto& context = *item.mapped();
+            NEARBY_LOG(INFO, "Removing device=%p, impl=%p", &context.device,
+                       &device);
+            if (!discovery_enabled_) return;
+            discovery_callback_.device_lost_cb(context.device);
+          },
   });
   if (success) {
     discovery_callback_ = std::move(callback);
