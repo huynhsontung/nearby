@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Windows.CppWinRT.2.0.210505.3\build\native\Microsoft.Windows.CppWinRT.props" Condition="Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.210505.3\build\native\Microsoft.Windows.CppWinRT.props')" />
+  <PropertyGroup Label="Globals">
+    <CppWinRTOptimized>true</CppWinRTOptimized>
+    <CppWinRTRootNamespaceAutoMerge>true</CppWinRTRootNamespaceAutoMerge>
+    <CppWinRTGenerateWindowsMetadata>true</CppWinRTGenerateWindowsMetadata>
+    <MinimalCoreWin>true</MinimalCoreWin>
+    <ProjectGuid>{3ac0d733-f85d-4183-a52d-fa2ad6d609fd}</ProjectGuid>
+    <ProjectName>NearbyLibrary</ProjectName>
+    <RootNamespace>NearbyLibrary</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <AppContainerApplication>true</AppContainerApplication>
+    <ApplicationType>Windows Store</ApplicationType>
+    <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
+    <WindowsTargetPlatformVersion Condition=" '$(WindowsTargetPlatformVersion)' == '' ">10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.17134.0</WindowsTargetPlatformMinVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM64">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0'">v141</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '16.0'">v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="Nearby Precompiled Static.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <Import Project="Nearby Precompiled Static.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="Nearby Precompiled Static.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <Import Project="Nearby Precompiled Static.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="Nearby Precompiled Static.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <Import Project="Nearby Precompiled Static.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <Import Project="Nearby Precompiled Static.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="Nearby Precompiled Static.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <!--Temporarily disable cppwinrt heap enforcement to work around xaml compiler generated std::shared_ptr use -->
+      <AdditionalOptions Condition="'$(CppWinRTHeapEnforcement)'==''">/DWINRT_NO_MAKE_DETECTION %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
+      <PreprocessorDefinitions>_WINRT_DLL;WIN32_LEAN_AND_MEAN;WINRT_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalUsingDirectories>$(WindowsSDK_WindowsMetadata);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+      <ModuleDefinitionFile>NearbyLibrary.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+    <ClCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <ClCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\cpp\core\core.h" />
+    <ClInclude Include="..\..\cpp\core\internal\base_bwu_handler.h" />
+    <ClInclude Include="..\..\cpp\core\internal\base_endpoint_channel.h" />
+    <ClInclude Include="..\..\cpp\core\internal\base_pcp_handler.h" />
+    <ClInclude Include="..\..\cpp\core\internal\ble_advertisement.h" />
+    <ClInclude Include="..\..\cpp\core\internal\ble_endpoint_channel.h" />
+    <ClInclude Include="..\..\cpp\core\internal\bluetooth_bwu_handler.h" />
+    <ClInclude Include="..\..\cpp\core\internal\bluetooth_device_name.h" />
+    <ClInclude Include="..\..\cpp\core\internal\bluetooth_endpoint_channel.h" />
+    <ClInclude Include="..\..\cpp\core\internal\bwu_handler.h" />
+    <ClInclude Include="..\..\cpp\core\internal\bwu_manager.h" />
+    <ClInclude Include="..\..\cpp\core\internal\client_proxy.h" />
+    <ClInclude Include="..\..\cpp\core\internal\encryption_runner.h" />
+    <ClInclude Include="..\..\cpp\core\internal\endpoint_channel.h" />
+    <ClInclude Include="..\..\cpp\core\internal\endpoint_channel_manager.h" />
+    <ClInclude Include="..\..\cpp\core\internal\endpoint_manager.h" />
+    <ClInclude Include="..\..\cpp\core\internal\injected_bluetooth_device_store.h" />
+    <ClInclude Include="..\..\cpp\core\internal\internal_payload.h" />
+    <ClInclude Include="..\..\cpp\core\internal\internal_payload_factory.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\ble.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\ble_v2\advertisement_read_result.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\ble_v2\ble_advertisement.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\ble_v2\ble_advertisement_header.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\ble_v2\ble_packet.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\ble_v2\ble_peripheral.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\ble_v2\discovered_peripheral_callback.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\bloom_filter.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\bluetooth_classic.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\bluetooth_radio.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\lost_entity_tracker.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\mediums.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\utils.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\uuid.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc\connection_flow.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc\data_channel_listener.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc\local_ice_candidate_listener.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc\peer_id.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc\session_description_wrapper.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc\signaling_frames.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc\webrtc_socket.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\webrtc\webrtc_socket_wrapper.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mediums\wifi_lan.h" />
+    <ClInclude Include="..\..\cpp\core\internal\message_lite.h" />
+    <ClInclude Include="..\..\cpp\core\internal\mock_service_controller.h" />
+    <ClInclude Include="..\..\cpp\core\internal\offline_frames.h" />
+    <ClInclude Include="..\..\cpp\core\internal\offline_frames_validator.h" />
+    <ClInclude Include="..\..\cpp\core\internal\offline_service_controller.h" />
+    <ClInclude Include="..\..\cpp\core\internal\offline_simulation_user.h" />
+    <ClInclude Include="..\..\cpp\core\internal\p2p_cluster_pcp_handler.h" />
+    <ClInclude Include="..\..\cpp\core\internal\p2p_point_to_point_pcp_handler.h" />
+    <ClInclude Include="..\..\cpp\core\internal\p2p_star_pcp_handler.h" />
+    <ClInclude Include="..\..\cpp\core\internal\payload_manager.h" />
+    <ClInclude Include="..\..\cpp\core\internal\pcp.h" />
+    <ClInclude Include="..\..\cpp\core\internal\pcp_handler.h" />
+    <ClInclude Include="..\..\cpp\core\internal\pcp_manager.h" />
+    <ClInclude Include="..\..\cpp\core\internal\service_controller.h" />
+    <ClInclude Include="..\..\cpp\core\internal\service_controller_router.h" />
+    <ClInclude Include="..\..\cpp\core\internal\simulation_user.h" />
+    <ClInclude Include="..\..\cpp\core\internal\webrtc_bwu_handler.h" />
+    <ClInclude Include="..\..\cpp\core\internal\webrtc_endpoint_channel.h" />
+    <ClInclude Include="..\..\cpp\core\internal\wifi_lan_bwu_handler.h" />
+    <ClInclude Include="..\..\cpp\core\internal\wifi_lan_endpoint_channel.h" />
+    <ClInclude Include="..\..\cpp\core\internal\wifi_lan_service_info.h" />
+    <ClInclude Include="..\..\cpp\core\listeners.h" />
+    <ClInclude Include="..\..\cpp\core\options.h" />
+    <ClInclude Include="..\..\cpp\core\params.h" />
+    <ClInclude Include="..\..\cpp\core\payload.h" />
+    <ClInclude Include="..\..\cpp\core\status.h" />
+    <ClInclude Include="..\..\cpp\core\strategy.h" />
+    <ClInclude Include="..\..\cpp\platform\api\atomic_boolean.h" />
+    <ClInclude Include="..\..\cpp\platform\api\atomic_reference.h" />
+    <ClInclude Include="..\..\cpp\platform\api\ble.h" />
+    <ClInclude Include="..\..\cpp\platform\api\ble_v2.h" />
+    <ClInclude Include="..\..\cpp\platform\api\bluetooth_adapter.h" />
+    <ClInclude Include="..\..\cpp\platform\api\bluetooth_classic.h" />
+    <ClInclude Include="..\..\cpp\platform\api\cancelable.h" />
+    <ClInclude Include="..\..\cpp\platform\api\condition_variable.h" />
+    <ClInclude Include="..\..\cpp\platform\api\count_down_latch.h" />
+    <ClInclude Include="..\..\cpp\platform\api\crypto.h" />
+    <ClInclude Include="..\..\cpp\platform\api\executor.h" />
+    <ClInclude Include="..\..\cpp\platform\api\future.h" />
+    <ClInclude Include="..\..\cpp\platform\api\input_file.h" />
+    <ClInclude Include="..\..\cpp\platform\api\listenable_future.h" />
+    <ClInclude Include="..\..\cpp\platform\api\log_message.h" />
+    <ClInclude Include="..\..\cpp\platform\api\mutex.h" />
+    <ClInclude Include="..\..\cpp\platform\api\output_file.h" />
+    <ClInclude Include="..\..\cpp\platform\api\platform.h" />
+    <ClInclude Include="..\..\cpp\platform\api\scheduled_executor.h" />
+    <ClInclude Include="..\..\cpp\platform\api\server_sync.h" />
+    <ClInclude Include="..\..\cpp\platform\api\settable_future.h" />
+    <ClInclude Include="..\..\cpp\platform\api\submittable_executor.h" />
+    <ClInclude Include="..\..\cpp\platform\api\system_clock.h" />
+    <ClInclude Include="..\..\cpp\platform\api\webrtc.h" />
+    <ClInclude Include="..\..\cpp\platform\api\wifi.h" />
+    <ClInclude Include="..\..\cpp\platform\api\wifi_lan.h" />
+    <ClInclude Include="..\..\cpp\platform\base\base64_utils.h" />
+    <ClInclude Include="..\..\cpp\platform\base\base_input_stream.h" />
+    <ClInclude Include="..\..\cpp\platform\base\base_mutex_lock.h" />
+    <ClInclude Include="..\..\cpp\platform\base\base_pipe.h" />
+    <ClInclude Include="..\..\cpp\platform\base\bluetooth_utils.h" />
+    <ClInclude Include="..\..\cpp\platform\base\byte_array.h" />
+    <ClInclude Include="..\..\cpp\platform\base\byte_utils.h" />
+    <ClInclude Include="..\..\cpp\platform\base\callable.h" />
+    <ClInclude Include="..\..\cpp\platform\base\cancellation_flag.h" />
+    <ClInclude Include="..\..\cpp\platform\base\cancellation_flag_listener.h" />
+    <ClInclude Include="..\..\cpp\platform\base\exception.h" />
+    <ClInclude Include="..\..\cpp\platform\base\feature_flags.h" />
+    <ClInclude Include="..\..\cpp\platform\base\input_stream.h" />
+    <ClInclude Include="..\..\cpp\platform\base\listeners.h" />
+    <ClInclude Include="..\..\cpp\platform\base\logging.h" />
+    <ClInclude Include="..\..\cpp\platform\base\medium_environment.h" />
+    <ClInclude Include="..\..\cpp\platform\base\nsd_service_info.h" />
+    <ClInclude Include="..\..\cpp\platform\base\output_stream.h" />
+    <ClInclude Include="..\..\cpp\platform\base\payload_id.h" />
+    <ClInclude Include="..\..\cpp\platform\base\prng.h" />
+    <ClInclude Include="..\..\cpp\platform\base\runnable.h" />
+    <ClInclude Include="..\..\cpp\platform\base\socket.h" />
+    <ClInclude Include="..\..\cpp\platform\base\types.h" />
+    <ClInclude Include="..\..\cpp\platform\config\config.h" />
+    <ClInclude Include="..\..\cpp\platform\config\string.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\shared\file.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\shared\posix_condition_variable.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\shared\posix_mutex.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\atomic_boolean.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\atomic_reference.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\ble.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\bluetooth_adapter.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\bluetooth_classic.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\cancelable.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\condition_variable.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\count_down_latch.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\executor.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\future.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\input_file.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\listenable_future.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\log_message.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\mutex.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\output_file.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\scheduled_executor.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\server_sync.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\settable_future.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\submittable_executor.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\webrtc.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\wifi.h" />
+    <ClInclude Include="..\..\cpp\platform\impl\windows\wifi_lan.h" />
+    <ClInclude Include="..\..\cpp\platform\public\atomic_boolean.h" />
+    <ClInclude Include="..\..\cpp\platform\public\atomic_reference.h" />
+    <ClInclude Include="..\..\cpp\platform\public\ble.h" />
+    <ClInclude Include="..\..\cpp\platform\public\bluetooth_adapter.h" />
+    <ClInclude Include="..\..\cpp\platform\public\bluetooth_classic.h" />
+    <ClInclude Include="..\..\cpp\platform\public\cancelable.h" />
+    <ClInclude Include="..\..\cpp\platform\public\cancelable_alarm.h" />
+    <ClInclude Include="..\..\cpp\platform\public\cancellable_task.h" />
+    <ClInclude Include="..\..\cpp\platform\public\condition_variable.h" />
+    <ClInclude Include="..\..\cpp\platform\public\count_down_latch.h" />
+    <ClInclude Include="..\..\cpp\platform\public\crypto.h" />
+    <ClInclude Include="..\..\cpp\platform\public\file.h" />
+    <ClInclude Include="..\..\cpp\platform\public\future.h" />
+    <ClInclude Include="..\..\cpp\platform\public\lockable.h" />
+    <ClInclude Include="..\..\cpp\platform\public\logging.h" />
+    <ClInclude Include="..\..\cpp\platform\public\monitored_runnable.h" />
+    <ClInclude Include="..\..\cpp\platform\public\multi_thread_executor.h" />
+    <ClInclude Include="..\..\cpp\platform\public\mutex.h" />
+    <ClInclude Include="..\..\cpp\platform\public\mutex_lock.h" />
+    <ClInclude Include="..\..\cpp\platform\public\pending_job_registry.h" />
+    <ClInclude Include="..\..\cpp\platform\public\pipe.h" />
+    <ClInclude Include="..\..\cpp\platform\public\scheduled_executor.h" />
+    <ClInclude Include="..\..\cpp\platform\public\settable_future.h" />
+    <ClInclude Include="..\..\cpp\platform\public\single_thread_executor.h" />
+    <ClInclude Include="..\..\cpp\platform\public\submittable_executor.h" />
+    <ClInclude Include="..\..\cpp\platform\public\system_clock.h" />
+    <ClInclude Include="..\..\cpp\platform\public\thread_check_callable.h" />
+    <ClInclude Include="..\..\cpp\platform\public\thread_check_runnable.h" />
+    <ClInclude Include="..\..\cpp\platform\public\webrtc.h" />
+    <ClInclude Include="..\..\cpp\platform\public\wifi_lan.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Nearby.h">
+      <DependentUpon>Nearby.idl</DependentUpon>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\cpp\platform\impl\windows\crypto.cc" />
+    <ClCompile Include="..\..\cpp\platform\impl\windows\log_message.cc" />
+    <ClCompile Include="..\..\cpp\platform\impl\windows\platform.cc" />
+    <ClCompile Include="..\..\cpp\platform\impl\windows\system_clock.cc" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Nearby.cpp">
+      <DependentUpon>Nearby.idl</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="Nearby.idl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NearbyLibrary.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Text Include="readme.txt">
+      <DeploymentContent>false</DeploymentContent>
+    </Text>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\Microsoft.Windows.CppWinRT.2.0.210505.3\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.210505.3\build\native\Microsoft.Windows.CppWinRT.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.210505.3\build\native\Microsoft.Windows.CppWinRT.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.CppWinRT.2.0.210505.3\build\native\Microsoft.Windows.CppWinRT.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.210505.3\build\native\Microsoft.Windows.CppWinRT.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.CppWinRT.2.0.210505.3\build\native\Microsoft.Windows.CppWinRT.targets'))" />
+  </Target>
+</Project>

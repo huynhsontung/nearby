@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalOptions>../../bazel-bin/core/core.lib
+../../bazel-bin/core/internal/internal.lib
+../../bazel-bin/core/internal/mediums/mediums.lib
+../../bazel-bin/core/internal/mediums/ble_v2/ble_v2.lib
+../../bazel-bin/external/smhasher/libmurmur3.lib
+../../bazel-bin/core/internal/mediums/webrtc/webrtc.lib
+../../bazel-bin/core/core_types.lib
+../../bazel-bin/core/internal/mediums/utils.lib
+../../bazel-bin/proto/mediums/web_rtc_signaling_frames_proto.lib
+../../bazel-bin/platform/public/comm.lib
+../../bazel-bin/proto/connections_enums_proto.lib
+../../bazel-bin/external/ukey2/ukey2.lib
+../../bazel-bin/external/ukey2/device_to_device_messages_cc_proto.lib
+../../bazel-bin/external/ukey2/securegcm_cc_proto.lib
+../../bazel-bin/external/ukey2/ukey_cc_proto.lib
+../../bazel-bin/external/securemessage/securemessage.lib
+../../bazel-bin/external/securemessage/securemessage_cc_proto.lib
+../../bazel-bin/external/boringssl/ssl.lib
+../../bazel-bin/platform/public/types.lib
+../../bazel-bin/external/boringssl/crypto.lib
+../../bazel-bin/proto/connections/offline_wire_formats_proto.lib
+../../bazel-bin/external/com_github_protocolbuffers_protobuf/protobuf.lib
+../../bazel-bin/external/com_github_protocolbuffers_protobuf/protobuf_lite.lib
+../../bazel-bin/platform/base/cancellation_flag.lib
+../../bazel-bin/platform/base/util.lib
+../../bazel-bin/platform/base/base.lib
+../../bazel-bin/external/abseil/absl/hash/hash.lib
+../../bazel-bin/external/abseil/absl/hash/city.lib
+../../bazel-bin/external/abseil/absl/hash/wyhash.lib
+../../bazel-bin/external/abseil/absl/types/bad_variant_access.lib
+../../bazel-bin/external/abseil/absl/strings/cord.lib
+../../bazel-bin/external/abseil/absl/strings/cord_internal.lib
+../../bazel-bin/external/abseil/absl/container/raw_hash_set.lib
+../../bazel-bin/external/abseil/absl/container/hashtablez_sampler.lib
+../../bazel-bin/external/abseil/absl/base/exponential_biased.lib
+../../bazel-bin/external/abseil/absl/strings/str_format_internal.lib
+../../bazel-bin/external/abseil/absl/types/bad_optional_access.lib
+../../bazel-bin/external/abseil/absl/synchronization/synchronization.lib
+../../bazel-bin/external/abseil/absl/synchronization/graphcycles_internal.lib
+../../bazel-bin/external/abseil/absl/debugging/stacktrace.lib
+../../bazel-bin/external/abseil/absl/debugging/symbolize.lib
+../../bazel-bin/external/abseil/absl/debugging/debugging_internal.lib
+../../bazel-bin/external/abseil/absl/debugging/demangle_internal.lib
+../../bazel-bin/external/abseil/absl/base/malloc_internal.lib
+../../bazel-bin/external/abseil/absl/time/time.lib
+../../bazel-bin/external/abseil/absl/strings/strings.lib
+../../bazel-bin/external/abseil/absl/strings/internal.lib
+../../bazel-bin/external/abseil/absl/base/base.lib
+../../bazel-bin/external/abseil/absl/base/spinlock_wait.lib
+../../bazel-bin/external/abseil/absl/base/throw_delegate.lib
+../../bazel-bin/external/abseil/absl/base/raw_logging_internal.lib
+../../bazel-bin/external/abseil/absl/base/log_severity.lib
+../../bazel-bin/external/abseil/absl/numeric/int128.lib
+../../bazel-bin/external/abseil/absl/time/internal/cctz/time_zone.lib
+../../bazel-bin/external/abseil/absl/time/internal/cctz/civil_time.lib
+../../bazel-nearby-connections/external/webrtc/out/Default/obj/webrtc.lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>Winmm.lib;Iphlpapi.lib;WindowsApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ClCompile />
+    <ClCompile>
+      <PreprocessorDefinitions>_HAS_DEPRECATED_RESULT_OF;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;_SILENCE_ALL_CXX20_DEPRECATION_WARNINGS;USE_AURA=1;_HAS_EXCEPTIONS=0;__STD_C;_CRT_RAND_S;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_DEPRECATE;_ATL_NO_OPENGL;_WINDOWS;CERT_CHAIN_PARA_HAS_EXTRA_FIELDS;PSAPI_VERSION=2;WIN32;_SECURE_ATL;WINAPI_FAMILY=WINAPI_FAMILY_DESKTOP_APP;WIN32_LEAN_AND_MEAN;NOMINMAX;_UNICODE;UNICODE;NTDDI_VERSION=NTDDI_WIN10_VB;_WIN32_WINNT=0x0A00;WINVER=0x0A00;_DEBUG;DYNAMIC_ANNOTATIONS_ENABLED=1;_HAS_ITERATOR_DEBUGGING=0;WEBRTC_ENABLE_PROTOBUF=0;WEBRTC_INCLUDE_INTERNAL_AUDIO_DEVICE;RTC_ENABLE_VP9;HAVE_SCTP;WEBRTC_LIBRARY_IMPL;WEBRTC_NON_STATIC_TRACE_EVENT_HANDLERS=0;WEBRTC_WIN;ABSL_ALLOCATOR_NOTHROW=1;_ENABLE_EXTENDED_ALIGNED_STORAGE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\cpp;..\..\bazel-nearby-connections\external;..\..\bazel-nearby-connections\external\webrtc;..\..\bazel-nearby-connections\external\abseil;..\..\bazel-nearby-connections\external\com_github_protocolbuffers_protobuf\src;..\..\bazel-nearby-connections\external\ukey2\src\main\cpp\include;..\..\bazel-nearby-connections\external\securemessage\cpp\include;..\..\bazel-nearby-connections\external\boringssl\src\include;..\..\bazel-bin;..\..\bazel-bin\external\ukey2\src\main;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>

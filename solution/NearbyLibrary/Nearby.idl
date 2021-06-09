@@ -1,0 +1,8 @@
+namespace NearbyLibrary
+{
+    [default_interface]
+    runtimeclass Nearby
+    {
+        Nearby();
+    }
+}
