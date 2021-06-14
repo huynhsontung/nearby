@@ -1,0 +1,27 @@
+namespace NearbyLibrary
+{
+    enum Strategy {
+        None,
+        P2pCluster,
+        P2pStar,
+        P2pPointToPoint,
+    };
+
+    enum StatusState {
+        Success,
+        Error,
+        OutOfOrderApiCall,
+        AlreadyHaveActiveStrategy,
+        AlreadyAdvertising,
+        AlreadyDiscovering,
+        EndpointIoError,
+        EndpointUnknown,
+        ConnectionRejected,
+        AlreadyConnectedToEndpoint,
+        NotConnectedToEndpoint,
+        BluetoothError,
+        BleError,
+        WifiLanError,
+        PayloadUnknown,
+    };
+}

@@ -1,0 +1,26 @@
+import "Enums.idl";
+import "MediumSelector.idl";
+
+namespace NearbyLibrary
+{
+    [default_interface]
+    runtimeclass ConnectionOptions 
+    {
+        Strategy Strategy;
+        MediumSelector Allowed;
+        Boolean AutoUpgradeBandwidth;
+        Boolean EnforceTopologyConstraints;
+        Boolean LowPower;
+        Boolean EnableBluetoothListening;
+        Boolean EnableWebrtcListening;
+        Boolean IsOutOfBandConnection;
+        Windows.Storage.Streams.IBuffer RemoteBluetoothMacAddress;
+        String FastAdvertisementServiceUuid;
+        Int32 KeepAliveIntervalMillis;
+        Int32 KeepAliveTimeoutMillis;
+        Boolean Empty{ get; };
+
+        ConnectionOptions();
+        void Clear();
+    }
+}

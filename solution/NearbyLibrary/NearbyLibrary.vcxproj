@@ -15,7 +15,7 @@
     <ApplicationType>Windows Store</ApplicationType>
     <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
     <WindowsTargetPlatformVersion Condition=" '$(WindowsTargetPlatformVersion)' == '' ">10.0.19041.0</WindowsTargetPlatformVersion>
-    <WindowsTargetPlatformMinVersion>10.0.17134.0</WindowsTargetPlatformMinVersion>
+    <WindowsTargetPlatformMinVersion>10.0.17763.0</WindowsTargetPlatformMinVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <ItemGroup Label="ProjectConfigurations">
@@ -319,9 +319,21 @@
     <ClInclude Include="..\..\cpp\platform\public\thread_check_runnable.h" />
     <ClInclude Include="..\..\cpp\platform\public\webrtc.h" />
     <ClInclude Include="..\..\cpp\platform\public\wifi_lan.h" />
+    <ClInclude Include="ConnectionOptions.h">
+      <DependentUpon>ConnectionOptions.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="MediumSelector.h">
+      <DependentUpon>MediumSelector.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Nearby.h">
       <DependentUpon>Nearby.idl</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Status.h">
+      <DependentUpon>Status.idl</DependentUpon>
+      <SubType>Code</SubType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -329,6 +341,14 @@
     <ClCompile Include="..\..\cpp\platform\impl\windows\log_message.cc" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\platform.cc" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\system_clock.cc" />
+    <ClCompile Include="ConnectionOptions.cpp">
+      <DependentUpon>ConnectionOptions.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="MediumSelector.cpp">
+      <DependentUpon>MediumSelector.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
@@ -336,9 +356,23 @@
       <DependentUpon>Nearby.idl</DependentUpon>
     </ClCompile>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="Status.cpp">
+      <DependentUpon>Status.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <Midl Include="ConnectionOptions.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="Enums.idl" />
+    <Midl Include="MediumSelector.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="Nearby.idl" />
+    <Midl Include="Status.idl">
+      <SubType>Designer</SubType>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <None Include="NearbyLibrary.def" />

@@ -4,5 +4,7 @@ namespace NearbyLibrary
     runtimeclass Nearby
     {
         Nearby();
+        void StartAdvertising();
+        String GetLocalEndpointId();
     }
 }

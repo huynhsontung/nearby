@@ -53,21 +53,24 @@
     <Filter Include="Library\Headers\core\internal\mediums\ble_v2">
       <UniqueIdentifier>{c06897a5-46fb-462a-92ce-6de39bd72dcd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Library\Sources">
+      <UniqueIdentifier>{bf55f702-4526-4fd3-981a-fb7fe9dddd71}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\system_clock.cc">
-      <Filter>Library</Filter>
+      <Filter>Library\Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\cpp\platform\impl\windows\crypto.cc">
-      <Filter>Library</Filter>
+      <Filter>Library\Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\cpp\platform\impl\windows\log_message.cc">
-      <Filter>Library</Filter>
+      <Filter>Library\Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\cpp\platform\impl\windows\platform.cc">
-      <Filter>Library</Filter>
+      <Filter>Library\Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -602,7 +605,21 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="Nearby.idl" />
+    <Midl Include="Status.idl">
+      <Filter>Library</Filter>
+    </Midl>
+    <Midl Include="Nearby.idl">
+      <Filter>Library</Filter>
+    </Midl>
+    <Midl Include="MediumSelector.idl">
+      <Filter>Library</Filter>
+    </Midl>
+    <Midl Include="ConnectionOptions.idl">
+      <Filter>Library</Filter>
+    </Midl>
+    <Midl Include="Enums.idl">
+      <Filter>Library</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <None Include="NearbyLibrary.def" />

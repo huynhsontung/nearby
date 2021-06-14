@@ -10,6 +10,9 @@ namespace winrt::NearbyLibrary::implementation
     {
         Nearby() = default;
 
+        void StartAdvertising();
+        hstring GetLocalEndpointId();
+
     private:
         location::nearby::connections::Core core_;
     };

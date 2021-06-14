@@ -1,0 +1,17 @@
+namespace NearbyLibrary
+{
+    [default_interface]
+    runtimeclass MediumSelector 
+    {
+        MediumSelector();
+
+        Boolean Bluetooth;
+        Boolean Ble;
+        Boolean WebRtc;
+        Boolean WifiLan;
+
+        Boolean All{ get; };
+        Boolean Any{ get; };
+        Int32 Count{ get; };
+    }
+}
