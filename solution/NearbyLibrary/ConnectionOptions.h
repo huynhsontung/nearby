@@ -23,8 +23,8 @@ namespace winrt::NearbyLibrary::implementation
         void EnableWebrtcListening(bool value) { enable_bluetooth_listening_ = value; }
         bool IsOutOfBandConnection() { return is_out_of_band_connection_; }
         void IsOutOfBandConnection(bool value) { is_out_of_band_connection_ = value; }
-        winrt::Windows::Storage::Streams::IBuffer RemoteBluetoothMacAddress() { return remote_bluetooth_mac_address_; }
-        void RemoteBluetoothMacAddress(winrt::Windows::Storage::Streams::IBuffer const& value) { remote_bluetooth_mac_address_ = value; }
+        hstring RemoteBluetoothMacAddress() { return remote_bluetooth_mac_address_; }
+        void RemoteBluetoothMacAddress(hstring const& value) { remote_bluetooth_mac_address_ = value; }
         hstring FastAdvertisementServiceUuid() { return fast_advertisement_service_uuid_; }
         void FastAdvertisementServiceUuid(hstring const& value) { fast_advertisement_service_uuid_ = value; }
         int32_t KeepAliveIntervalMillis() { return keep_alive_interval_millis_; }
@@ -43,7 +43,7 @@ namespace winrt::NearbyLibrary::implementation
         bool enable_bluetooth_listening_ = false;
         bool enable_webrtc_listening_ = false;
         bool is_out_of_band_connection_ = false;
-        Windows::Storage::Streams::IBuffer remote_bluetooth_mac_address_{ nullptr };
+        hstring remote_bluetooth_mac_address_{};
         hstring fast_advertisement_service_uuid_{};
         int keep_alive_interval_millis_ = 0;
         int keep_alive_timeout_millis_ = 0;

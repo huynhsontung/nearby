@@ -14,7 +14,7 @@ namespace NearbyLibrary
         Boolean EnableBluetoothListening;
         Boolean EnableWebrtcListening;
         Boolean IsOutOfBandConnection;
-        Windows.Storage.Streams.IBuffer RemoteBluetoothMacAddress;
+        String RemoteBluetoothMacAddress;
         String FastAdvertisementServiceUuid;
         Int32 KeepAliveIntervalMillis;
         Int32 KeepAliveTimeoutMillis;
