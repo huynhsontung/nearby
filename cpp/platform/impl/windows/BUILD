@@ -37,9 +37,10 @@ cc_library(
         "submittable_executor.h",
     ],
     deps = [
-        "//base",
+        "//base:stringprintf",
         "//platform/api:types",
         "//platform/base",
+        "@abseil//absl/base:log_severity",
     ],
 )
 
