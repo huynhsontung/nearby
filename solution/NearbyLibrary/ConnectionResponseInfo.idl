@@ -1,0 +1,13 @@
+namespace NearbyLibrary
+{
+    runtimeclass ConnectionResponseInfo
+    {
+        ConnectionResponseInfo();
+        
+        String RemoteEndpointInfo{ get; set; };
+        String AuthenticationToken{ get; set; };
+        String AuthenticationDigits{ get; set; };
+        Boolean IsIncomingConnection{ get; set; };
+        Boolean IsConnectionVerified{ get; set; };
+    }
+}

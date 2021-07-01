@@ -1,0 +1,12 @@
+import "BaseEventArgs.idl";
+import "Status.idl";
+
+namespace NearbyLibrary
+{
+    [default_interface]
+    runtimeclass ConnectionRejectedEventArgs : BaseEventArgs 
+    {
+        ConnectionRejectedEventArgs(Status status, String endpointId);
+        Status Status{ get; set; };
+    }
+}

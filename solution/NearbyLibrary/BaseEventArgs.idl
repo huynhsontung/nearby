@@ -1,0 +1,7 @@
+namespace NearbyLibrary
+{
+    interface BaseEventArgs
+    {
+        String EndpointId { get; set; };
+    }
+}

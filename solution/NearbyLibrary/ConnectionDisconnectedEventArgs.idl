@@ -1,0 +1,10 @@
+import "BaseEventArgs.idl";
+
+namespace NearbyLibrary
+{
+    [default_interface]
+    runtimeclass ConnectionDisconnectedEventArgs : BaseEventArgs
+    {
+        ConnectionDisconnectedEventArgs(String endpointId);
+    }
+}
