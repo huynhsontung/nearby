@@ -319,8 +319,28 @@
     <ClInclude Include="..\..\cpp\platform\public\thread_check_runnable.h" />
     <ClInclude Include="..\..\cpp\platform\public\webrtc.h" />
     <ClInclude Include="..\..\cpp\platform\public\wifi_lan.h" />
+    <ClInclude Include="ConnectionAcceptedEventArgs.h">
+      <DependentUpon>ConnectionAcceptedEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="ConnectionDisconnectedEventArgs.h">
+      <DependentUpon>ConnectionDisconnectedEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="ConnectionInitiatedEventArgs.h">
+      <DependentUpon>ConnectionInitiatedEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="ConnectionOptions.h">
       <DependentUpon>ConnectionOptions.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="ConnectionRejectedEventArgs.h">
+      <DependentUpon>ConnectionRejectedEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="ConnectionResponseInfo.h">
+      <DependentUpon>ConnectionResponseInfo.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="MediumSelector.h">
@@ -341,8 +361,28 @@
     <ClCompile Include="..\..\cpp\platform\impl\windows\log_message.cc" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\platform.cc" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\system_clock.cc" />
+    <ClCompile Include="ConnectionAcceptedEventArgs.cpp">
+      <DependentUpon>ConnectionAcceptedEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="ConnectionDisconnectedEventArgs.cpp">
+      <DependentUpon>ConnectionDisconnectedEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="ConnectionInitiatedEventArgs.cpp">
+      <DependentUpon>ConnectionInitiatedEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="ConnectionOptions.cpp">
       <DependentUpon>ConnectionOptions.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="ConnectionRejectedEventArgs.cpp">
+      <DependentUpon>ConnectionRejectedEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="ConnectionResponseInfo.cpp">
+      <DependentUpon>ConnectionResponseInfo.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="MediumSelector.cpp">
@@ -362,7 +402,23 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <Midl Include="BaseEventArgs.idl" />
+    <Midl Include="ConnectionAcceptedEventArgs.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="ConnectionDisconnectedEventArgs.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="ConnectionInitiatedEventArgs.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="ConnectionOptions.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="ConnectionRejectedEventArgs.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="ConnectionResponseInfo.idl">
       <SubType>Designer</SubType>
     </Midl>
     <Midl Include="Enums.idl" />

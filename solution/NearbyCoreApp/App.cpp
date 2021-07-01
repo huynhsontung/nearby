@@ -4,6 +4,7 @@
 using namespace winrt;
 
 using namespace Windows;
+using namespace Windows::Foundation;
 using namespace Windows::ApplicationModel::Core;
 using namespace Windows::Foundation::Numerics;
 using namespace Windows::UI;
@@ -17,6 +18,17 @@ struct App : implements<App, IFrameworkViewSource, IFrameworkView>
     Visual m_selected{ nullptr };
     float2 m_offset{};
     NearbyLibrary::Nearby m_nearby{};
+
+    IAsyncAction StartAdvertising()
+    {
+        co_await winrt::resume_background();
+        OutputDebugString(L"Advertising\n");
+        auto options = NearbyLibrary::ConnectionOptions{};
+        options.Strategy(NearbyLibrary::Strategy::P2pPointToPoint);
+        options.Allowed().WifiLan(true);
+        auto value = m_nearby.StartAdvertising(L"nearby.myapp", options, L"none").get();
+        OutputDebugString(L"Here!\n");
+    }
 
     IFrameworkView CreateView()
     {
@@ -91,8 +103,7 @@ struct App : implements<App, IFrameworkViewSource, IFrameworkView>
             AddVisual(point);
         }
 
-        const auto endpointId = m_nearby.GetLocalEndpointId();
-        OutputDebugString(endpointId.c_str());
+        StartAdvertising();
     }
 
     void OnPointerMoved(IInspectable const &, PointerEventArgs const & args)

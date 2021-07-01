@@ -1,0 +1,12 @@
+import "BaseEventArgs.idl";
+import "ConnectionResponseInfo.idl";
+
+namespace NearbyLibrary
+{
+    [default_interface]
+    runtimeclass ConnectionInitiatedEventArgs : BaseEventArgs
+    {
+        ConnectionInitiatedEventArgs(ConnectionResponseInfo response, String endpointId);
+        ConnectionResponseInfo Response{ get; set; };
+    }
+}

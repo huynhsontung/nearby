@@ -1,10 +1,22 @@
+import "ConnectionOptions.idl";
+import "Status.idl";
+import "ConnectionInitiatedEventArgs.idl";
+import "ConnectionAcceptedEventArgs.idl";
+import "ConnectionRejectedEventArgs.idl";
+import "ConnectionDisconnectedEventArgs.idl";
+
 namespace NearbyLibrary
 {
     [default_interface]
     runtimeclass Nearby
     {
+        event Windows.Foundation.TypedEventHandler<Nearby, ConnectionInitiatedEventArgs> ConnectionInitiated;
+        event Windows.Foundation.TypedEventHandler<Nearby, ConnectionAcceptedEventArgs> ConnectionAccepted;
+        event Windows.Foundation.TypedEventHandler<Nearby, ConnectionRejectedEventArgs> ConnectionRejected;
+        event Windows.Foundation.TypedEventHandler<Nearby, ConnectionDisconnectedEventArgs> ConnectionDisconnected;
+
         Nearby();
-        void StartAdvertising();
+        Windows.Foundation.IAsyncOperation<Status> StartAdvertising(String serviceId, ConnectionOptions options, String endpointInfo);
         String GetLocalEndpointId();
     }
 }
