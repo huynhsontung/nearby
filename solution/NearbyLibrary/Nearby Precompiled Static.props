@@ -24,10 +24,8 @@
 ../../bazel-bin/external/securemessage/securemessage_cc_proto.lib
 ../../bazel-bin/external/boringssl/ssl.lib
 ../../bazel-bin/platform/public/types.lib
-../../bazel-bin/platform/impl/windows/windows.lib
 ../../bazel-bin/platform/impl/windows/crypto.lib
 ../../bazel-bin/external/boringssl/crypto.lib
-../../bazel-bin/platform/impl/windows/types.lib
 ../../bazel-bin/base/stringprintf.lib
 ../../bazel-bin/proto/connections/offline_wire_formats_proto.lib
 ../../bazel-bin/external/com_github_protocolbuffers_protobuf/protobuf.lib
