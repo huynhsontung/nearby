@@ -75,6 +75,18 @@
     <ClCompile Include="..\..\cpp\platform\impl\windows\platform.cc">
       <Filter>Library\Sources</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\cpp\platform\impl\windows\bluetooth_classic_device.cc">
+      <Filter>Library\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cpp\platform\impl\windows\bluetooth_classic_medium.cc">
+      <Filter>Library\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cpp\platform\impl\windows\bluetooth_classic_server_socket.cc">
+      <Filter>Library\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cpp\platform\impl\windows\bluetooth_classic_socket.cc">
+      <Filter>Library\Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

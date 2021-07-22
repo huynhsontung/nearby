@@ -12,7 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "platform/impl/windows/bluetooth_classic_socket.h"
+#include "pch.h"
+#include "bluetooth_classic_socket.h"
 
 namespace location {
 namespace nearby {

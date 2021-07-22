@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "platform/impl/windows/bluetooth_classic_medium.h"
+#include "pch.h"
+#include "bluetooth_classic_medium.h"
 
-#include "platform/impl/windows/bluetooth_classic_device.h"
-#include "platform/impl/windows/generated/winrt/Windows.Devices.Bluetooth.h"
-#include "platform/impl/windows/generated/winrt/Windows.Devices.Enumeration.h"
-#include "platform/impl/windows/generated/winrt/Windows.Foundation.Collections.h"
-#include "platform/impl/windows/generated/winrt/base.h"
+#include "bluetooth_classic_device.h"
+#include <winrt/Windows.Devices.Bluetooth.h>
+#include <winrt/Windows.Devices.Enumeration.h>
+#include <winrt/Windows.Foundation.Collections.h>
 
 namespace location {
 namespace nearby {

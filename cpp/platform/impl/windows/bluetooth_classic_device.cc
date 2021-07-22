@@ -12,15 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "pch.h"
 #include <winstring.h>
 
 #include <codecvt>
 #include <locale>
 #include <string>
 
-#include "platform/impl/windows/generated/winrt/Windows.Devices.Bluetooth.h"
+#include <winrt/Windows.Devices.Bluetooth.h>
 
-#include "platform/impl/windows/bluetooth_classic_device.h"
+#include "bluetooth_classic_device.h"
 
 namespace location {
 namespace nearby {

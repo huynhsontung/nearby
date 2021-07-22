@@ -357,6 +357,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\cpp\platform\impl\windows\bluetooth_classic_device.cc" />
+    <ClCompile Include="..\..\cpp\platform\impl\windows\bluetooth_classic_medium.cc" />
+    <ClCompile Include="..\..\cpp\platform\impl\windows\bluetooth_classic_server_socket.cc" />
+    <ClCompile Include="..\..\cpp\platform\impl\windows\bluetooth_classic_socket.cc" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\crypto.cc" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\log_message.cc" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\platform.cc" />
