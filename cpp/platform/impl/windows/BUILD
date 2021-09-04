@@ -115,7 +115,7 @@ cc_library(
         "wifi_lan_socket.cc",
     ],
     # compatible_with = ["//buildenv/target:non_prod"],
-    copts = ["-Icpp/platform/impl/windows/generated"],
+    copts = ["-Iplatform/impl/windows/generated"],
     visibility = [
         "//:__subpackages__",
     ],

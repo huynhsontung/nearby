@@ -4,7 +4,7 @@
 class CCore
 {
 public:
-    CCore() : _core(location::nearby::connections::Core()) {}
+    CCore() : _core(location::nearby::connections::Core(nullptr)) {}
     /*void StartDiscovery()
     {
         auto options = location::nearby::connections::ConnectionOptions{};
