@@ -7,6 +7,9 @@
     <Link>
       <AdditionalOptions>../../bazel-bin/core/core.lib
 ../../bazel-bin/core/internal/internal.lib
+../../bazel-bin/analytics/analytics.lib
+../../bazel-bin/proto/analytics/connections_log_proto.lib
+../../bazel-bin/proto/errorcode/error_code_enums_proto.lib
 ../../bazel-bin/core/internal/mediums/mediums.lib
 ../../bazel-bin/core/internal/mediums/ble_v2/ble_v2.lib
 ../../bazel-bin/external/smhasher/libmurmur3.lib
@@ -23,16 +26,16 @@
 ../../bazel-bin/external/securemessage/securemessage.lib
 ../../bazel-bin/external/securemessage/securemessage_cc_proto.lib
 ../../bazel-bin/external/boringssl/ssl.lib
-../../bazel-bin/platform/public/types.lib
 ../../bazel-bin/platform/impl/windows/crypto.lib
 ../../bazel-bin/external/boringssl/crypto.lib
 ../../bazel-bin/base/stringprintf.lib
+../../bazel-bin/platform/impl/shared/file.lib
+../../bazel-bin/platform/public/types.lib
 ../../bazel-bin/proto/connections/offline_wire_formats_proto.lib
 ../../bazel-bin/external/com_github_protocolbuffers_protobuf/protobuf.lib
 ../../bazel-bin/external/com_github_protocolbuffers_protobuf/protobuf_lite.lib
 ../../bazel-bin/platform/base/cancellation_flag.lib
 ../../bazel-bin/platform/base/util.lib
-../../bazel-bin/platform/impl/shared/file.lib
 ../../bazel-bin/platform/base/base.lib
 ../../bazel-bin/external/abseil/absl/hash/hash.lib
 ../../bazel-bin/external/abseil/absl/hash/city.lib
@@ -43,8 +46,6 @@
 ../../bazel-bin/external/abseil/absl/container/raw_hash_set.lib
 ../../bazel-bin/external/abseil/absl/container/hashtablez_sampler.lib
 ../../bazel-bin/external/abseil/absl/base/exponential_biased.lib
-../../bazel-bin/external/abseil/absl/strings/str_format_internal.lib
-../../bazel-bin/external/abseil/absl/types/bad_optional_access.lib
 ../../bazel-bin/external/abseil/absl/synchronization/synchronization.lib
 ../../bazel-bin/external/abseil/absl/synchronization/graphcycles_internal.lib
 ../../bazel-bin/external/abseil/absl/debugging/stacktrace.lib
@@ -52,9 +53,9 @@
 ../../bazel-bin/external/abseil/absl/debugging/debugging_internal.lib
 ../../bazel-bin/external/abseil/absl/debugging/demangle_internal.lib
 ../../bazel-bin/external/abseil/absl/base/malloc_internal.lib
+../../bazel-bin/external/abseil/absl/strings/str_format_internal.lib
+../../bazel-bin/external/abseil/absl/types/bad_optional_access.lib
 ../../bazel-bin/external/abseil/absl/time/time.lib
-../../bazel-bin/external/abseil/absl/time/internal/cctz/time_zone.lib
-../../bazel-bin/external/abseil/absl/time/internal/cctz/civil_time.lib
 ../../bazel-bin/external/abseil/absl/strings/strings.lib
 ../../bazel-bin/external/abseil/absl/strings/internal.lib
 ../../bazel-bin/external/abseil/absl/base/base.lib
@@ -63,6 +64,8 @@
 ../../bazel-bin/external/abseil/absl/base/raw_logging_internal.lib
 ../../bazel-bin/external/abseil/absl/base/log_severity.lib
 ../../bazel-bin/external/abseil/absl/numeric/int128.lib
+../../bazel-bin/external/abseil/absl/time/internal/cctz/time_zone.lib
+../../bazel-bin/external/abseil/absl/time/internal/cctz/civil_time.lib
 ../../bazel-nearby-connections/external/webrtc/out/Default/obj/webrtc.lib %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>Winmm.lib;Iphlpapi.lib;WindowsApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>

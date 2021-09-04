@@ -106,7 +106,7 @@ cc_library(
         "platform.cc",
     ],
     visibility = [
-        "//cpp/analytics:__subpackages__",
+        "//analytics:__subpackages__",
         "//core:__subpackages__",
         "//platform:__subpackages__",
         "//proto/analytics:__subpackages__",

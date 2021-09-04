@@ -62,7 +62,7 @@ cc_library(
     copts = ["-DCORE_ADAPTER_DLL"],
     visibility = [
         "//googlemac/iPhone/Shared/Nearby/Connections:__subpackages__",
-        "//cpp/analytics:__subpackages__",
+        "//analytics:__subpackages__",
         "//core:__subpackages__",
     ],
     deps = [
@@ -84,7 +84,7 @@ cc_library(
     ],
     # compatible_with = ["//buildenv/target:non_prod"],
     visibility = [
-        "//cpp/analytics:__subpackages__",
+        "//analytics:__subpackages__",
     ],
     deps = [
         "//proto/analytics:connections_log_cc_proto",

@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "pch.h"
 #include "platform/impl/windows/bluetooth_adapter.h"
 
 #include <windows.h>
@@ -103,6 +104,9 @@ bool BluetoothAdapter::SetScanMode(ScanMode scan_mode) {
 // https://developer.android.com/reference/android/bluetooth/BluetoothAdapter.html#getName()
 // Returns an empty string on error
 std::string BluetoothAdapter::GetName() const {
+  NEARBY_LOGS(ERROR) << __func__ << ": Failed to get any radio name. Unsupported.";
+  return std::string();   // NEARBY LIBRARY INCOMPATIBLE
+  /*
   char *instanceID = GetGenericBluetoothAdapterInstanceID();
 
   if (instanceID == NULL) {
@@ -185,10 +189,17 @@ std::string BluetoothAdapter::GetName() const {
   // If we're here, we couldn't get a local name, this should never happen
   NEARBY_LOGS(ERROR) << __func__ << ": Failed to get any radio name";
   return std::string();
+  */
 }
 
 // https://developer.android.com/reference/android/bluetooth/BluetoothAdapter.html#setName(java.lang.String)
 bool BluetoothAdapter::SetName(absl::string_view name) {
+  NEARBY_LOGS(ERROR)
+    << __func__
+    << ": Failed to update radio module local name. Unsupported.";
+
+  return false; // NEARBY LIBRARY INCOMPATIBLE
+  /*
   char *instanceID = GetGenericBluetoothAdapterInstanceID();
 
   if (instanceID == NULL) {
@@ -372,6 +383,7 @@ bool BluetoothAdapter::SetName(absl::string_view name) {
   }
 
   return true;
+  */
 }
 
 void BluetoothAdapter::find_and_replace(char *source, const char *strFind,
@@ -389,6 +401,11 @@ void BluetoothAdapter::find_and_replace(char *source, const char *strFind,
 }
 
 char *BluetoothAdapter::GetGenericBluetoothAdapterInstanceID(void) const {
+  NEARBY_LOGS(ERROR) << __func__
+    << ": Failed to get the generic bluetooth adapter id. Unsupported.";
+
+  return nullptr;   // NEARBY LIBRARY INCOMPATIBLE
+  /*
   unsigned i;
   CONFIGRET r;
   HDEVINFO hDevInfo;
@@ -439,6 +456,7 @@ char *BluetoothAdapter::GetGenericBluetoothAdapterInstanceID(void) const {
                      << ": Failed to get the generic bluetooth adapter id";
 
   return NULL;
+  */
 }
 
 // Returns BT MAC address assigned to this adapter.
