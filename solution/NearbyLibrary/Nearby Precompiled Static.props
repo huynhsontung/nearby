@@ -9,7 +9,6 @@
 ../../bazel-bin/core/internal/internal.lib
 ../../bazel-bin/analytics/analytics.lib
 ../../bazel-bin/proto/analytics/connections_log_proto.lib
-../../bazel-bin/proto/errorcode/error_code_enums_proto.lib
 ../../bazel-bin/core/internal/mediums/mediums.lib
 ../../bazel-bin/core/internal/mediums/ble_v2/ble_v2.lib
 ../../bazel-bin/external/smhasher/libmurmur3.lib
@@ -17,6 +16,8 @@
 ../../bazel-bin/core/core_types.lib
 ../../bazel-bin/core/internal/mediums/utils.lib
 ../../bazel-bin/proto/mediums/web_rtc_signaling_frames_proto.lib
+../../bazel-bin/platform/base/error_code_recorder.lib
+../../bazel-bin/proto/errorcode/error_code_enums_proto.lib
 ../../bazel-bin/platform/public/comm.lib
 ../../bazel-bin/proto/connections_enums_proto.lib
 ../../bazel-bin/external/ukey2/ukey2.lib
@@ -26,7 +27,6 @@
 ../../bazel-bin/external/securemessage/securemessage.lib
 ../../bazel-bin/external/securemessage/securemessage_cc_proto.lib
 ../../bazel-bin/external/boringssl/ssl.lib
-../../bazel-bin/platform/impl/windows/crypto.lib
 ../../bazel-bin/external/boringssl/crypto.lib
 ../../bazel-bin/base/stringprintf.lib
 ../../bazel-bin/platform/impl/shared/file.lib

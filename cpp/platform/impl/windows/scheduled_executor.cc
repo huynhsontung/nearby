@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "pch.h"
 #include "platform/impl/windows/scheduled_executor.h"
 
 #include "platform/impl/windows/cancelable.h"

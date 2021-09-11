@@ -38,7 +38,7 @@ cc_library(
         "//platform/public:types",
         "//proto:connections_enums_cc_proto",
         "//proto/analytics:connections_log_cc_proto",
-        "//proto/errorcode:error_code_enums_portable_proto",
+        "//proto/errorcode:error_code_enums_cc_proto",
         "@abseil//absl/container:btree",
         "@abseil//absl/time",
     ],

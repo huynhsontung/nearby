@@ -21,7 +21,7 @@
 #include <locale>
 #include <string>
 
-#include <winrt/Windows.Devices.Bluetooth.h>
+#include "platform/impl/windows/generated/winrt/Windows.Devices.Bluetooth.h"
 
 #include "platform/impl/windows/utils.h"
 

@@ -102,6 +102,18 @@
     <ClCompile Include="..\..\cpp\platform\impl\windows\bluetooth_adapter.cc">
       <Filter>Library\Sources</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\cpp\platform\impl\windows\executor.cc">
+      <Filter>Library\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cpp\platform\impl\windows\thread_pool.cc">
+      <Filter>Library\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cpp\platform\impl\windows\scheduled_executor.cc">
+      <Filter>Library\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cpp\platform\impl\windows\submittable_executor.cc">
+      <Filter>Library\Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

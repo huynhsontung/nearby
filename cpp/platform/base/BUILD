@@ -139,7 +139,7 @@ cc_library(
         "error_code_params.h",
         "error_code_recorder.h",
     ],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     visibility = [
         "//analytics:__subpackages__",
         "//core/internal:__subpackages__",
@@ -147,8 +147,8 @@ cc_library(
     ],
     deps = [
         ":logging",
-        "//proto:connections_enums_portable_proto",
-        "//proto/errorcode:error_code_enums_portable_proto",
+        "//proto:connections_enums_cc_proto",
+        "//proto/errorcode:error_code_enums_cc_proto",
     ],
 )
 

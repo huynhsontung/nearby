@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "pch.h"
 #include "platform/impl/windows/executor.h"
 
 #include "platform/impl/windows/generated/winrt/Windows.System.Threading.Core.h"
