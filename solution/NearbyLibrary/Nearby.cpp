@@ -112,7 +112,7 @@ winrt::NearbyLibrary::Status to_winrt(const Status& status) {
 }  // namespace
 
 namespace winrt::NearbyLibrary::implementation {
-Nearby::Nearby() : core_(Core(nullptr)) {
+Nearby::Nearby() : core_(Core(&router_)) {
   connection_listener_ = ConnectionListener{
       [this](
           const std::string& endpoint_id,

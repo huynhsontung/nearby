@@ -17,6 +17,10 @@
 
 #include <algorithm>
 #include <stdarg.h>
+#ifdef NEARBY_LIBRARY
+#include <debugapi.h>
+#include <winrt/base.h>
+#endif
 
 #include "base/stringprintf.h"
 
@@ -49,7 +53,12 @@ LogMessage::LogMessage(const char* file, int line, Severity severity)
     : log_streamer_{ConvertSeverity(severity), file, line,
                     std::stringstream{std::ios_base::out}} {}
 
-LogMessage::~LogMessage() = default;
+LogMessage::~LogMessage() {
+#ifdef NEARBY_LIBRARY
+  OutputDebugString(winrt::to_hstring(log_streamer_.stream.str()).c_str());
+  OutputDebugString(L"\n");
+#endif
+}
 
 void LogMessage::Print(const char* format, ...) {
   va_list ap;

@@ -56,6 +56,7 @@ struct Nearby : NearbyT<Nearby> {
   event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, ConnectionAcceptedEventArgs>> connection_accepted_event_;
   event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, ConnectionRejectedEventArgs>> connection_rejected_event_;
   event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, ConnectionDisconnectedEventArgs>> connection_disconnected_event_;
+  location::nearby::connections::ServiceControllerRouter router_;
   location::nearby::connections::Core core_;
   location::nearby::connections::ConnectionListener connection_listener_;
   // clang-format on

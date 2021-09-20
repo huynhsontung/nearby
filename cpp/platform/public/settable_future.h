@@ -64,7 +64,7 @@ class SettableFuture : public api::SettableFuture<T> {
   }
 
   ExceptionOr<T> Get() override {
-    MutexLock lock(&mutex_);
+    // MutexLock lock(&mutex_);
     while (!done_) {
       completed_.Wait();
     }
@@ -74,7 +74,7 @@ class SettableFuture : public api::SettableFuture<T> {
   }
 
   ExceptionOr<T> Get(absl::Duration timeout) override {
-    MutexLock lock(&mutex_);
+    // MutexLock lock(&mutex_);
     while (!done_) {
       absl::Time start_time = SystemClock::ElapsedRealtime();
       if (completed_.Wait(timeout).Raised(Exception::kInterrupted)) {

@@ -24,8 +24,8 @@ struct App : implements<App, IFrameworkViewSource, IFrameworkView>
         co_await winrt::resume_background();
         OutputDebugString(L"Advertising\n");
         auto options = NearbyLibrary::ConnectionOptions{};
-        options.Strategy(NearbyLibrary::Strategy::P2pPointToPoint);
-        options.Allowed().WifiLan(true);
+        options.Strategy(NearbyLibrary::Strategy::P2pStar);
+        options.Allowed().Bluetooth(true);
         auto value = m_nearby.StartAdvertising(L"nearby.myapp", options, L"none").get();
         OutputDebugString(L"Here!\n");
     }
