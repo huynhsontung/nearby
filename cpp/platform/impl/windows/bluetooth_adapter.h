@@ -18,6 +18,7 @@
 #include <guiddef.h>
 
 #include <string>
+#include <functional>
 
 #include "platform/api/bluetooth_adapter.h"
 #include "platform/impl/windows/generated/winrt/base.h"
