@@ -4,19 +4,35 @@ import "ConnectionInitiatedEventArgs.idl";
 import "ConnectionAcceptedEventArgs.idl";
 import "ConnectionRejectedEventArgs.idl";
 import "ConnectionDisconnectedEventArgs.idl";
+import "EndpointFoundEventArgs.idl";
+import "EndpointLostEventArgs.idl";
+import "EndpointDistanceChangedEventArgs.idl";
+import "OutOfBandConnectionMetadata.idl";
 
 namespace NearbyLibrary
 {
     [default_interface]
     runtimeclass Nearby
     {
+        // StartAdvertising
         event Windows.Foundation.TypedEventHandler<Nearby, ConnectionInitiatedEventArgs> ConnectionInitiated;
         event Windows.Foundation.TypedEventHandler<Nearby, ConnectionAcceptedEventArgs> ConnectionAccepted;
         event Windows.Foundation.TypedEventHandler<Nearby, ConnectionRejectedEventArgs> ConnectionRejected;
         event Windows.Foundation.TypedEventHandler<Nearby, ConnectionDisconnectedEventArgs> ConnectionDisconnected;
 
+        // StartDiscovery
+        event Windows.Foundation.TypedEventHandler<Nearby, EndpointFoundEventArgs> EndpointFound;
+        event Windows.Foundation.TypedEventHandler<Nearby, EndpointLostEventArgs> EndpointLost;
+        event Windows.Foundation.TypedEventHandler<Nearby, EndpointDistanceChangedEventArgs> EndpointDistanceChanged;
+
         Nearby();
-        Windows.Foundation.IAsyncOperation<Status> StartAdvertising(String serviceId, ConnectionOptions options, String endpointInfo);
+        Windows.Foundation.IAsyncOperation<Status> StartAdvertisingAsync(String serviceId, ConnectionOptions options, String endpointInfo);
+        Windows.Foundation.IAsyncOperation<Status> StopAdvertisingAsync();
+        Windows.Foundation.IAsyncOperation<Status> StartDiscoveryAsync(String serviceId, ConnectionOptions options);
+        Windows.Foundation.IAsyncOperation<Status> StopDiscoveryAsync();
+        Windows.Foundation.IAsyncOperation<Status> InjectEndpointAsync(String serviceId, OutOfBandConnectionMetadata metadata);
+        Windows.Foundation.IAsyncOperation<Status> RequestConnectionAsync(String endpointId, String endpointInfo, ConnectionOptions options);
+
         String GetLocalEndpointId();
     }
 }

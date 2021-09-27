@@ -659,9 +659,6 @@
     <Midl Include="ConnectionOptions.idl">
       <Filter>Library</Filter>
     </Midl>
-    <Midl Include="Enums.idl">
-      <Filter>Library</Filter>
-    </Midl>
     <Midl Include="ConnectionResponseInfo.idl">
       <Filter>Library</Filter>
     </Midl>
@@ -679,6 +676,21 @@
     </Midl>
     <Midl Include="BaseEventArgs.idl">
       <Filter>Library\EventArgs</Filter>
+    </Midl>
+    <Midl Include="EndpointFoundEventArgs.idl">
+      <Filter>Library\EventArgs</Filter>
+    </Midl>
+    <Midl Include="EndpointLostEventArgs.idl">
+      <Filter>Library\EventArgs</Filter>
+    </Midl>
+    <Midl Include="EndpointDistanceChangedEventArgs.idl">
+      <Filter>Library\EventArgs</Filter>
+    </Midl>
+    <Midl Include="OutOfBandConnectionMetadata.idl">
+      <Filter>Library</Filter>
+    </Midl>
+    <Midl Include="PayloadProgressInfo.idl">
+      <Filter>Library</Filter>
     </Midl>
   </ItemGroup>
   <ItemGroup>

@@ -1,8 +1,15 @@
-import "Enums.idl";
 import "MediumSelector.idl";
 
 namespace NearbyLibrary
 {
+    enum Strategy
+    {
+        None,
+        P2pCluster,
+        P2pStar,
+        P2pPointToPoint,
+    };
+
     [default_interface]
     runtimeclass ConnectionOptions 
     {

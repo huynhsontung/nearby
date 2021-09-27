@@ -26,7 +26,7 @@ struct App : implements<App, IFrameworkViewSource, IFrameworkView>
         auto options = NearbyLibrary::ConnectionOptions{};
         options.Strategy(NearbyLibrary::Strategy::P2pPointToPoint);
         options.Allowed().Bluetooth(true);
-        auto value = m_nearby.StartAdvertising(L"nearby", options, L"none").get();
+        auto value = m_nearby.StartAdvertisingAsync(L"nearby", options, L"none").get();
         OutputDebugString(L"Here!\n");
     }
 

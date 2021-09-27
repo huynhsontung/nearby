@@ -343,8 +343,28 @@
       <DependentUpon>ConnectionResponseInfo.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="EndpointDistanceChangedEventArgs.h">
+      <DependentUpon>EndpointDistanceChangedEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="EndpointFoundEventArgs.h">
+      <DependentUpon>EndpointFoundEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="EndpointLostEventArgs.h">
+      <DependentUpon>EndpointLostEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="MediumSelector.h">
       <DependentUpon>MediumSelector.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="OutOfBandConnectionMetadata.h">
+      <DependentUpon>OutOfBandConnectionMetadata.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="PayloadProgressInfo.h">
+      <DependentUpon>PayloadProgressInfo.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="pch.h" />
@@ -398,8 +418,28 @@
       <DependentUpon>ConnectionResponseInfo.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="EndpointDistanceChangedEventArgs.cpp">
+      <DependentUpon>EndpointDistanceChangedEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="EndpointFoundEventArgs.cpp">
+      <DependentUpon>EndpointFoundEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="EndpointLostEventArgs.cpp">
+      <DependentUpon>EndpointLostEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="MediumSelector.cpp">
       <DependentUpon>MediumSelector.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="OutOfBandConnectionMetadata.cpp">
+      <DependentUpon>OutOfBandConnectionMetadata.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="PayloadProgressInfo.cpp">
+      <DependentUpon>PayloadProgressInfo.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="pch.cpp">
@@ -434,11 +474,25 @@
     <Midl Include="ConnectionResponseInfo.idl">
       <SubType>Designer</SubType>
     </Midl>
-    <Midl Include="Enums.idl" />
+    <Midl Include="EndpointDistanceChangedEventArgs.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="EndpointFoundEventArgs.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="EndpointLostEventArgs.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="MediumSelector.idl">
       <SubType>Designer</SubType>
     </Midl>
     <Midl Include="Nearby.idl" />
+    <Midl Include="OutOfBandConnectionMetadata.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="PayloadProgressInfo.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="Status.idl">
       <SubType>Designer</SubType>
     </Midl>

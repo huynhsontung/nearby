@@ -25,19 +25,19 @@ BooleanMediumSelector convert(const winrt::NearbyLibrary::MediumSelector& arg) {
 }
 
 ConnectionOptions convert(const winrt::NearbyLibrary::ConnectionOptions& arg) {
-  return {convert(arg.Strategy()),
-          convert(arg.Allowed()),
-          arg.AutoUpgradeBandwidth(),
-          arg.EnforceTopologyConstraints(),
-          arg.LowPower(),
-          arg.EnableBluetoothListening(),
-          arg.EnableWebrtcListening(),
-          arg.IsOutOfBandConnection(),
-          location::nearby::ByteArray{
-              winrt::to_string(arg.RemoteBluetoothMacAddress())},
-          winrt::to_string(arg.FastAdvertisementServiceUuid()),
-          arg.KeepAliveIntervalMillis(),
-          arg.KeepAliveTimeoutMillis()};
+  return {
+      convert(arg.Strategy()),
+      convert(arg.Allowed()),
+      arg.AutoUpgradeBandwidth(),
+      arg.EnforceTopologyConstraints(),
+      arg.LowPower(),
+      arg.EnableBluetoothListening(),
+      arg.EnableWebrtcListening(),
+      arg.IsOutOfBandConnection(),
+      location::nearby::ByteArray{to_string(arg.RemoteBluetoothMacAddress())},
+      to_string(arg.FastAdvertisementServiceUuid()),
+      arg.KeepAliveIntervalMillis(),
+      arg.KeepAliveTimeoutMillis()};
 }
 
 winrt::NearbyLibrary::ConnectionResponseInfo to_winrt(
@@ -123,7 +123,7 @@ Nearby::Nearby() : core_(Core(&router_)) {
       }};
 }
 
-Windows::Foundation::IAsyncOperation<Status> Nearby::StartAdvertising(
+Windows::Foundation::IAsyncOperation<Status> Nearby::StartAdvertisingAsync(
     hstring serviceId, ConnectionOptions options, hstring endpointInfo) {
   struct awaitable : std::suspend_always {
     Core& nearby_core;
@@ -132,6 +132,8 @@ Windows::Foundation::IAsyncOperation<Status> Nearby::StartAdvertising(
     hstring endpoint_info;
     ConnectionListener listener;
     Status result;
+
+    // TODO: wire listener to corresponding events
 
     awaitable(Core& nearby_core, hstring service_id, ConnectionOptions options,
               hstring endpoint_info, const ConnectionListener& listener)
@@ -163,7 +165,30 @@ Windows::Foundation::IAsyncOperation<Status> Nearby::StartAdvertising(
   co_return result;
 }
 
+Windows::Foundation::IAsyncOperation<Status> Nearby::StopAdvertisingAsync() {
+  throw hresult_not_implemented();
+}
+
+Windows::Foundation::IAsyncOperation<Status> Nearby::StartDiscoveryAsync(
+    hstring serviceId, ConnectionOptions options) {
+  throw hresult_not_implemented();
+}
+
+Windows::Foundation::IAsyncOperation<Status> Nearby::StopDiscoveryAsync() {
+  throw hresult_not_implemented();
+}
+
+Windows::Foundation::IAsyncOperation<Status> Nearby::InjectEndpointAsync(
+    hstring serviceId, OutOfBandConnectionMetadata metadata) {
+  throw hresult_not_implemented();
+}
+
+Windows::Foundation::IAsyncOperation<Status> Nearby::RequestConnectionAsync(
+    hstring endpointId, hstring endpointInfo, ConnectionOptions options) {
+  throw hresult_not_implemented();
+}
+
 hstring Nearby::GetLocalEndpointId() {
-  return winrt::to_hstring(core_.GetLocalEndpointId());
+  return to_hstring(core_.GetLocalEndpointId());
 }
 }  // namespace winrt::NearbyLibrary::implementation

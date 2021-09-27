@@ -1,0 +1,20 @@
+namespace NearbyLibrary
+{
+    enum PayloadProgressStatus
+    {
+        Success,
+        Failure,
+        InProgress,
+        Canceled
+    };
+
+    [default_interface]
+    runtimeclass PayloadProgressInfo 
+    {
+        PayloadProgressInfo();
+        Int64 PayloadId;
+        Int64 TotalBytes;
+        Int64 BytesTransferred;
+        PayloadProgressStatus Status;
+    }
+}

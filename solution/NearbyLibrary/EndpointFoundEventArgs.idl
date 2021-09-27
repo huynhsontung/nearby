@@ -1,0 +1,12 @@
+import "BaseEventArgs.idl";
+
+namespace NearbyLibrary
+{
+    [default_interface]
+    runtimeclass EndpointFoundEventArgs : BaseEventArgs
+    {
+        EndpointFoundEventArgs(String endpointId, String endpointInfo, String serviceId);
+        String EndpointInfo{ get; set; };
+        String ServiceId{ get; set; };
+    }
+}

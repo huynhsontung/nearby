@@ -1,0 +1,19 @@
+import "BaseEventArgs.idl";
+
+namespace NearbyLibrary
+{
+    enum DistanceInfo
+    {
+        Unknown,
+        VeryClose,
+        Close,
+        Far
+    };
+
+    [default_interface]
+    runtimeclass EndpointDistanceChangedEventArgs : BaseEventArgs
+    {
+        EndpointDistanceChangedEventArgs(DistanceInfo info, String endpointId);
+        DistanceInfo Info{ get; set; };
+    }
+}

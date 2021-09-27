@@ -4,10 +4,10 @@ namespace NearbyLibrary
     {
         ConnectionResponseInfo();
         
-        String RemoteEndpointInfo{ get; set; };
-        String AuthenticationToken{ get; set; };
-        String AuthenticationDigits{ get; set; };
-        Boolean IsIncomingConnection{ get; set; };
-        Boolean IsConnectionVerified{ get; set; };
+        String RemoteEndpointInfo;
+        String AuthenticationToken;
+        String AuthenticationDigits;
+        Boolean IsIncomingConnection;
+        Boolean IsConnectionVerified;
     }
 }
