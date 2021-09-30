@@ -78,13 +78,40 @@ struct Nearby : NearbyT<Nearby> {
   }
 #pragma endregion
 
+#pragma region Accept Events
+  event_token PayloadReceived(
+      Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby,
+                                             PayloadEventArgs> const& handler) {
+    return payload_received_event_.add(handler);
+  }
+  void PayloadReceived(event_token const& token) noexcept {
+    payload_received_event_.remove(token);
+  }
+
+  event_token PayloadProgressChanged(
+      Windows::Foundation::TypedEventHandler<
+          NearbyLibrary::Nearby, PayloadProgressEventArgs> const& handler) {
+    return payload_progress_changed_event_.add(handler);
+  }
+  void PayloadProgressChanged(event_token const& token) noexcept {
+    payload_progress_changed_event_.remove(token);
+  }
+#pragma endregion
+
   // clang-format off
   Windows::Foundation::IAsyncOperation<Status> StartAdvertisingAsync(hstring serviceId, ConnectionOptions options, hstring endpointInfo);
   Windows::Foundation::IAsyncOperation<Status> StopAdvertisingAsync();
   Windows::Foundation::IAsyncOperation<Status> StartDiscoveryAsync(hstring serviceId, ConnectionOptions options);
   Windows::Foundation::IAsyncOperation<Status> StopDiscoveryAsync();
-  Windows::Foundation::IAsyncOperation<Status> InjectEndpointAsync(hstring serviceId, winrt::NearbyLibrary::OutOfBandConnectionMetadata metadata);
+  Windows::Foundation::IAsyncOperation<Status> InjectEndpointAsync(hstring serviceId, OutOfBandConnectionMetadata metadata);
   Windows::Foundation::IAsyncOperation<Status> RequestConnectionAsync(hstring endpointId, hstring endpointInfo, ConnectionOptions options);
+  Windows::Foundation::IAsyncOperation<Status> AcceptConnectionAsync(hstring endpointId);
+  Windows::Foundation::IAsyncOperation<Status> RejectConnectionAsync(hstring endpointId);
+  Windows::Foundation::IAsyncOperation<Status> SendPayloadAsync(array_view<hstring const> endpointIds, Payload payload);
+  Windows::Foundation::IAsyncOperation<Status> CancelPayloadAsync(int64_t payloadId);
+  Windows::Foundation::IAsyncOperation<Status> DisconnectFromEndpointAsync(hstring endpointId);
+  Windows::Foundation::IAsyncOperation<Status> StopAllEndpointsAsync();
+  Windows::Foundation::IAsyncOperation<Status> InitiateBandwidthUpgradeAsync(hstring endpointId);
   hstring GetLocalEndpointId();
   // clang-format on
 
@@ -97,6 +124,8 @@ struct Nearby : NearbyT<Nearby> {
     event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, EndpointFoundEventArgs>> endpoint_found_event_;
     event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, EndpointLostEventArgs>> endpoint_lost_event_;
     event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, EndpointDistanceChangedEventArgs>> endpoint_distance_changed_event_;
+    event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, PayloadEventArgs>> payload_received_event_;
+    event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, PayloadProgressEventArgs>> payload_progress_changed_event_;
     location::nearby::connections::ServiceControllerRouter router_;
     location::nearby::connections::Core core_;
     location::nearby::connections::ConnectionListener connection_listener_;

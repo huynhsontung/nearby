@@ -1,0 +1,12 @@
+import "BaseEventArgs.idl";
+import "Payload.idl";
+
+namespace NearbyLibrary
+{
+    [default_interface]
+    runtimeclass PayloadEventArgs : BaseEventArgs
+    {
+        PayloadEventArgs(String endpointId, Payload payload);
+        Payload Payload;
+    }
+}

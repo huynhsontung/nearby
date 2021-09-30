@@ -188,6 +188,40 @@ Windows::Foundation::IAsyncOperation<Status> Nearby::RequestConnectionAsync(
   throw hresult_not_implemented();
 }
 
+Windows::Foundation::IAsyncOperation<Status> Nearby::AcceptConnectionAsync(
+    hstring endpointId) {
+  throw hresult_not_implemented();
+}
+
+Windows::Foundation::IAsyncOperation<Status> Nearby::RejectConnectionAsync(
+    hstring endpointId) {
+  throw hresult_not_implemented();
+}
+
+Windows::Foundation::IAsyncOperation<Status> Nearby::SendPayloadAsync(
+    array_view<hstring const> endpointIds, Payload payload) {
+  throw hresult_not_implemented();
+}
+
+Windows::Foundation::IAsyncOperation<Status> Nearby::CancelPayloadAsync(
+    int64_t payloadId) {
+  throw hresult_not_implemented();
+}
+
+Windows::Foundation::IAsyncOperation<Status>
+Nearby::DisconnectFromEndpointAsync(hstring endpointId) {
+  throw hresult_not_implemented();
+}
+
+Windows::Foundation::IAsyncOperation<Status> Nearby::StopAllEndpointsAsync() {
+  throw hresult_not_implemented();
+}
+
+Windows::Foundation::IAsyncOperation<Status>
+Nearby::InitiateBandwidthUpgradeAsync(hstring endpointId) {
+  throw hresult_not_implemented();
+}
+
 hstring Nearby::GetLocalEndpointId() {
   return to_hstring(core_.GetLocalEndpointId());
 }

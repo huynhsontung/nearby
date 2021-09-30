@@ -1,0 +1,14 @@
+namespace NearbyLibrary
+{
+    [default_interface]
+    runtimeclass Payload 
+    {
+        Payload();
+        Payload(Windows.Storage.Streams.IBuffer content);
+        Payload(Int64 id, Windows.Storage.Streams.IBuffer content);
+
+        Int64 Id{ get; };
+        Windows.Storage.Streams.IBuffer Content{ get; };
+        Int64 Offset;
+    }
+}

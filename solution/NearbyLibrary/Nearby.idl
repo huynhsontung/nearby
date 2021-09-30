@@ -7,6 +7,9 @@ import "ConnectionDisconnectedEventArgs.idl";
 import "EndpointFoundEventArgs.idl";
 import "EndpointLostEventArgs.idl";
 import "EndpointDistanceChangedEventArgs.idl";
+import "PayloadEventArgs.idl";
+import "PayloadProgressEventArgs.idl";
+import "Payload.idl";
 import "OutOfBandConnectionMetadata.idl";
 
 namespace NearbyLibrary
@@ -25,6 +28,10 @@ namespace NearbyLibrary
         event Windows.Foundation.TypedEventHandler<Nearby, EndpointLostEventArgs> EndpointLost;
         event Windows.Foundation.TypedEventHandler<Nearby, EndpointDistanceChangedEventArgs> EndpointDistanceChanged;
 
+        // AcceptConnection
+        event Windows.Foundation.TypedEventHandler<Nearby, PayloadEventArgs> PayloadReceived;
+        event Windows.Foundation.TypedEventHandler<Nearby, PayloadProgressEventArgs> PayloadProgressChanged;
+
         Nearby();
         Windows.Foundation.IAsyncOperation<Status> StartAdvertisingAsync(String serviceId, ConnectionOptions options, String endpointInfo);
         Windows.Foundation.IAsyncOperation<Status> StopAdvertisingAsync();
@@ -32,6 +39,13 @@ namespace NearbyLibrary
         Windows.Foundation.IAsyncOperation<Status> StopDiscoveryAsync();
         Windows.Foundation.IAsyncOperation<Status> InjectEndpointAsync(String serviceId, OutOfBandConnectionMetadata metadata);
         Windows.Foundation.IAsyncOperation<Status> RequestConnectionAsync(String endpointId, String endpointInfo, ConnectionOptions options);
+        Windows.Foundation.IAsyncOperation<Status> AcceptConnectionAsync(String endpointId);
+        Windows.Foundation.IAsyncOperation<Status> RejectConnectionAsync(String endpointId);
+        Windows.Foundation.IAsyncOperation<Status> SendPayloadAsync(String[] endpointIds, Payload payload);
+        Windows.Foundation.IAsyncOperation<Status> CancelPayloadAsync(Int64 payloadId);
+        Windows.Foundation.IAsyncOperation<Status> DisconnectFromEndpointAsync(String endpointId);
+        Windows.Foundation.IAsyncOperation<Status> StopAllEndpointsAsync();
+        Windows.Foundation.IAsyncOperation<Status> InitiateBandwidthUpgradeAsync(String endpointId);
 
         String GetLocalEndpointId();
     }

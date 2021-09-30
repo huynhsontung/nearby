@@ -692,6 +692,15 @@
     <Midl Include="PayloadProgressInfo.idl">
       <Filter>Library</Filter>
     </Midl>
+    <Midl Include="Payload.idl">
+      <Filter>Library</Filter>
+    </Midl>
+    <Midl Include="PayloadEventArgs.idl">
+      <Filter>Library\EventArgs</Filter>
+    </Midl>
+    <Midl Include="PayloadProgressEventArgs.idl">
+      <Filter>Library\EventArgs</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <None Include="NearbyLibrary.def" />

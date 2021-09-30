@@ -363,6 +363,18 @@
       <DependentUpon>OutOfBandConnectionMetadata.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="Payload.h">
+      <DependentUpon>Payload.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="PayloadEventArgs.h">
+      <DependentUpon>PayloadEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="PayloadProgressEventArgs.h">
+      <DependentUpon>PayloadProgressEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="PayloadProgressInfo.h">
       <DependentUpon>PayloadProgressInfo.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -438,6 +450,18 @@
       <DependentUpon>OutOfBandConnectionMetadata.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="Payload.cpp">
+      <DependentUpon>Payload.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="PayloadEventArgs.cpp">
+      <DependentUpon>PayloadEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="PayloadProgressEventArgs.cpp">
+      <DependentUpon>PayloadProgressEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="PayloadProgressInfo.cpp">
       <DependentUpon>PayloadProgressInfo.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -488,6 +512,15 @@
     </Midl>
     <Midl Include="Nearby.idl" />
     <Midl Include="OutOfBandConnectionMetadata.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="Payload.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="PayloadEventArgs.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="PayloadProgressEventArgs.idl">
       <SubType>Designer</SubType>
     </Midl>
     <Midl Include="PayloadProgressInfo.idl">

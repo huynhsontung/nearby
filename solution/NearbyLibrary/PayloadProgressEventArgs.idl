@@ -1,0 +1,12 @@
+import "BaseEventArgs.idl";
+import "PayloadProgressInfo.idl";
+
+namespace NearbyLibrary
+{
+    [default_interface]
+    runtimeclass PayloadProgressEventArgs : BaseEventArgs
+    {
+        PayloadProgressEventArgs(String endpointId, PayloadProgressInfo info);
+        PayloadProgressInfo Info;
+    }
+}
