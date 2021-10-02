@@ -16,8 +16,8 @@
 #define PLATFORM_IMPL_WINDOWS_WIFI_LAN_H_
 
 // Windows headers
-#include <windows.h>       // NOLINT
-#include <win32/windns.h>  // NOLINT
+#include <windows.h> // NOLINT
+#include <windns.h> // NOLINT
 
 // Standard C/C++ headers
 #include <exception>
@@ -239,9 +239,9 @@ class WifiLanNsd {
   //
 
   // Socket listening ports
-  static const uint16 PORT_MIN = 49152;
-  static const uint16 PORT_MAX = 65535;
-  static const uint16 PORT_RANGE = PORT_MAX - PORT_MIN;
+  static const uint16_t PORT_MIN = 49152;
+  static const uint16_t PORT_MAX = 65535;
+  static const uint16_t PORT_RANGE = PORT_MAX - PORT_MIN;
 
   // mDNS text attributes
   static constexpr std::string_view KEY_ENDPOINT_INFO = "n";
@@ -267,7 +267,7 @@ class WifiLanNsd {
   // NSD will assign a random port for the service.
   // TODO: Windows firewall may break the solution, need to futher solution to
   // resolve the potential issue
-  uint16 GenerateSocketPort(const std::string& service_id);
+  uint16_t GenerateSocketPort(const std::string& service_id);
 
   // From mDNS device information, to build NsdServiceInfo.
   // the properties are from DeviceInformation and DeviceInformationUpdate.
@@ -286,8 +286,7 @@ class WifiLanNsd {
       DeviceWatcher sender, DeviceInformationUpdate deviceInfoUpdate);
   fire_and_forget Watcher_DeviceRemoved(
       DeviceWatcher sender, DeviceInformationUpdate deviceInfoUpdate);
-  static void Advertising_StopCompleted(DWORD Status, PVOID pQueryContext,
-                                        PDNS_SERVICE_INSTANCE pInstance);
+  static void Advertising_StopCompleted(DWORD Status, PVOID pQueryContext);
 
   // Retrieves IP addresses from local machine
   std::vector<std::string> GetIpAddresses();
@@ -323,8 +322,10 @@ class WifiLanNsd {
   DnssdRegistrationResult dnssd_regirstraion_result_{nullptr};
 
   // Stop advertising properties
+  /*  NEARBY LIBRARY INCOMPATIBLE
   DNS_SERVICE_INSTANCE dns_service_instance_{nullptr};
   DNS_SERVICE_REGISTER_REQUEST dns_service_register_request_;
+  */
   std::unique_ptr<std::wstring> dns_service_instance_name_{nullptr};
   std::unique_ptr<CountDownLatch> dns_service_stop_latch_;
   DWORD dns_service_stop_status_;

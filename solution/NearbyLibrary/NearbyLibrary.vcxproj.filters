@@ -87,9 +87,6 @@
     <ClCompile Include="..\..\cpp\platform\impl\windows\bluetooth_classic_socket.cc">
       <Filter>Library\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\cpp\platform\impl\windows\count_down_latch.cc">
-      <Filter>Library\Sources</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\cpp\platform\impl\windows\condition_variable.cc">
       <Filter>Library\Sources</Filter>
     </ClCompile>
@@ -112,6 +109,15 @@
       <Filter>Library\Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\cpp\platform\impl\windows\submittable_executor.cc">
+      <Filter>Library\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cpp\platform\impl\windows\wifi_lan_medium.cc">
+      <Filter>Library\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cpp\platform\impl\windows\wifi_lan_nsd.cc">
+      <Filter>Library\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cpp\platform\impl\windows\wifi_lan_socket.cc">
       <Filter>Library\Sources</Filter>
     </ClCompile>
   </ItemGroup>

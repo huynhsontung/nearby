@@ -63,16 +63,16 @@ cc_library(
     name = "count_down_latch",
     srcs = ["count_down_latch.cc"],
     hdrs = ["count_down_latch.h"],
-    compatible_with = ["//buildenv/target:non_prod"],
+    # compatible_with = ["//buildenv/target:non_prod"],
     visibility = [
         "//googlemac/iPhone/Shared/Nearby/Connections:__subpackages__",
         "//platform/impl:__subpackages__",
     ],
     deps = [
-        "//absl/base:core_headers",
-        "//absl/strings",
-        "//absl/synchronization",
-        "//absl/time",
+        "@abseil//absl/base:core_headers",
+        "@abseil//absl/strings",
+        "@abseil//absl/synchronization",
+        "@abseil//absl/time",
         "//platform/api:types",
     ],
 )

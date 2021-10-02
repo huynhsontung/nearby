@@ -52,8 +52,8 @@ const char SdpServiceNameAttributeType = (4 << 3) | 5;
 
 class InspectableReader {
  public:
-  static uint16 ReadUint16(IInspectable inspectable);
-  static uint32 ReadUint32(IInspectable inspectable);
+  static uint16_t ReadUint16(IInspectable inspectable);
+  static uint32_t ReadUint32(IInspectable inspectable);
   static std::string ReadString(IInspectable inspectable);
   static std::vector<std::string> ReadStringArray(IInspectable inspectable);
 };

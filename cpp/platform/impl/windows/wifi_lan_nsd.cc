@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "pch.h"
+
 // Absl headers
 #include "absl/strings/str_format.h"
 
@@ -144,7 +146,7 @@ bool WifiLanNsd::StartAdvertising(const NsdServiceInfo& nsd_service_info) {
   dnssd_service_instance_ = DnssdServiceInstance{
       string_to_wstring(instance_name),
       nullptr,  // let windows use default computer's local name
-      (uint16)port};
+      (uint16_t)port};
 
   // Add TextRecords from NsdServiceInfo
   auto text_attributes = dnssd_service_instance_.TextAttributes();
@@ -182,8 +184,7 @@ bool WifiLanNsd::StartAdvertising(const NsdServiceInfo& nsd_service_info) {
 }
 
 // Win32 call only can use globel function or static method in class
-void WifiLanNsd::Advertising_StopCompleted(DWORD Status, PVOID pQueryContext,
-                                           PDNS_SERVICE_INSTANCE pInstance) {
+void WifiLanNsd::Advertising_StopCompleted(DWORD Status, PVOID pQueryContext) {
   NEARBY_LOGS(INFO) << "unregister with status=" << Status;
   try {
     WifiLanNsd* nsd = static_cast<WifiLanNsd*>(pQueryContext);
@@ -217,6 +218,8 @@ bool WifiLanNsd::StopAdvertising() {
   dns_service_instance_name_ =
       std::make_unique<std::wstring>(string_to_wstring(instance_name));
 
+  // TODO: Investigate what the code below does
+  /*  NEARBY LIBRARY INCOMPATIBLE
   dns_service_instance_.pszInstanceName =
       (LPWSTR)dns_service_instance_name_->c_str();
   dns_service_instance_.pszHostName = (LPWSTR)MDNS_HOST_NAME.data();
@@ -245,6 +248,7 @@ bool WifiLanNsd::StopAdvertising() {
   // Wait for stop finish
   dns_service_stop_latch_.get()->Await();
   dns_service_stop_latch_ = nullptr;
+  */
   if (dns_service_stop_status_ != 0) {
     NEARBY_LOGS(INFO) << "failed to stop mDNS advertising for service id ="
                       << service_id_;
@@ -465,7 +469,7 @@ fire_and_forget WifiLanNsd::Watcher_DeviceRemoved(
   return fire_and_forget();
 }
 
-uint16 WifiLanNsd::GenerateSocketPort(const std::string& service_id) {
+uint16_t WifiLanNsd::GenerateSocketPort(const std::string& service_id) {
   ByteArray service_id_sha = Sha256(service_id, 4);
   char* hash = service_id_sha.data();
   int b1 = hash[0] & 0xff;

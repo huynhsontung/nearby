@@ -395,7 +395,6 @@
     <ClCompile Include="..\..\cpp\platform\impl\windows\bluetooth_classic_server_socket.cc" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\bluetooth_classic_socket.cc" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\condition_variable.cc" />
-    <ClCompile Include="..\..\cpp\platform\impl\windows\count_down_latch.cc" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\crypto.cc" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\executor.cc" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\log_message.cc" />
@@ -406,6 +405,9 @@
     <ClCompile Include="..\..\cpp\platform\impl\windows\system_clock.cc" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\thread_pool.cc" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\utils.cc" />
+    <ClCompile Include="..\..\cpp\platform\impl\windows\wifi_lan_medium.cc" />
+    <ClCompile Include="..\..\cpp\platform\impl\windows\wifi_lan_nsd.cc" />
+    <ClCompile Include="..\..\cpp\platform\impl\windows\wifi_lan_socket.cc" />
     <ClCompile Include="ConnectionAcceptedEventArgs.cpp">
       <DependentUpon>ConnectionAcceptedEventArgs.idl</DependentUpon>
       <SubType>Code</SubType>

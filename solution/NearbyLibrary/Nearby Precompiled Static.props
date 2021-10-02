@@ -29,6 +29,7 @@
 ../../bazel-bin/external/boringssl/ssl.lib
 ../../bazel-bin/external/boringssl/crypto.lib
 ../../bazel-bin/base/stringprintf.lib
+../../bazel-bin/platform/impl/shared/count_down_latch.lib
 ../../bazel-bin/platform/impl/shared/file.lib
 ../../bazel-bin/platform/public/types.lib
 ../../bazel-bin/proto/connections/offline_wire_formats_proto.lib

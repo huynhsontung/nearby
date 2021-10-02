@@ -59,7 +59,7 @@ ByteArray Sha256(absl::string_view input, size_t size) {
   return ByteArray{hash.data(), size};
 }
 
-uint16 InspectableReader::ReadUint16(IInspectable inspectable) {
+uint16_t InspectableReader::ReadUint16(IInspectable inspectable) {
   auto property_value =
       inspectable.try_as<winrt::Windows::Foundation::IPropertyValue>();
   if (property_value == nullptr) {
@@ -73,7 +73,7 @@ uint16 InspectableReader::ReadUint16(IInspectable inspectable) {
   return property_value.GetUInt16();
 }
 
-uint32 InspectableReader::ReadUint32(IInspectable inspectable) {
+uint32_t InspectableReader::ReadUint32(IInspectable inspectable) {
   auto property_value =
       inspectable.try_as<winrt::Windows::Foundation::IPropertyValue>();
   if (property_value == nullptr) {
