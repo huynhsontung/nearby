@@ -183,78 +183,15 @@ bool WifiLanNsd::StartAdvertising(const NsdServiceInfo& nsd_service_info) {
   return false;
 }
 
-// Win32 call only can use globel function or static method in class
-void WifiLanNsd::Advertising_StopCompleted(DWORD Status, PVOID pQueryContext) {
-  NEARBY_LOGS(INFO) << "unregister with status=" << Status;
-  try {
-    WifiLanNsd* nsd = static_cast<WifiLanNsd*>(pQueryContext);
-    nsd->NotifyDnsServiceUnregistered(Status);
-  } catch (...) {
-    NEARBY_LOGS(ERROR) << "failed to notify the stop of DNS service instance."
-                       << Status;
-  }
-}
-
-void WifiLanNsd::NotifyDnsServiceUnregistered(DWORD status) {
-  if (dns_service_stop_latch_.get() != nullptr) {
-    dns_service_stop_status_ = status;
-    dns_service_stop_latch_.get()->CountDown();
-  }
-}
-
 bool WifiLanNsd::StopAdvertising() {
-  // Need to use Win32 API to deregister the Dnssd instance
   if (!IsAdvertising()) {
     NEARBY_LOGS(WARNING)
         << "Cannot stop advertising because no advertising is running.";
     return false;
   }
 
-  // Init DNS service instance
-  std::string instance_name = absl::StrFormat(
-      MDNS_INSTANCE_NAME_FORMAT.data(),
-      wifi_lan_service_.GetServiceInfo().GetServiceInfoName(), service_type_);
-  int port = wifi_lan_service_.GetServiceInfo().GetServiceAddress().second;
-  dns_service_instance_name_ =
-      std::make_unique<std::wstring>(string_to_wstring(instance_name));
-
-  // TODO: Investigate what the code below does
-  /*  NEARBY LIBRARY INCOMPATIBLE
-  dns_service_instance_.pszInstanceName =
-      (LPWSTR)dns_service_instance_name_->c_str();
-  dns_service_instance_.pszHostName = (LPWSTR)MDNS_HOST_NAME.data();
-  dns_service_instance_.wPort = port;
-
-  // Init DNS service register request
-  dns_service_register_request_.Version = DNS_QUERY_REQUEST_VERSION1;
-  dns_service_register_request_.InterfaceIndex =
-      0;  // all interfaces will be considered
-  dns_service_register_request_.unicastEnabled = false;
-  dns_service_register_request_.hCredentials = NULL;
-  dns_service_register_request_.pServiceInstance = &dns_service_instance_;
-  dns_service_register_request_.pQueryContext = this;  // callback use it
-  dns_service_register_request_.pRegisterCompletionCallback =
-      WifiLanNsd::Advertising_StopCompleted;
-
-  dns_service_stop_latch_ = std::make_unique<CountDownLatch>(1);
-  DWORD status = DnsServiceDeRegister(&dns_service_register_request_, nullptr);
-
-  if (status != DNS_REQUEST_PENDING) {
-    NEARBY_LOGS(ERROR) << "failed to stop mDNS advertising for service id ="
-                       << service_id_;
-    return false;
-  }
-
-  // Wait for stop finish
-  dns_service_stop_latch_.get()->Await();
-  dns_service_stop_latch_ = nullptr;
-  */
-  if (dns_service_stop_status_ != 0) {
-    NEARBY_LOGS(INFO) << "failed to stop mDNS advertising for service id ="
-                      << service_id_;
-    return false;
-  }
-
+  dnssd_service_instance_ = nullptr;
+  dnssd_regirstraion_result_ = nullptr;
   NEARBY_LOGS(INFO) << "succeeded to stop mDNS advertising for service id ="
                     << service_id_;
   nsd_status_ &= (~NSD_STATUS_ADVERTISING);

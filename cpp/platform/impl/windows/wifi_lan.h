@@ -222,11 +222,6 @@ class WifiLanNsd {
   // to connect to us. This is non-null while IsAccepting is true.
   std::pair<std::string, int> GetServiceAddress();
 
-  // DnsServiceDeRegister is a async process, after operation finish, callback
-  // will call this method to notify the waiting method StopAdvertising to
-  // continue.
-  void NotifyDnsServiceUnregistered(DWORD status);
-
  private:
   // Nsd status
   static const int NSD_STATUS_IDLE = 0;
@@ -286,7 +281,6 @@ class WifiLanNsd {
       DeviceWatcher sender, DeviceInformationUpdate deviceInfoUpdate);
   fire_and_forget Watcher_DeviceRemoved(
       DeviceWatcher sender, DeviceInformationUpdate deviceInfoUpdate);
-  static void Advertising_StopCompleted(DWORD Status, PVOID pQueryContext);
 
   // Retrieves IP addresses from local machine
   std::vector<std::string> GetIpAddresses();
@@ -320,15 +314,6 @@ class WifiLanNsd {
   StreamSocketListener stream_socket_listener_{nullptr};
   DnssdServiceInstance dnssd_service_instance_{nullptr};
   DnssdRegistrationResult dnssd_regirstraion_result_{nullptr};
-
-  // Stop advertising properties
-  /*  NEARBY LIBRARY INCOMPATIBLE
-  DNS_SERVICE_INSTANCE dns_service_instance_{nullptr};
-  DNS_SERVICE_REGISTER_REQUEST dns_service_register_request_;
-  */
-  std::unique_ptr<std::wstring> dns_service_instance_name_{nullptr};
-  std::unique_ptr<CountDownLatch> dns_service_stop_latch_;
-  DWORD dns_service_stop_status_;
 
   // Discovery properties
   DeviceWatcher device_watcher_{nullptr};
