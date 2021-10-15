@@ -323,6 +323,10 @@
       <DependentUpon>ConnectionAcceptedEventArgs.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="ConnectionBandwidthChangedEventArgs.h">
+      <DependentUpon>ConnectionBandwidthChangedEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="ConnectionDisconnectedEventArgs.h">
       <DependentUpon>ConnectionDisconnectedEventArgs.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -412,6 +416,10 @@
       <DependentUpon>ConnectionAcceptedEventArgs.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="ConnectionBandwidthChangedEventArgs.cpp">
+      <DependentUpon>ConnectionBandwidthChangedEventArgs.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="ConnectionDisconnectedEventArgs.cpp">
       <DependentUpon>ConnectionDisconnectedEventArgs.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -485,6 +493,9 @@
     <Midl Include="ConnectionAcceptedEventArgs.idl">
       <SubType>Designer</SubType>
     </Midl>
+    <Midl Include="ConnectionBandwidthChangedEventArgs.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="ConnectionDisconnectedEventArgs.idl">
       <SubType>Designer</SubType>
     </Midl>
@@ -509,6 +520,7 @@
     <Midl Include="EndpointLostEventArgs.idl">
       <SubType>Designer</SubType>
     </Midl>
+    <Midl Include="Medium.idl" />
     <Midl Include="MediumSelector.idl">
       <SubType>Designer</SubType>
     </Midl>

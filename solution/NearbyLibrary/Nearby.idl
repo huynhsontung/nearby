@@ -4,6 +4,7 @@ import "ConnectionInitiatedEventArgs.idl";
 import "ConnectionAcceptedEventArgs.idl";
 import "ConnectionRejectedEventArgs.idl";
 import "ConnectionDisconnectedEventArgs.idl";
+import "ConnectionBandwidthChangedEventArgs.idl";
 import "EndpointFoundEventArgs.idl";
 import "EndpointLostEventArgs.idl";
 import "EndpointDistanceChangedEventArgs.idl";
@@ -22,6 +23,7 @@ namespace NearbyLibrary
         event Windows.Foundation.TypedEventHandler<Nearby, ConnectionAcceptedEventArgs> ConnectionAccepted;
         event Windows.Foundation.TypedEventHandler<Nearby, ConnectionRejectedEventArgs> ConnectionRejected;
         event Windows.Foundation.TypedEventHandler<Nearby, ConnectionDisconnectedEventArgs> ConnectionDisconnected;
+        event Windows.Foundation.TypedEventHandler<Nearby, ConnectionBandwidthChangedEventArgs> ConnectionBandwidthChanged;
 
         // StartDiscovery
         event Windows.Foundation.TypedEventHandler<Nearby, EndpointFoundEventArgs> EndpointFound;

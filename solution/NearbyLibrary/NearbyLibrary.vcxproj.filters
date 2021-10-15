@@ -707,6 +707,12 @@
     <Midl Include="PayloadProgressEventArgs.idl">
       <Filter>Library\EventArgs</Filter>
     </Midl>
+    <Midl Include="ConnectionBandwidthChangedEventArgs.idl">
+      <Filter>Library\EventArgs</Filter>
+    </Midl>
+    <Midl Include="Medium.idl">
+      <Filter>Library</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <None Include="NearbyLibrary.def" />

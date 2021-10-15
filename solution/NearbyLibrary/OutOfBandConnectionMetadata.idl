@@ -1,20 +1,7 @@
+import "Medium.idl";
+
 namespace NearbyLibrary
 {
-    enum Medium
-    {
-        UnknownMedium,
-        Mdns, // PROTOBUF_DEPRECATED_ENUM
-        Bluetooth,
-        WifiHotspot,
-        Ble,
-        WifiLan,
-        WifiAware,
-        Nfc,
-        WifiDirect,
-        WebRtc,
-        BleL2cap
-    };
-
     [default_interface]
     runtimeclass OutOfBandConnectionMetadata 
     {

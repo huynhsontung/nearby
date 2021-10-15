@@ -2,6 +2,8 @@
 #include "Nearby.h"
 #include "Nearby.g.cpp"
 
+#include "winrt/Windows.Storage.Streams.h"
+
 using namespace location::nearby::connections;
 
 namespace {
@@ -55,6 +57,27 @@ winrt::NearbyLibrary::ConnectionResponseInfo to_winrt(
   }
 
   return response;
+}
+
+winrt::NearbyLibrary::PayloadProgressInfo to_winrt(
+    const PayloadProgressInfo& info) {
+  winrt::NearbyLibrary::PayloadProgressInfo value;
+  value.PayloadId(info.payload_id);
+  value.Status(
+      static_cast<winrt::NearbyLibrary::PayloadProgressStatus>(info.status));
+  value.TotalBytes(info.total_bytes);
+  value.BytesTransferred(info.bytes_transferred);
+  return value;
+}
+
+winrt::NearbyLibrary::Payload to_winrt(const Payload& value) {
+  auto& bytes = value.AsBytes();
+  winrt::array_view arr_view = {reinterpret_cast<const uint8_t*>(bytes.data()),
+                                static_cast<uint32_t>(bytes.size())};
+  winrt::Windows::Storage::Streams::DataWriter data_writer;
+  data_writer.WriteBytes(arr_view);
+  return winrt::NearbyLibrary::Payload{value.GetId(),
+                                       data_writer.DetachBuffer()};
 }
 
 winrt::NearbyLibrary::Status to_winrt(const Status& status) {
@@ -112,16 +135,11 @@ winrt::NearbyLibrary::Status to_winrt(const Status& status) {
 }  // namespace
 
 namespace winrt::NearbyLibrary::implementation {
-Nearby::Nearby() : core_(Core(&router_)) {
-  connection_listener_ = ConnectionListener{
-      [this](
-          const std::string& endpoint_id,
-          const location::nearby::connections::ConnectionResponseInfo& info) {
-        connection_initiated_event_(
-            *this, ConnectionInitiatedEventArgs{to_winrt(info),
-                                                to_hstring(endpoint_id)});
-      }};
-}
+Nearby::Nearby()
+    : core_(Core(&router_)),
+      connection_listener_(MakeConnectionListener()),
+      discovery_listener_(MakeDiscoveryListener()),
+      payload_listener_(MakePayloadListener()) {}
 
 Windows::Foundation::IAsyncOperation<Status> Nearby::StartAdvertisingAsync(
     hstring serviceId, ConnectionOptions options, hstring endpointInfo) {
@@ -132,8 +150,6 @@ Windows::Foundation::IAsyncOperation<Status> Nearby::StartAdvertisingAsync(
     hstring endpoint_info;
     ConnectionListener listener;
     Status result;
-
-    // TODO: wire listener to corresponding events
 
     awaitable(Core& nearby_core, hstring service_id, ConnectionOptions options,
               hstring endpoint_info, const ConnectionListener& listener)
@@ -166,16 +182,85 @@ Windows::Foundation::IAsyncOperation<Status> Nearby::StartAdvertisingAsync(
 }
 
 Windows::Foundation::IAsyncOperation<Status> Nearby::StopAdvertisingAsync() {
-  throw hresult_not_implemented();
+  struct awaitable : std::suspend_always {
+    Core& nearby_core;
+    Status result;
+
+    awaitable(Core& nearby_core) : nearby_core(nearby_core) {}
+
+    bool await_ready() { return false; }
+
+    void await_suspend(std::coroutine_handle<> handle) {
+      nearby_core.StopAdvertising(
+          ResultCallback{[this, handle](::Status status) {
+            result = to_winrt(status);
+            handle.resume();
+          }});
+    }
+
+    Status await_resume() { return result; }
+  };
+
+  auto result = co_await awaitable{core_};
+  co_return result;
 }
 
 Windows::Foundation::IAsyncOperation<Status> Nearby::StartDiscoveryAsync(
     hstring serviceId, ConnectionOptions options) {
-  throw hresult_not_implemented();
+  struct awaitable : std::suspend_always {
+    Core& nearby_core;
+    hstring service_id;
+    ConnectionOptions options;
+    DiscoveryListener listener;
+    Status result;
+
+    awaitable(Core& nearby_core, hstring service_id, ConnectionOptions options,
+              DiscoveryListener listener)
+        : nearby_core(nearby_core),
+          service_id(service_id),
+          options(options),
+          listener(listener) {}
+
+    bool await_ready() { return false; }
+
+    void await_suspend(std::coroutine_handle<> handle) {
+      nearby_core.StartDiscovery(
+          to_string(service_id), convert(options), std::move(listener),
+          ResultCallback{[this, handle](::Status status) {
+            result = to_winrt(status);
+            handle.resume();
+          }});
+    }
+
+    Status await_resume() { return result; }
+  };
+
+  auto result =
+      co_await awaitable{core_, serviceId, options, discovery_listener_};
+  co_return result;
 }
 
 Windows::Foundation::IAsyncOperation<Status> Nearby::StopDiscoveryAsync() {
-  throw hresult_not_implemented();
+  struct awaitable : std::suspend_always {
+    Core& nearby_core;
+    Status result;
+
+    awaitable(Core& nearby_core) : nearby_core(nearby_core) {}
+
+    bool await_ready() { return false; }
+
+    void await_suspend(std::coroutine_handle<> handle) {
+      nearby_core.StopDiscovery(ResultCallback{[this, handle](::Status status) {
+        result = to_winrt(status);
+        handle.resume();
+      }});
+    }
+
+    Status await_resume() { return result; }
+  };
+
+  auto result = co_await awaitable{core_};
+  co_return result;
 }
 
 Windows::Foundation::IAsyncOperation<Status> Nearby::InjectEndpointAsync(
@@ -224,5 +309,89 @@ Nearby::InitiateBandwidthUpgradeAsync(hstring endpointId) {
 
 hstring Nearby::GetLocalEndpointId() {
   return to_hstring(core_.GetLocalEndpointId());
+}
+
+ConnectionListener Nearby::MakeConnectionListener() {
+  return {
+      .initiated_cb =
+          [this](const std::string& endpoint_id,
+                 const location::nearby::connections::ConnectionResponseInfo&
+                     info) {
+            connection_initiated_event_(
+                *this, ConnectionInitiatedEventArgs{to_winrt(info),
+                                                    to_hstring(endpoint_id)});
+          },
+      .accepted_cb =
+          [this](const std::string& endpoint_id) {
+            connection_accepted_event_(
+                *this, ConnectionAcceptedEventArgs(to_hstring(endpoint_id)));
+          },
+      .rejected_cb =
+          [this](const std::string& endpoint_id,
+                 location::nearby::connections::Status status) {
+            connection_rejected_event_(
+                *this, ConnectionRejectedEventArgs(to_winrt(status),
+                                                   to_hstring(endpoint_id)));
+          },
+      .disconnected_cb =
+          [this](const std::string& endpoint_id) {
+            connection_disconnected_event_(
+                *this,
+                ConnectionDisconnectedEventArgs(to_hstring(endpoint_id)));
+          },
+      .bandwidth_changed_cb =
+          [this](const std::string& endpoint_id,
+                 location::nearby::connections::Medium medium) {
+            connection_bandwidth_changed_event_(
+                *this,
+                ConnectionBandwidthChangedEventArgs(static_cast<Medium>(medium),
+                                                    to_hstring(endpoint_id)));
+          }};
+}
+
+DiscoveryListener Nearby::MakeDiscoveryListener() {
+  return {
+      .endpoint_found_cb =
+          [this](const std::string& endpoint_id,
+                 const location::nearby::ByteArray& endpoint_info,
+                 const std::string& service_id) {
+            endpoint_found_event_(
+                *this, EndpointFoundEventArgs(
+                           to_hstring(endpoint_id),
+                           to_hstring(static_cast<std::string>(endpoint_info)),
+                           to_hstring(service_id)));
+          },
+      .endpoint_lost_cb =
+          [this](const std::string& endpoint_id) {
+            endpoint_lost_event_(
+                *this, EndpointLostEventArgs(to_hstring(endpoint_id)));
+          },
+      .endpoint_distance_changed_cb =
+          [this](const std::string& endpoint_id,
+                 location::nearby::connections::DistanceInfo info) {
+            endpoint_distance_changed_event_(
+                *this,
+                EndpointDistanceChangedEventArgs(
+                    static_cast<DistanceInfo>(info), to_hstring(endpoint_id)));
+          }};
+}
+
+PayloadListener Nearby::MakePayloadListener() {
+  return {
+      .payload_cb =
+          [this](const std::string& endpoint_id,
+                 location::nearby::connections::Payload payload) {
+            payload_received_event_(
+                *this,
+                PayloadEventArgs(to_hstring(endpoint_id), to_winrt(payload)));
+          },
+      .payload_progress_cb =
+          [this](
+              const std::string& endpoint_id,
+              const location::nearby::connections::PayloadProgressInfo& info) {
+            payload_progress_changed_event_(
+                *this, PayloadProgressEventArgs(to_hstring(endpoint_id),
+                                                to_winrt(info)));
+          }};
 }
 }  // namespace winrt::NearbyLibrary::implementation

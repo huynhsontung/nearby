@@ -46,6 +46,16 @@ struct Nearby : NearbyT<Nearby> {
   void ConnectionDisconnected(event_token const& token) noexcept {
     connection_disconnected_event_.remove(token);
   }
+
+  event_token ConnectionBandwidthChanged(
+    Windows::Foundation::TypedEventHandler<
+    NearbyLibrary::Nearby, ConnectionBandwidthChangedEventArgs> const& handler) {
+    return connection_bandwidth_changed_event_.add(handler);
+  }
+
+  void ConnectionBandwidthChanged(event_token const& token) noexcept {
+    connection_bandwidth_changed_event_.remove(token);
+  }
 #pragma endregion
 
 #pragma region Discovery Events
@@ -116,19 +126,26 @@ struct Nearby : NearbyT<Nearby> {
   // clang-format on
 
  private:
+   location::nearby::connections::ConnectionListener MakeConnectionListener();
+   location::nearby::connections::DiscoveryListener MakeDiscoveryListener();
+   location::nearby::connections::PayloadListener MakePayloadListener();
+
   // clang-format off
-    event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, ConnectionInitiatedEventArgs>> connection_initiated_event_;
-    event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, ConnectionAcceptedEventArgs>> connection_accepted_event_;
-    event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, ConnectionRejectedEventArgs>> connection_rejected_event_;
-    event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, ConnectionDisconnectedEventArgs>> connection_disconnected_event_;
-    event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, EndpointFoundEventArgs>> endpoint_found_event_;
-    event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, EndpointLostEventArgs>> endpoint_lost_event_;
-    event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, EndpointDistanceChangedEventArgs>> endpoint_distance_changed_event_;
-    event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, PayloadEventArgs>> payload_received_event_;
-    event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, PayloadProgressEventArgs>> payload_progress_changed_event_;
-    location::nearby::connections::ServiceControllerRouter router_;
-    location::nearby::connections::Core core_;
-    location::nearby::connections::ConnectionListener connection_listener_;
+  event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, ConnectionInitiatedEventArgs>> connection_initiated_event_;
+  event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, ConnectionAcceptedEventArgs>> connection_accepted_event_;
+  event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, ConnectionRejectedEventArgs>> connection_rejected_event_;
+  event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, ConnectionDisconnectedEventArgs>> connection_disconnected_event_;
+  event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, ConnectionBandwidthChangedEventArgs>> connection_bandwidth_changed_event_;
+  event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, EndpointFoundEventArgs>> endpoint_found_event_;
+  event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, EndpointLostEventArgs>> endpoint_lost_event_;
+  event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, EndpointDistanceChangedEventArgs>> endpoint_distance_changed_event_;
+  event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, PayloadEventArgs>> payload_received_event_;
+  event<Windows::Foundation::TypedEventHandler<NearbyLibrary::Nearby, PayloadProgressEventArgs>> payload_progress_changed_event_;
+  location::nearby::connections::ServiceControllerRouter router_;
+  location::nearby::connections::Core core_;
+  location::nearby::connections::ConnectionListener connection_listener_;
+  location::nearby::connections::DiscoveryListener discovery_listener_;
+  location::nearby::connections::PayloadListener payload_listener_;
   // clang-format on
 };
 }  // namespace winrt::NearbyLibrary::implementation

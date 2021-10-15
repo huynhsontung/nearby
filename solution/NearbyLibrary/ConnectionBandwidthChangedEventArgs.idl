@@ -1,0 +1,12 @@
+import "BaseEventArgs.idl";
+import "Medium.idl";
+
+namespace NearbyLibrary
+{
+    [default_interface]
+    runtimeclass ConnectionBandwidthChangedEventArgs : BaseEventArgs
+    {
+        ConnectionBandwidthChangedEventArgs(Medium medium, String endpointId);
+        Medium Medium;
+    }
+}
