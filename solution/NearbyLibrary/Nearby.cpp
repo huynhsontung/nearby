@@ -23,7 +23,12 @@ Strategy convert(const winrt::NearbyLibrary::Strategy& arg) {
 }
 
 BooleanMediumSelector convert(const winrt::NearbyLibrary::MediumSelector& arg) {
-  return {arg.Bluetooth(), arg.Ble(), arg.WebRtc(), arg.WifiLan()};
+  BooleanMediumSelector selector;
+  selector.bluetooth = arg.Bluetooth();
+  selector.ble = arg.Ble();
+  selector.web_rtc = arg.WebRtc();
+  selector.wifi_lan = arg.WifiLan();
+  return selector;
 }
 
 ConnectionOptions convert(const winrt::NearbyLibrary::ConnectionOptions& arg) {

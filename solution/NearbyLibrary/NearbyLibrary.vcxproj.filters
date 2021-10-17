@@ -87,13 +87,7 @@
     <ClCompile Include="..\..\cpp\platform\impl\windows\bluetooth_classic_socket.cc">
       <Filter>Library\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\cpp\platform\impl\windows\condition_variable.cc">
-      <Filter>Library\Sources</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\cpp\platform\impl\windows\utils.cc">
-      <Filter>Library\Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\cpp\platform\impl\windows\mutex.cc">
       <Filter>Library\Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\cpp\platform\impl\windows\bluetooth_adapter.cc">
