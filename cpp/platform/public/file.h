@@ -31,7 +31,7 @@
 namespace location {
 namespace nearby {
 
-class DLL_API InputFile final {
+class InputFile final {
  public:
   using Platform = api::ImplementationPlatform;
   InputFile(PayloadId payload_id, std::int64_t size);
@@ -73,7 +73,7 @@ class DLL_API InputFile final {
   PayloadId id_;
 };
 
-class DLL_API OutputFile final {
+class OutputFile final {
  public:
   using Platform = api::ImplementationPlatform;
   explicit OutputFile(PayloadId payload_id);

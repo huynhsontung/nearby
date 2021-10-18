@@ -35,7 +35,7 @@ class InputFile : public api::InputFile {
 
   // throws Exception::kIo
   // TODO(b/184975123): replace with real implementation.
-  ExceptionOr<ByteArray> Read(std::int64_t size) override {
+  ExceptionOr<ByteArray> Read(std::uint32_t size) override {
     return ExceptionOr<ByteArray>(Exception::kFailed);
   }
   // throws Exception::kIo

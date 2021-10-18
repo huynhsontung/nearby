@@ -64,7 +64,7 @@ class CancellationFlag {
   void UnregisterOnCancelListener(CancelListener *listener)
       ABSL_LOCKS_EXCLUDED(mutex_);
 
-  int CancelListenersSize() const ABSL_LOCKS_EXCLUDED(mutex_) {
+  size_t CancelListenersSize() const ABSL_LOCKS_EXCLUDED(mutex_) {
     absl::MutexLock lock(mutex_.get());
     return listeners_.size();
   }

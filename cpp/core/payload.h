@@ -36,7 +36,7 @@ namespace connections {
 // Payload is default-constructible, and moveable, but not copyable container
 // that holds at most one instance of one of:
 // ByteArray, InputStream, or InputFile.
-class DLL_API Payload {
+class Payload {
  public:
   using Id = PayloadId;
   // Order of types in variant, and values in Type enum is important.

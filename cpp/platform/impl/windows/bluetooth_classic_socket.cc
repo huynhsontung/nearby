@@ -102,7 +102,7 @@ BluetoothSocket::BluetoothInputStream::BluetoothInputStream(
 }
 
 ExceptionOr<ByteArray> BluetoothSocket::BluetoothInputStream::Read(
-    std::int64_t size) {
+  std::uint32_t size) {
   Buffer buffer = Buffer(size);
 
   winrt_stream_.ReadAsync(buffer, size, InputStreamOptions::None).get();

@@ -77,7 +77,7 @@ class BasePipe {
     explicit BasePipeInputStream(BasePipe* pipe) : pipe_(pipe) {}
     ~BasePipeInputStream() override { DoClose(); }
 
-    ExceptionOr<ByteArray> Read(std::int64_t size) override {
+    ExceptionOr<ByteArray> Read(std::uint32_t size) override {
       return pipe_->Read(size);
     }
     Exception Close() override { return DoClose(); }

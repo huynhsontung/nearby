@@ -86,7 +86,7 @@ enum class PowerLevel {
 
 // Connection Options: used for both Advertising and Discovery.
 // All fields are mutable, to make the type copy-assignable.
-struct DLL_API ConnectionOptions {
+struct ConnectionOptions {
   Strategy strategy;
   BooleanMediumSelector allowed{BooleanMediumSelector().SetAll(true)};
   bool auto_upgrade_bandwidth;

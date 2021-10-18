@@ -156,7 +156,7 @@ class WifiLanSocket : public api::WifiLanSocket {
     SocketInputStream(IInputStream input_stream);
     ~SocketInputStream() = default;
 
-    ExceptionOr<ByteArray> Read(std::int64_t size) override;
+    ExceptionOr<ByteArray> Read(std::uint32_t size) override;
     ExceptionOr<size_t> Skip(size_t offset) override;
     Exception Close() override;
 

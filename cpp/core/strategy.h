@@ -24,7 +24,7 @@ namespace connections {
 
 // Defines a copyable, comparable connection strategy type.
 // It is one of: kP2pCluster, kP2pStar, kP2pPointToPoint.
-class DLL_API Strategy {
+class Strategy {
  public:
   static const Strategy kNone;
   static const Strategy kP2pCluster;
