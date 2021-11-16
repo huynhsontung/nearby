@@ -57,6 +57,7 @@ cc_test(
         # "//absl/time",
         "//platform/base:error_code_recorder",
         "//platform/impl/g3",  # build_cleaner: keep
+        "//platform/public:comm",
         "//platform/public:logging",
         "//platform/public:types",
         "//proto:connections_enums_portable_proto",

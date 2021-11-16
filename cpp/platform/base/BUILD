@@ -22,6 +22,7 @@ cc_library(
         "base64_utils.cc",
         "bluetooth_utils.cc",
         "input_stream.cc",
+        "nsd_service_info.cc",
         "prng.cc",
     ],
     hdrs = [
@@ -44,7 +45,6 @@ cc_library(
     # compatible_with = ["//buildenv/target:non_prod"],
     copts = ["-DCORE_ADAPTER_DLL"],
     visibility = [
-        "//googlemac/iPhone/Shared/Nearby/Connections:__subpackages__",
         "//analytics:__subpackages__",
         "//cpp/cal:__subpackages__",
         "//core:__subpackages__",

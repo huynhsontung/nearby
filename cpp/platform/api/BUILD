@@ -37,7 +37,6 @@ cc_library(
     ],
     # compatible_with = ["//buildenv/target:non_prod"],
     visibility = [
-        "//googlemac/iPhone/Shared/Nearby/Connections:__subpackages__",
         "//platform/base:__pkg__",
         "//platform/impl:__subpackages__",
         "//platform/public:__pkg__",
@@ -61,7 +60,6 @@ cc_library(
         "webrtc.h",
         "wifi.h",
         "wifi_lan.h",
-        "wifi_lan_v2.h",
     ],
     # compatible_with = ["//buildenv/target:non_prod"],
     visibility = [

@@ -61,6 +61,6 @@ cc_test(
         "//testing/base/public:gunit_main",
         "//platform/base",
         "//platform/impl/g3",  # buildcleaner: keep
-        "@abseil//absl/time",
+        "//platform/public:comm",
     ],
 )

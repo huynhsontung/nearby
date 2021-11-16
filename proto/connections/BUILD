@@ -23,7 +23,7 @@ proto_library(
         "offline_wire_formats.proto",
     ],
     visibility = [
-        "//googlemac/iPhone/Shared/Nearby/Connections:__subpackages__",
+        "//platform/impl/ios:__subpackages__",
     ],
 )
 

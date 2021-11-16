@@ -28,8 +28,13 @@
 #include "core/internal/injected_bluetooth_device_store.h"
 #include "core/internal/mediums/bluetooth_classic.h"
 #include "core/internal/mediums/mediums.h"
+#ifdef NO_WEBRTC
+#include "core/internal/mediums/webrtc_stub.h"
+#include "core/internal/mediums/webrtc_socket_stub.h"
+#else
 #include "core/internal/mediums/webrtc.h"
-#include "core/internal/mediums/webrtc/peer_id.h"
+#include "core/internal/mediums/webrtc_socket.h"
+#endif
 #include "core/internal/pcp.h"
 #include "core/internal/wifi_lan_service_info.h"
 #include "core/options.h"
@@ -172,15 +177,16 @@ class P2pClusterPcpHandler : public BasePcpHandler {
   // WifiLan
   bool IsRecognizedWifiLanEndpoint(
       const std::string& service_id,
-      const WifiLanServiceInfo& service_info) const;
+      const WifiLanServiceInfo& wifi_lan_service_info) const;
   void WifiLanServiceDiscoveredHandler(ClientProxy* client,
-                                       WifiLanService& service,
+                                       NsdServiceInfo service_info,
                                        const std::string& service_id);
-  void WifiLanServiceLostHandler(ClientProxy* client, WifiLanService& service,
+  void WifiLanServiceLostHandler(ClientProxy* client,
+                                 NsdServiceInfo service_info,
                                  const std::string& service_id);
   proto::connections::Medium StartWifiLanAdvertising(
       ClientProxy* client, const std::string& service_id,
-      const ByteArray& service_id_hash, const std::string& local_endpoint_id,
+      const std::string& local_endpoint_id,
       const ByteArray& local_endpoint_info, WebRtcState web_rtc_state);
   proto::connections::Medium StartWifiLanDiscovery(
       WifiLanDiscoveredServiceCallback callback, ClientProxy* client,
