@@ -2,6 +2,8 @@
 #include "Nearby.h"
 #include "Nearby.g.cpp"
 
+#include <ranges>
+
 #include "winrt/Windows.Storage.Streams.h"
 
 using namespace location::nearby::connections;
@@ -45,6 +47,21 @@ ConnectionOptions convert(const winrt::NearbyLibrary::ConnectionOptions& arg) {
       to_string(arg.FastAdvertisementServiceUuid()),
       arg.KeepAliveIntervalMillis(),
       arg.KeepAliveTimeoutMillis()};
+}
+
+OutOfBandConnectionMetadata convert(
+    const winrt::NearbyLibrary::OutOfBandConnectionMetadata& arg) {
+  return {
+      static_cast<Medium>(arg.Medium()), to_string(arg.EndpointId()),
+      location::nearby::ByteArray{to_string(arg.EndpointInfo())},
+      location::nearby::ByteArray{to_string(arg.RemoteBluetoothMacAddress())}};
+}
+
+Payload convert(const winrt::NearbyLibrary::Payload& arg) {
+  const auto& buffer = arg.Content();
+  return {arg.Id(),
+          location::nearby::ByteArray{reinterpret_cast<char*>(buffer.data()),
+                                      static_cast<size_t>(buffer.Length())}};
 }
 
 winrt::NearbyLibrary::ConnectionResponseInfo to_winrt(
@@ -150,39 +167,37 @@ Windows::Foundation::IAsyncOperation<Status> Nearby::StartAdvertisingAsync(
     hstring serviceId, ConnectionOptions options, hstring endpointInfo) {
   struct awaitable : std::suspend_always {
     Core& nearby_core;
-    hstring service_id;
-    ConnectionOptions options;
-    hstring endpoint_info;
-    ConnectionListener listener;
+    std::string service_id;
+    ::ConnectionOptions options;
+    ConnectionRequestInfo info;
     Status result;
 
-    awaitable(Core& nearby_core, hstring service_id, ConnectionOptions options,
-              hstring endpoint_info, const ConnectionListener& listener)
+    awaitable(Core& nearby_core, std::string&& service_id,
+              ::ConnectionOptions&& options, ConnectionRequestInfo&& info)
         : nearby_core(nearby_core),
-          service_id(service_id),
-          options(options),
-          endpoint_info(endpoint_info),
-          listener(listener) {}
+          service_id(std::move(service_id)),
+          options(std::move(options)),
+          info(std::move(info)) {}
 
     bool await_ready() { return false; }
 
     void await_suspend(std::coroutine_handle<> handle) {
       nearby_core.StartAdvertising(
-          to_string(service_id), convert(options),
-          ConnectionRequestInfo{
-              location::nearby::ByteArray{to_string(endpoint_info)},
-              std::move(listener)},
+          service_id, std::move(options), std::move(info),
           ResultCallback{[this, handle](::Status status) {
             result = to_winrt(status);
             handle.resume();
           }});
     }
 
-    Status await_resume() { return result; }
+    Status await_resume() { return std::move(result); }
   };
 
-  auto result = co_await awaitable{core_, serviceId, options, endpointInfo,
-                                   connection_listener_};
+  auto result = co_await awaitable{
+      core_, to_string(serviceId), convert(options),
+      ConnectionRequestInfo{
+          location::nearby::ByteArray{to_string(endpointInfo)},
+          connection_listener_}};
   co_return result;
 }
 
@@ -203,7 +218,7 @@ Windows::Foundation::IAsyncOperation<Status> Nearby::StopAdvertisingAsync() {
           }});
     }
 
-    Status await_resume() { return result; }
+    Status await_resume() { return std::move(result); }
   };
 
   auto result = co_await awaitable{core_};
@@ -214,34 +229,34 @@ Windows::Foundation::IAsyncOperation<Status> Nearby::StartDiscoveryAsync(
     hstring serviceId, ConnectionOptions options) {
   struct awaitable : std::suspend_always {
     Core& nearby_core;
-    hstring service_id;
-    ConnectionOptions options;
+    std::string service_id;
+    ::ConnectionOptions options;
     DiscoveryListener listener;
     Status result;
 
-    awaitable(Core& nearby_core, hstring service_id, ConnectionOptions options,
-              DiscoveryListener listener)
+    awaitable(Core& nearby_core, std::string&& service_id,
+              ::ConnectionOptions&& options, const DiscoveryListener& listener)
         : nearby_core(nearby_core),
-          service_id(service_id),
-          options(options),
+          service_id(std::move(service_id)),
+          options(std::move(options)),
           listener(listener) {}
 
     bool await_ready() { return false; }
 
     void await_suspend(std::coroutine_handle<> handle) {
       nearby_core.StartDiscovery(
-          to_string(service_id), convert(options), std::move(listener),
+          service_id, std::move(options), std::move(listener),
           ResultCallback{[this, handle](::Status status) {
             result = to_winrt(status);
             handle.resume();
           }});
     }
 
-    Status await_resume() { return result; }
+    Status await_resume() { return std::move(result); }
   };
 
-  auto result =
-      co_await awaitable{core_, serviceId, options, discovery_listener_};
+  auto result = co_await awaitable{core_, to_string(serviceId),
+                                   convert(options), discovery_listener_};
   co_return result;
 }
 
@@ -261,7 +276,7 @@ Windows::Foundation::IAsyncOperation<Status> Nearby::StopDiscoveryAsync() {
       }});
     }
 
-    Status await_resume() { return result; }
+    Status await_resume() { return std::move(result); }
   };
 
   auto result = co_await awaitable{core_};
@@ -270,46 +285,274 @@ Windows::Foundation::IAsyncOperation<Status> Nearby::StopDiscoveryAsync() {
 
 Windows::Foundation::IAsyncOperation<Status> Nearby::InjectEndpointAsync(
     hstring serviceId, OutOfBandConnectionMetadata metadata) {
-  throw hresult_not_implemented();
+  struct awaitable : std::suspend_always {
+    Core& nearby_core;
+    std::string service_id;
+    ::OutOfBandConnectionMetadata metadata;
+    Status result;
+
+    awaitable(Core& nearby_core, std::string&& service_id,
+              ::OutOfBandConnectionMetadata&& metadata)
+        : nearby_core(nearby_core),
+          service_id(std::move(service_id)),
+          metadata(std::move(metadata)) {}
+
+    bool await_ready() { return false; }
+
+    void await_suspend(std::coroutine_handle<> handle) {
+      nearby_core.InjectEndpoint(
+          service_id, std::move(metadata),
+          ResultCallback{[this, handle](::Status status) {
+            result = to_winrt(status);
+            handle.resume();
+          }});
+    }
+
+    Status await_resume() { return std::move(result); }
+  };
+
+  auto result =
+      co_await awaitable{core_, to_string(serviceId), convert(metadata)};
+  co_return result;
 }
 
 Windows::Foundation::IAsyncOperation<Status> Nearby::RequestConnectionAsync(
     hstring endpointId, hstring endpointInfo, ConnectionOptions options) {
-  throw hresult_not_implemented();
+  struct awaitable : std::suspend_always {
+    Core& nearby_core;
+    std::string endpoint_id;
+    ConnectionRequestInfo info;
+    ::ConnectionOptions options;
+    Status result;
+
+    awaitable(Core& nearby_core, std::string&& endpoint_id,
+              ConnectionRequestInfo&& info, ::ConnectionOptions&& options)
+        : nearby_core(nearby_core),
+          endpoint_id(std::move(endpoint_id)),
+          info(std::move(info)),
+          options(std::move(options)) {}
+
+    bool await_ready() { return false; }
+
+    void await_suspend(std::coroutine_handle<> handle) {
+      nearby_core.RequestConnection(
+          endpoint_id, std::move(info), std::move(options),
+          ResultCallback{[this, handle](::Status status) {
+            result = to_winrt(status);
+            handle.resume();
+          }});
+    }
+
+    Status await_resume() { return std::move(result); }
+  };
+
+  auto result = co_await awaitable{
+      core_, to_string(endpointId),
+      ConnectionRequestInfo{
+          location::nearby::ByteArray{to_string(endpointInfo)},
+          connection_listener_},
+      convert(options)};
+  co_return result;
 }
 
 Windows::Foundation::IAsyncOperation<Status> Nearby::AcceptConnectionAsync(
     hstring endpointId) {
-  throw hresult_not_implemented();
+  struct awaitable : std::suspend_always {
+    Core& nearby_core;
+    std::string endpoint_id;
+    PayloadListener listener;
+    Status result;
+
+    awaitable(Core& nearby_core, std::string&& endpoint_id,
+              const PayloadListener& listener)
+        : nearby_core(nearby_core),
+          endpoint_id(std::move(endpoint_id)),
+          listener(listener) {}
+
+    bool await_ready() { return false; }
+
+    void await_suspend(std::coroutine_handle<> handle) {
+      nearby_core.AcceptConnection(
+          endpoint_id, std::move(listener),
+          ResultCallback{[this, handle](::Status status) {
+            result = to_winrt(status);
+            handle.resume();
+          }});
+    }
+
+    Status await_resume() { return std::move(result); }
+  };
+
+  auto result =
+      co_await awaitable{core_, to_string(endpointId), payload_listener_};
+  co_return result;
 }
 
 Windows::Foundation::IAsyncOperation<Status> Nearby::RejectConnectionAsync(
     hstring endpointId) {
-  throw hresult_not_implemented();
+  struct awaitable : std::suspend_always {
+    Core& nearby_core;
+    std::string endpoint_id;
+    Status result;
+
+    awaitable(Core& nearby_core, std::string&& endpoint_id)
+        : nearby_core(nearby_core), endpoint_id(std::move(endpoint_id)) {}
+
+    bool await_ready() { return false; }
+
+    void await_suspend(std::coroutine_handle<> handle) {
+      nearby_core.RejectConnection(
+          endpoint_id, ResultCallback{[this, handle](::Status status) {
+            result = to_winrt(status);
+            handle.resume();
+          }});
+    }
+
+    Status await_resume() { return std::move(result); }
+  };
+
+  auto result = co_await awaitable{core_, to_string(endpointId)};
+  co_return result;
 }
 
 Windows::Foundation::IAsyncOperation<Status> Nearby::SendPayloadAsync(
     array_view<hstring const> endpointIds, Payload payload) {
-  throw hresult_not_implemented();
+  struct awaitable : std::suspend_always {
+    Core& nearby_core;
+    std::vector<std::string> endpoint_ids;
+    ::Payload payload;
+    Status result;
+
+    awaitable(Core& nearby_core, std::vector<std::string>&& endpoint_ids,
+              ::Payload&& payload)
+        : nearby_core(nearby_core),
+          endpoint_ids(std::move(endpoint_ids)),
+          payload(std::move(payload)) {}
+
+    bool await_ready() { return false; }
+
+    void await_suspend(std::coroutine_handle<> handle) {
+      nearby_core.SendPayload(endpoint_ids, std::move(payload),
+                              ResultCallback{[this, handle](::Status status) {
+                                result = to_winrt(status);
+                                handle.resume();
+                              }});
+    }
+
+    Status await_resume() { return std::move(result); }
+  };
+
+  auto endpointStrings = std::vector<std::string>{endpointIds.size()};
+  std::ranges::transform(endpointIds, std::back_inserter(endpointStrings),
+                         winrt::to_string);
+  auto result =
+      co_await awaitable{core_, std::move(endpointStrings), convert(payload)};
+  co_return result;
 }
 
 Windows::Foundation::IAsyncOperation<Status> Nearby::CancelPayloadAsync(
     int64_t payloadId) {
-  throw hresult_not_implemented();
+  struct awaitable : std::suspend_always {
+    Core& nearby_core;
+    int64_t payload_id;
+    Status result;
+
+    awaitable(Core& nearby_core, int64_t payload_id)
+        : nearby_core(nearby_core), payload_id(payload_id) {}
+
+    bool await_ready() { return false; }
+
+    void await_suspend(std::coroutine_handle<> handle) {
+      nearby_core.CancelPayload(payload_id,
+                                ResultCallback{[this, handle](::Status status) {
+                                  result = to_winrt(status);
+                                  handle.resume();
+                                }});
+    }
+
+    Status await_resume() { return std::move(result); }
+  };
+
+  auto result = co_await awaitable{core_, payloadId};
+  co_return result;
 }
 
 Windows::Foundation::IAsyncOperation<Status>
 Nearby::DisconnectFromEndpointAsync(hstring endpointId) {
-  throw hresult_not_implemented();
+  struct awaitable : std::suspend_always {
+    Core& nearby_core;
+    std::string endpoint_id;
+    Status result;
+
+    awaitable(Core& nearby_core, std::string&& endpoint_id)
+        : nearby_core(nearby_core), endpoint_id(std::move(endpoint_id)) {}
+
+    bool await_ready() { return false; }
+
+    void await_suspend(std::coroutine_handle<> handle) {
+      nearby_core.DisconnectFromEndpoint(
+          endpoint_id, ResultCallback{[this, handle](::Status status) {
+            result = to_winrt(status);
+            handle.resume();
+          }});
+    }
+
+    Status await_resume() { return std::move(result); }
+  };
+
+  auto result = co_await awaitable{core_, to_string(endpointId)};
+  co_return result;
 }
 
 Windows::Foundation::IAsyncOperation<Status> Nearby::StopAllEndpointsAsync() {
-  throw hresult_not_implemented();
+  struct awaitable : std::suspend_always {
+    Core& nearby_core;
+    Status result;
+
+    awaitable(Core& nearby_core) : nearby_core(nearby_core) {}
+
+    bool await_ready() { return false; }
+
+    void await_suspend(std::coroutine_handle<> handle) {
+      nearby_core.StopAllEndpoints(
+          ResultCallback{[this, handle](::Status status) {
+            result = to_winrt(status);
+            handle.resume();
+          }});
+    }
+
+    Status await_resume() { return std::move(result); }
+  };
+
+  auto result = co_await awaitable{core_};
+  co_return result;
 }
 
 Windows::Foundation::IAsyncOperation<Status>
 Nearby::InitiateBandwidthUpgradeAsync(hstring endpointId) {
-  throw hresult_not_implemented();
+  struct awaitable : std::suspend_always {
+    Core& nearby_core;
+    std::string endpoint_id;
+    Status result;
+
+    awaitable(Core& nearby_core, std::string&& endpoint_id)
+        : nearby_core(nearby_core), endpoint_id(std::move(endpoint_id)) {}
+
+    bool await_ready() { return false; }
+
+    void await_suspend(std::coroutine_handle<> handle) {
+      nearby_core.InitiateBandwidthUpgrade(
+          endpoint_id, ResultCallback{[this, handle](::Status status) {
+            result = to_winrt(status);
+            handle.resume();
+          }});
+    }
+
+    Status await_resume() { return std::move(result); }
+  };
+
+  auto result = co_await awaitable{core_, to_string(endpointId)};
+  co_return result;
 }
 
 hstring Nearby::GetLocalEndpointId() {
