@@ -57,7 +57,7 @@ WifiLanSocket::SocketInputStream::SocketInputStream(IInputStream input_stream) {
 }
 
 ExceptionOr<ByteArray> WifiLanSocket::SocketInputStream::Read(
-  std::uint32_t size) {
+    std::int64_t size) {
   try {
     Buffer buffer = Buffer(size);
 

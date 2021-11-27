@@ -17,6 +17,7 @@
 
 // Windows headers
 #include <windows.h>
+#include <windns.h>   // TODO: remove DnsServiceDeRegister
 
 // Standard C/C++ headers
 #include <codecvt>
@@ -70,7 +71,7 @@ bool WifiLanMedium::StartAdvertising(const NsdServiceInfo& nsd_service_info) {
   dnssd_service_instance_ = DnssdServiceInstance{
       string_to_wstring(instance_name),
       nullptr,  // let windows use default computer's local name
-      (uint16)nsd_service_info.GetPort()};
+      static_cast<uint16_t>(nsd_service_info.GetPort())};
 
   // Add TextRecords from NsdServiceInfo
   auto text_attributes = dnssd_service_instance_.TextAttributes();

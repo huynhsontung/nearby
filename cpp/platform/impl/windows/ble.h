@@ -78,7 +78,7 @@ class BleSocket : public api::BleSocket {
  private:
   class FakeInputStream : public InputStream {
     ~FakeInputStream() override = default;
-    ExceptionOr<ByteArray> Read(std::uint32_t size) override {
+    ExceptionOr<ByteArray> Read(std::int64_t size) override {
       return ExceptionOr<ByteArray>(Exception::kFailed);
     }
     Exception Close() override { return {.value = Exception::kFailed}; }

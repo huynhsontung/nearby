@@ -104,7 +104,7 @@ class BluetoothSocket : public api::BluetoothSocket {
     BluetoothInputStream(IInputStream stream);
     ~BluetoothInputStream() override = default;
 
-    ExceptionOr<ByteArray> Read(std::uint32_t size) override;
+    ExceptionOr<ByteArray> Read(std::int64_t size) override;
     Exception Close() override;
 
    private:

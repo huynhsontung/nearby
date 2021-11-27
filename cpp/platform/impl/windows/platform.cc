@@ -15,6 +15,7 @@
 #include "pch.h"
 #include "platform/api/platform.h"
 
+#include "winrt/Windows.Storage.h"
 #include <shlobj.h>
 
 #include "platform/impl/shared/count_down_latch.h"
@@ -45,28 +46,8 @@ namespace api {
 namespace {
 
 std::string GetPayloadPath(PayloadId payload_id) {
-  PWSTR basePath;
-
-  // Retrieves the full path of a known folder identified by the folder's
-  // KNOWNFOLDERID.
-  // https://docs.microsoft.com/en-us/windows/win32/api/shlobj_core/nf-shlobj_core-shgetknownfolderpath
-  SHGetKnownFolderPath(
-      FOLDERID_Downloads,  //  rfid: A reference to the KNOWNFOLDERID that
-                           //  identifies the folder.
-      0,           // dwFlags: Flags that specify special retrieval options.
-      NULL,        // hToken: An access token that represents a particular user.
-      &basePath);  // ppszPath: When this method returns, contains the address
-                   // of a pointer to a null-terminated Unicode string that
-                   // specifies the path of the known folder. The calling
-                   // process is responsible for freeing this resource once it
-                   // is no longer needed by calling CoTaskMemFree, whether
-                   // SHGetKnownFolderPath succeeds or not.
-
-  char* fullpathUTF8 = new char((wcslen(basePath) + 1) * sizeof(char));
-  wcstombs(fullpathUTF8, basePath, (wcslen(basePath) + 1) * sizeof(char));
-  std::string fullPath = std::string(fullpathUTF8);
-  auto retval = absl::StrCat(fullPath += "/", payload_id);
-  return retval;
+  auto file = winrt::Windows::Storage::DownloadsFolder::CreateFileAsync(winrt::to_hstring(payload_id)).get();
+  return to_string(file.Path());
 }
 }  // namespace
 

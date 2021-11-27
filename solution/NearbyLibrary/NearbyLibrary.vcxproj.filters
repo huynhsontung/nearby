@@ -108,10 +108,10 @@
     <ClCompile Include="..\..\cpp\platform\impl\windows\wifi_lan_medium.cc">
       <Filter>Library\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\cpp\platform\impl\windows\wifi_lan_nsd.cc">
+    <ClCompile Include="..\..\cpp\platform\impl\windows\wifi_lan_socket.cc">
       <Filter>Library\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\cpp\platform\impl\windows\wifi_lan_socket.cc">
+    <ClCompile Include="..\..\cpp\platform\impl\windows\wifi_lan_server_socket.cc">
       <Filter>Library\Sources</Filter>
     </ClCompile>
   </ItemGroup>

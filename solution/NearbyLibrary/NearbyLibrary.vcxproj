@@ -408,7 +408,7 @@
     <ClCompile Include="..\..\cpp\platform\impl\windows\thread_pool.cc" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\utils.cc" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\wifi_lan_medium.cc" />
-    <ClCompile Include="..\..\cpp\platform\impl\windows\wifi_lan_nsd.cc" />
+    <ClCompile Include="..\..\cpp\platform\impl\windows\wifi_lan_server_socket.cc" />
     <ClCompile Include="..\..\cpp\platform\impl\windows\wifi_lan_socket.cc" />
     <ClCompile Include="ConnectionAcceptedEventArgs.cpp">
       <DependentUpon>ConnectionAcceptedEventArgs.idl</DependentUpon>
