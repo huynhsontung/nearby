@@ -45,13 +45,11 @@ std::string uint64_to_mac_address_string(uint64_t bluetoothAddress) {
 }
 
 std::wstring string_to_wstring(std::string str) {
-  std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
-  return converter.from_bytes(str);
+  return winrt::to_hstring(str).c_str();
 }
 
 std::string wstring_to_string(std::wstring wstr) {
-  std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
-  return converter.to_bytes(wstr);
+  return winrt::to_string(wstr);
 }
 
 ByteArray Sha256(absl::string_view input, size_t size) {
