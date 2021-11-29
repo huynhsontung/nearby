@@ -72,6 +72,6 @@ git_repository(
 
 new_local_repository(
     name = "webrtc",
-    path = "C:/Users/tung7/source/repos/webrtc/src",
+    path = "third_party/webrtc",
     build_file = "third_party/BUILD.webrtc.bazel",
 )

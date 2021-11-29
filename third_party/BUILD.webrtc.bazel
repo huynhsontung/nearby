@@ -75,7 +75,6 @@ WEBRTC_HEADERS = [
     "api/video_codecs/video_encoder.h",
     "api/fec_controller_override.h",
     "api/video/video_frame_metadata.h",
-    "api/proxy.h",
     "api/function_view.h",
     "api/rtp_parameters.h",
     "api/rtp_transceiver_direction.h",
@@ -108,11 +107,21 @@ WEBRTC_HEADERS = [
     "api/call/transport.h",
     "api/candidate.h",
     "api/transport/stun.h",
+    "api/async_dns_resolver.h",
+    "api/wrapping_async_dns_resolver.h",
+    "api/sequence_checker.h",
+    "api/transport/data_channel_transport_interface.h",
+    "api/video/render_resolution.h",
+    "api/video_track_source_constraints.h",
 
     # call
     "call/audio_state.h",
     "call/rtp_config.h",
     "call/video_receive_stream.h",
+    "call/receive_stream.h",
+    "call/rtp_transport_controller_send_factory_interface.h",
+    "call/rtp_transport_config.h",
+    "call/rtp_transport_controller_send_interface.h",
 
     # common_video
     "common_video/frame_counts.h",
@@ -141,7 +150,6 @@ WEBRTC_HEADERS = [
     "modules/audio_device/include/audio_device_defines.h",
     "modules/audio_processing/include/audio_processing.h",
     "modules/audio_processing/include/audio_processing_statistics.h",
-    "modules/audio_processing/include/config.h",
     "modules/include/module_fec_types.h",
     "modules/rtp_rtcp/include/report_block_data.h",
     "modules/rtp_rtcp/include/rtcp_statistics.h",
@@ -158,6 +166,13 @@ WEBRTC_HEADERS = [
     "modules/video_coding/include/video_codec_interface.h",
     "modules/video_coding/include/video_coding_defines.h",
     "modules/video_coding/include/video_error_codes.h",
+    "modules/utility/include/process_thread.h",
+    "modules/rtp_rtcp/include/rtp_packet_sender.h",
+    "modules/rtp_rtcp/source/rtp_packet_to_send.h",
+    "modules/rtp_rtcp/source/rtp_header_extensions.h",
+    "modules/rtp_rtcp/source/rtp_packet.h",
+    "modules/rtp_rtcp/include/rtp_header_extension_map.h",
+    "modules/rtp_rtcp/source/rtp_packet_received.h",
 
     # p2p
     "p2p/base/candidate_pair_interface.h",
@@ -248,24 +263,20 @@ WEBRTC_HEADERS = [
     "rtc_base/weak_ptr.h",
     "rtc_base/win32.h",
     "rtc_base/zero_memory.h",
-    "rtc_base/deprecation.h",
-    "rtc_base/thread_checker.h",
-    "rtc_base/synchronization/sequence_checker.h",
     "rtc_base/system/unused.h",
     "rtc_base/sanitizer.h",
-    "rtc_base/callback.h",
+    "rtc_base/synchronization/sequence_checker_internal.h",
+    "rtc_base/async_resolver.h",
+    "rtc_base/system_time.h",
 
     # system_wrappers
     "system_wrappers/include/clock.h",
     "system_wrappers/include/ntp_time.h",
 ]
 
-cc_import(name="webrtc_static", static_library=LIBROOT+"webrtc.lib", hdrs=WEBRTC_HEADERS)
-
 cc_library(
     name = "webrtc",
     hdrs = WEBRTC_HEADERS,
     include_prefix = "webrtc",
     visibility = ["//visibility:public"],
-    deps = [":webrtc_static"],
 )

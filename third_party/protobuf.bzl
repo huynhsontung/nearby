@@ -84,8 +84,6 @@ def _proto_gen_impl(ctx):
         import_flags = depset(direct=["-I" + source_dir, "-I" + gen_dir])
     else:
         import_flags = depset(direct=["-I."])
-    # extra_source_flags = depset(direct=["-I" + src.dirname for src in srcs])
-    # import_flags = depset(transitive=[import_flags, extra_source_flags])
 
     for dep in ctx.attr.deps:
         if type(dep.proto.import_flags) == "list":
@@ -261,7 +259,6 @@ def cc_proto_library(
         srcs = [],
         deps = [],
         cc_libs = [],
-        cc_includes = [],
         include = None,
         protoc = "@com_google_protobuf//:protoc",
         use_grpc_plugin = False,
@@ -279,7 +276,6 @@ def cc_proto_library(
       deps: a list of dependency labels; must be cc_proto_library.
       cc_libs: a list of other cc_library targets depended by the generated
           cc_library.
-      cc_includes: a list of include paths for cc_library.
       include: a string indicating the include path of the .proto files.
       protoc: the label of the protocol compiler to generate the sources.
       use_grpc_plugin: a flag to indicate whether to call the grpc C++ plugin
@@ -318,8 +314,6 @@ def cc_proto_library(
         cc_libs = cc_libs + [default_runtime]
     if use_grpc_plugin:
         cc_libs = cc_libs + ["//external:grpc_lib"]
-    
-    includes += cc_includes
     cc_library(
         name = name,
         srcs = gen_srcs,
