@@ -112,7 +112,6 @@ WEBRTC_HEADERS = [
     "api/sequence_checker.h",
     "api/transport/data_channel_transport_interface.h",
     "api/video/render_resolution.h",
-    "api/video_track_source_constraints.h",
 
     # call
     "call/audio_state.h",

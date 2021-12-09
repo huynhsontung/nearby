@@ -1,12 +1,12 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
-# rules_proto that uses protoc 3.13.0
-http_archive(
+# rules_proto that uses protoc 3.19.1
+git_repository(
     name = "rules_proto",
-    url = "https://github.com/bazelbuild/rules_proto/archive/fcad4680fee127dbd8344e6a961a28eef5820ef4.zip",
-    sha256 = "b656a0ed833a8a7c8b04e2a9649bc7b4f40903a9fa3d11546b04b2416ba3702b",
-    strip_prefix = "rules_proto-fcad4680fee127dbd8344e6a961a28eef5820ef4",
+    commit = "11bf7c25e666dd7ddacbcd4d4c4a9de7a25175f8",
+    shallow_since = "1637060833 +0100",
+    remote = "https://github.com/bazelbuild/rules_proto.git",
 )
 load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
 rules_proto_dependencies()
@@ -14,16 +14,16 @@ rules_proto_toolchains()
 
 http_archive(
     name = "io_bazel_rules_go",
-    sha256 = "69de5c704a05ff37862f7e0f5534d4f479418afc21806c887db544a316f3cb6b",
+    sha256 = "2b1641428dff9018f9e85c0384f03ec6c10660d935b750e3fa1492a281a53b0f",
     urls = [
-        "https://mirror.bazel.build/github.com/bazelbuild/rules_go/releases/download/v0.27.0/rules_go-v0.27.0.tar.gz",
-        "https://github.com/bazelbuild/rules_go/releases/download/v0.27.0/rules_go-v0.27.0.tar.gz",
+        "https://mirror.bazel.build/github.com/bazelbuild/rules_go/releases/download/v0.29.0/rules_go-v0.29.0.zip",
+        "https://github.com/bazelbuild/rules_go/releases/download/v0.29.0/rules_go-v0.29.0.zip",
     ],
 )
 
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
 go_rules_dependencies()
-go_register_toolchains(version = "1.16")
+go_register_toolchains(version = "1.17.1")
 
 http_archive(
     name = "rules_python",
@@ -31,43 +31,32 @@ http_archive(
     sha256 = "778197e26c5fbeb07ac2a2c5ae405b30f6cb7ad1f5510ea6fdac03bded96cc6f",
 )
 
-http_archive(
+new_local_repository(
     name = "smhasher",
-    url = "https://github.com/aappleby/smhasher/archive/61a0530f28277f2e850bfc39600ce61d02b518de.zip",
-    sha256 = "950ab5345e43bf48ce2599f6c3f6ed711f20478f4a1b52763511bd4029d97656",
-    strip_prefix = "smhasher-61a0530f28277f2e850bfc39600ce61d02b518de",
+    path = "third_party/smhasher",
     build_file = "@//third_party:BUILD.smhasher.bazel",
 )
 
-http_archive(
+local_repository(
     name = "abseil",
-    url = "https://github.com/abseil/abseil-cpp/archive/refs/tags/20210324.1.zip",
-    sha256 = "cfb1f22164808eb0a233ad91287df84c2af2084cfc8b429eca1be1e57511065d",
-    strip_prefix = "abseil-cpp-20210324.1",
+    path = "third_party/absl",
 )
 
-http_archive(
+new_local_repository(
     name = "securemessage",
-    url = "https://github.com/google/securemessage/archive/e7b6988454bc94601616fbbf0db3559f73a1ebdf.zip",
-    sha256 = "8d16be4a4a7066f6cbff6c64aec1d94427e814e5ed9ccf210f10fb26b9da4127",
-    strip_prefix = "securemessage-e7b6988454bc94601616fbbf0db3559f73a1ebdf",
+    path = "third_party/securemessage",
     build_file = "@//third_party:BUILD.securemessage.bazel",
 )
 
-http_archive(
+new_local_repository(
     name = "ukey2",
-    url = "https://github.com/google/ukey2/archive/0275885d8e6038c39b8a8ca55e75d1d4d1727f47.zip",
-    sha256 = "2026c6f8532e743bb17ab3f03e8c40a5c6d723603c8d9dbe3de72395a120d1d5",
-    strip_prefix = "ukey2-0275885d8e6038c39b8a8ca55e75d1d4d1727f47",
+    path = "third_party/ukey2",
     build_file = "@//third_party:BUILD.ukey2.bazel",
 )
 
-git_repository(
+local_repository(
     name = "boringssl",
-    # branch = "master-with-bazel",
-    commit = "38f2c0e84c67e778ce5db89b44660ea46d26f86c",
-    shallow_since = "1621355724 +0000",
-    remote = "https://boringssl.googlesource.com/boringssl",
+    path = "third_party/boringssl",
 )
 
 new_local_repository(

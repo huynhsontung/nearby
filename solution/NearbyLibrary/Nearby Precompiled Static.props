@@ -71,7 +71,7 @@
     <ClCompile />
     <ClCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);_SILENCE_CXX20_IS_POD_DEPRECATION_WARNING;WINAPI_FAMILY=WINAPI_FAMILY_DESKTOP_APP;WIN32_LEAN_AND_MEAN;NOMINMAX;_UNICODE;UNICODE;WEBRTC_WIN</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\cpp;..\..\bazel-nearby-connections\external;..\..\bazel-nearby-connections\external\abseil;..\..\bazel-nearby-connections\external\com_github_protocolbuffers_protobuf\src;..\..\bazel-nearby-connections\external\ukey2\src\main\cpp\include;..\..\bazel-nearby-connections\external\securemessage\cpp\include;..\..\bazel-nearby-connections\external\webrtc;..\..\bazel-nearby-connections\external\boringssl\src\include;..\..\bazel-bin;..\..\bazel-bin\external\ukey2\src\main;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\cpp;..\..\third_party;..\..\third_party\absl;..\..\third_party\protobuf\src;..\..\third_party\ukey2\src\main\cpp\include;..\..\third_party\ukey2\src\main;..\..\third_party\securemessage\cpp\include;..\..\third_party\webrtc;..\..\third_party\boringssl\src\include;..\..\bazel-bin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
