@@ -109,7 +109,9 @@ Exception BluetoothServerSocket::StartListening(bool radioDiscoverable) {
     rfcomm_provider_ = rfcommProviderRef;
 
     stream_socket_listener_
-        .BindServiceNameAsync(rfcommProviderRef.ServiceId().AsString())
+        .BindServiceNameAsync(
+            winrt::to_hstring(rfcomm_provider_.ServiceId().AsString()),
+            SocketProtectionLevel::PlainSocket)
         .get();
 
     // Set the SDP attributes and start Bluetooth advertising
