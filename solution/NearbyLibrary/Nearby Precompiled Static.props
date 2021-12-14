@@ -69,7 +69,7 @@
 ../../bazel-bin/external/abseil/absl/numeric/int128.lib
 ../../bazel-bin/external/abseil/absl/time/internal/cctz/time_zone.lib
 ../../bazel-bin/external/abseil/absl/time/internal/cctz/civil_time.lib %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>Winmm.lib;Iphlpapi.lib;WindowsApp.lib;dnsapi.lib</AdditionalDependencies>
+      <AdditionalDependencies>Winmm.lib;Iphlpapi.lib;WindowsApp.lib;dnsapi.lib;SetupAPI.lib</AdditionalDependencies>
     </Link>
     <ClCompile />
     <ClCompile>
