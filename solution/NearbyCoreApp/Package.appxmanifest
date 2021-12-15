@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"  xmlns:iot="http://schemas.microsoft.com/appx/manifest/iot/windows10" IgnorableNamespaces="uap mp uap3 iot">
   <Identity
     Name="c82b449c-6ac3-4e46-b61f-45f29eeab60b"
     Publisher="CN=tung7"
@@ -28,7 +28,15 @@
   <Capabilities>
     <Capability Name="internetClient" />
     <Capability Name="internetClientServer"/>
+    <Capability Name="privateNetworkClientServer"/>
+    <uap3:Capability Name="remoteSystem"/>
+    <iot:Capability Name="systemManagement"/>
+    <uap:Capability Name="userAccountInformation"/>
+    <iot:Capability Name="lowLevelDevices"/>
+    <uap:Capability Name="enterpriseAuthentication"/>
     <DeviceCapability Name="bluetooth"/>
     <DeviceCapability Name="proximity"/>
+    <DeviceCapability Name="location"/>
+    <DeviceCapability Name="lowLevel"/>
   </Capabilities>
 </Package>

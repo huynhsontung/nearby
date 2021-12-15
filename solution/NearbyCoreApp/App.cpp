@@ -1,5 +1,6 @@
 #include "pch.h"
 #include <winrt/NearbyLibrary.h>
+#include <sstream>
 
 using namespace winrt;
 
@@ -18,15 +19,38 @@ struct App : implements<App, IFrameworkViewSource, IFrameworkView>
     Visual m_selected{ nullptr };
     float2 m_offset{};
     NearbyLibrary::Nearby m_nearby{};
+    NearbyLibrary::Nearby::EndpointFound_revoker m_endpoint_found_revoker{};
+    NearbyLibrary::Nearby::EndpointDistanceChanged_revoker m_endpoint_distance_changed_revoker{};
 
     IAsyncAction StartAdvertising()
     {
         co_await winrt::resume_background();
         OutputDebugString(L"Advertising\n");
         auto options = NearbyLibrary::ConnectionOptions{};
-        options.Strategy(NearbyLibrary::Strategy::P2pPointToPoint);
-        options.Allowed().WifiLan(true);
-        auto value = m_nearby.StartAdvertisingAsync(L"nearby", options, L"none").get();
+        options.Strategy(NearbyLibrary::Strategy::P2pCluster);
+        const auto mediumSelector = NearbyLibrary::MediumSelector{};
+        mediumSelector.WifiLan(true);
+        //mediumSelector.Bluetooth(true);
+        options.Allowed(mediumSelector);
+        options.KeepAliveIntervalMillis(5000);
+        options.KeepAliveTimeoutMillis(30000);
+        auto value = m_nearby.StartAdvertisingAsync(L"NearbySharing", options, L"com.google.android.gms.auth.proximity.START_NEARBY").get();
+        OutputDebugString(L"Here!\n");
+    }
+
+    IAsyncAction StartDiscovering()
+    {
+        co_await winrt::resume_background();
+        OutputDebugString(L"Discovering\n");
+        auto options = NearbyLibrary::ConnectionOptions{};
+        options.Strategy(NearbyLibrary::Strategy::P2pCluster);
+        const auto mediumSelector = NearbyLibrary::MediumSelector{};
+        mediumSelector.WifiLan(true);
+        mediumSelector.Bluetooth(true);
+        options.Allowed(mediumSelector);
+        options.KeepAliveIntervalMillis(5000);
+        options.KeepAliveTimeoutMillis(30000);
+        auto value = m_nearby.StartDiscoveryAsync(L"NearbySharing", options).get();
         OutputDebugString(L"Here!\n");
     }
 
@@ -37,6 +61,22 @@ struct App : implements<App, IFrameworkViewSource, IFrameworkView>
 
     void Initialize(CoreApplicationView const &)
     {
+        m_endpoint_found_revoker = m_nearby.EndpointFound(winrt::auto_revoke,
+        [](NearbyLibrary::Nearby core, NearbyLibrary::EndpointFoundEventArgs args)
+        {
+            std::wostringstream debugMessage;
+            debugMessage << L"Endpoint Found:\n\tservice_id=" << args.ServiceId().c_str()
+              << L"\n\tendpoint_id=" << args.EndpointId().c_str()
+              << L"\n\tendpoint_info=" << args.EndpointInfo().c_str() << std::endl;
+            OutputDebugString(debugMessage.str().c_str());
+        });
+        m_endpoint_distance_changed_revoker = m_nearby.EndpointDistanceChanged(winrt::auto_revoke,
+          [](NearbyLibrary::Nearby core, NearbyLibrary::EndpointDistanceChangedEventArgs args)
+          {
+            std::wostringstream debugMessage;
+            debugMessage << L"Endpoint Distance Changed:\n\endpoint_id=" << args.EndpointId().c_str() << std::endl;
+            OutputDebugString(debugMessage.str().c_str());
+          });
     }
 
     void Load(hstring const&)
@@ -103,7 +143,7 @@ struct App : implements<App, IFrameworkViewSource, IFrameworkView>
             AddVisual(point);
         }
 
-        StartAdvertising();
+        StartDiscovering();
     }
 
     void OnPointerMoved(IInspectable const &, PointerEventArgs const & args)

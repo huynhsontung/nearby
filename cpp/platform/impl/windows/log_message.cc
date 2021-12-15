@@ -55,8 +55,8 @@ LogMessage::LogMessage(const char* file, int line, Severity severity)
 
 LogMessage::~LogMessage() {
 #ifdef NEARBY_LIBRARY
-  OutputDebugString(winrt::to_hstring(log_streamer_.stream.str()).c_str());
-  OutputDebugString(L"\n");
+  OutputDebugStringA(log_streamer_.stream.str().c_str());
+  OutputDebugStringA("\n");
 #endif
 }
 
